@@ -1,3 +1,10 @@
+"""last updated by Abdullah shaikh
+opencv-contrib-python              4.4.0.40
+opencv-python-headless             4.4.0.42
+face-recognition                   1.3.0
+face-recognition-models            0.3.0
+
+"""
 import cv2
 import numpy as np
 import face_recognition
@@ -11,46 +18,44 @@ myDB= sql.connect(host ="localhost",
                   db = "Attendance",
                   autocommit =True)
 cur = myDB.cursor()
-def markAttendance(name):
-    try:
-        
-        cur.execute("insert into attendancelog values (\"{}\",current_timestamp(),current_time());".format(name))
-        
-    except:
-        print("error!! connection failed!!")
 
-def timetable():
-	
-	now =datetime.now()
-	HOUR=int(now.strftime('%H'))
-	MINUTE=int(now.strftime('%M'))
-	DAY=str(now.strftime("%A"))
-	timeStr=str(HOUR + "_"+MINUTE)
-	if((HOUR == 11 or HOUR==12) and MINUTE==30):
-		curSubject = cur.execute("select \"{}\" from timetable where day=\"{}\" );".format(timestr).format(DAY))
-	
-	elif(MINUTE==00):
-		curSubject = cur.execute("select \"{}\" from timetable where day=\"{}\" );".format(timestr).format(DAY))
-	
-
-
-
-
-
-        
 oldname=''
 path = 'ImagesAttendance'
 images = []
 classNames = []
 myList = os.listdir(path)
 print(myList)
-
-
 for cl in myList:
     curImg = cv2.imread(f'{path}/{cl}')
     images.append(curImg)
     classNames.append(os.path.splitext(cl)[0])
 print(classNames)
+
+
+def markAttendance(name,subject):
+    try:
+        cur.execute("insert into attendancelog values (\"{}\",current_timestamp(),current_time());".format(name))
+        
+    except:
+        print("error!! connection failed!!")
+
+
+def getSubject():
+	now =datetime.now()
+	HOUR=int(now.strftime('%H'))
+	MINUTE=int(now.strftime('%M'))
+	DAY=str(now.strftime("%A"))
+	timeStr=str(HOUR + "_"+MINUTE)
+	if((HOUR == 11 or HOUR==12) and MINUTE==30):
+		curSubject = str(cur.execute("select \"{}\" from timetable where day=\"{}\" );".format(timestr).format(DAY)))
+		return curSubject
+	
+	elif((HOUR != 11 or HOUR!=12) and MINUTE==00):
+		curSubject = str(cur.execute("select \"{}\" from timetable where day=\"{}\" );".format(timestr).format(DAY)))
+		return curSubject
+	
+        
+
  
 def findEncodings(images):
     encodeList = []
@@ -59,28 +64,10 @@ def findEncodings(images):
         encode = face_recognition.face_encodings(img)[0]
         encodeList.append(encode)
     return encodeList
- 
-"""def markAttendance(name):
-    with open('Attendance.csv','r+') as f:
-        myDataList = f.readlines()
-        nameList = []
-        for line in myDataList:
-            entry = line.split(',')
-            nameList.append(entry[0])
-        if name not in nameList:
-            now = datetime.now()
-            dtString = now.strftime('%H:%M:%S')
-            f.writelines(f'\n{name},{dtString}')"""
- 
-#### FOR CAPTURING SCREEN RATHER THAN WEBCAM
-# def captureScreen(bbox=(300,300,690+300,530+300)):
-#     capScr = np.array(ImageGrab.grab(bbox))
-#     capScr = cv2.cvtColor(capScr, cv2.COLOR_RGB2BGR)
-#     return capScr
+
  
 encodeListKnown = findEncodings(images)
 print('Encoding Complete')
- 
 cap = cv2.VideoCapture(0)
  
 while True:
@@ -107,11 +94,13 @@ while True:
             cv2.rectangle(img,(x1,y1),(x2,y2),(0,255,0),2)
             cv2.rectangle(img,(x1,y2-35),(x2,y2),(0,255,0),cv2.FILLED)
             cv2.putText(img,name,(x1+6,y2-6),cv2.FONT_HERSHEY_COMPLEX,1,(255,255,255),2)
-            if(oldname==name || ):
+            curSubject = getSubject()
+            if(oldname==name and oldSubject==curSubject ):
                 continue
             else:
-                markAttendance(name)
-            
+                markAttendance(name,curSubject)
+            oldSubject=curSubject
+            oldname= name
     
  
     cv2.imshow('Webcam',img)
