@@ -15,11 +15,12 @@ import pymysql as sql
 myDB= sql.connect(host ="localhost",
                   user="root",
                   password = "1223",
-                  db = "Attendance",
+                  db = "attendance",
                   autocommit =True)
 cur = myDB.cursor()
 
 oldname=''
+oldSubject=''
 path = 'ImagesAttendance'
 images = []
 classNames = []
@@ -34,29 +35,28 @@ print(classNames)
 
 def markAttendance(name,subject):
     try:
-        cur.execute("insert into attendancelog values (\"{}\",current_timestamp(),current_time());".format(name))
-        
+        cur.execute('insert into attendancelog values ("'+name+'",current_timestamp(),"'+subject+'");')
+       
     except:
+       
         print("error!! connection failed!!")
-
+        print(subject)
 
 def getSubject():
-	now =datetime.now()
-	HOUR=int(now.strftime('%H'))
-	MINUTE=int(now.strftime('%M'))
-	DAY=str(now.strftime("%A"))
-	timeStr=str(HOUR + "_"+MINUTE)
-	if((HOUR == 11 or HOUR==12) and MINUTE==30):
-		curSubject = str(cur.execute("select \"{}\" from timetable where day=\"{}\" );".format(timestr).format(DAY)))
-		return curSubject
-	
-	elif((HOUR != 11 or HOUR!=12) and MINUTE==00):
-		curSubject = str(cur.execute("select \"{}\" from timetable where day=\"{}\" );".format(timestr).format(DAY)))
-		return curSubject
-	
-        
+    now =datetime.now()
+    HOUR=str(now.strftime('%H'))
+    MINUTE=str(now.strftime('%M'))
+    DAY=str(now.strftime("%A"))
+    timeStr=str(HOUR + "_" + MINUTE)
+    print(now.strftime("%A   %H:%M"))
+    if(((HOUR == "11" or HOUR=="12") and MINUTE=="30") or ((HOUR != "11" or HOUR!="12") and MINUTE=="00")):
+        cur.execute('select '+timeStr+' from timetable where timetable.day="'+DAY+'"')
+        curSubject=str(cur.fetchone())
+        return curSubject.split("'")[1]
+    else:
+        return None
 
- 
+    
 def findEncodings(images):
     encodeList = []
     for img in images:
@@ -94,8 +94,8 @@ while True:
             cv2.rectangle(img,(x1,y1),(x2,y2),(0,255,0),2)
             cv2.rectangle(img,(x1,y2-35),(x2,y2),(0,255,0),cv2.FILLED)
             cv2.putText(img,name,(x1+6,y2-6),cv2.FONT_HERSHEY_COMPLEX,1,(255,255,255),2)
-            curSubject = getSubject()
-            if(oldname==name and oldSubject==curSubject ):
+            curSubject = str(getSubject())
+            if(curSubject=="None" or (oldname==name and oldSubject==curSubject )):
                 continue
             else:
                 markAttendance(name,curSubject)
