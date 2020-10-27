@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server for the dmp project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slirq/Smart-attendance-database-system.git"
+  },
+  "keywords": [
+    "smart",
+    "attendance"
+  ],
+  "author": "slirq , toothsy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/slirq/Smart-attendance-database-system/issues"
+  },
+  "homepage": "https://github.com/slirq/Smart-attendance-database-system#readme"
+}
