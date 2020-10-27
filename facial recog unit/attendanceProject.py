@@ -8,16 +8,35 @@ import pymysql as sql
 myDB= sql.connect(host ="localhost",
                   user="root",
                   password = "1223",
-                  db = "project",
+                  db = "Attendance",
                   autocommit =True)
 cur = myDB.cursor()
 def markAttendance(name):
     try:
         
-        cur.execute("insert into attendanceLog values (\"{}\",current_timestamp(),current_time());".format(name))
+        cur.execute("insert into attendancelog values (\"{}\",current_timestamp(),current_time());".format(name))
         
     except:
         print("error!! connection failed!!")
+
+def timetable():
+	
+	now =datetime.now()
+	HOUR=int(now.strftime('%H'))
+	MINUTE=int(now.strftime('%M'))
+	DAY=str(now.strftime("%A"))
+	timeStr=str(HOUR + "_"+MINUTE)
+	if((HOUR == 11 or HOUR==12) and MINUTE==30):
+		curSubject = cur.execute("select \"{}\" from timetable where day=\"{}\" );".format(timestr).format(DAY))
+	
+	elif(MINUTE==00):
+		curSubject = cur.execute("select \"{}\" from timetable where day=\"{}\" );".format(timestr).format(DAY))
+	
+
+
+
+
+
         
 oldname=''
 path = 'ImagesAttendance'
@@ -88,11 +107,11 @@ while True:
             cv2.rectangle(img,(x1,y1),(x2,y2),(0,255,0),2)
             cv2.rectangle(img,(x1,y2-35),(x2,y2),(0,255,0),cv2.FILLED)
             cv2.putText(img,name,(x1+6,y2-6),cv2.FONT_HERSHEY_COMPLEX,1,(255,255,255),2)
-            if(oldname==name):
+            if(oldname==name || ):
                 continue
             else:
                 markAttendance(name)
-            oldname=name
+            
     
  
     cv2.imshow('Webcam',img)
