@@ -14,7 +14,7 @@ import pymysql as sql
 
 myDB= sql.connect(host ="localhost",
                   user="root",
-                  password = "1223",
+                  password = "481526",
                   db = "attendance",
                   autocommit =True)
 cur = myDB.cursor()
@@ -25,30 +25,31 @@ path = 'ImagesAttendance'
 images = []
 classNames = []
 myList = os.listdir(path)
-print(myList)
+#print(myList)
 for cl in myList:
     curImg = cv2.imread(f'{path}/{cl}')
     images.append(curImg)
     classNames.append(os.path.splitext(cl)[0])
-print(classNames)
+#print(classNames)
 
 
 def markAttendance(name,subject):
     try:
         cur.execute('insert into attendancelog values ("'+name+'",current_timestamp(),"'+subject+'");')
+        print('inserted successfully')
        
-    except:
-       
-        print("error!! connection failed!!")
+    except Exception as e:
+        print("error is "+ e)
         print(subject)
 
 def getSubject():
     now =datetime.now()
     HOUR=str(now.strftime('%H'))
+    HOUR= HOUR-12 if HOUR>12 else HOUR[-1]
     MINUTE=str(now.strftime('%M'))
     DAY=str(now.strftime("%A"))
     timeStr=str(HOUR + "_" + MINUTE)
-    print(now.strftime("%A   %H:%M"))
+    #print(timeStr)
     if(((HOUR == "11" or HOUR=="12") and MINUTE=="30") or ((HOUR != "11" or HOUR!="12") and MINUTE=="00")):
         cur.execute('select '+timeStr+' from timetable where timetable.day="'+DAY+'"')
         curSubject=str(cur.fetchone())
@@ -65,6 +66,13 @@ def findEncodings(images):
         encodeList.append(encode)
     return encodeList
 
+def printTheDataOnConsole():
+    try:
+        cur.execute('select * from Attendancelog')
+        print(str(cur.fetchall()))
+    
+    except Exception as e:
+        print( "error is ({0})".format(e))
  
 encodeListKnown = findEncodings(images)
 print('Encoding Complete')
@@ -95,6 +103,7 @@ while True:
             cv2.rectangle(img,(x1,y2-35),(x2,y2),(0,255,0),cv2.FILLED)
             cv2.putText(img,name,(x1+6,y2-6),cv2.FONT_HERSHEY_COMPLEX,1,(255,255,255),2)
             curSubject = str(getSubject())
+            #print(curSubject+" "+oldSubject+" "+oldname+" "+name )
             if(curSubject=="None" or (oldname==name and oldSubject==curSubject )):
                 continue
             else:
@@ -109,3 +118,4 @@ cap.release()
 
 # Closes all the frames
 cv2.destroyAllWindows()
+printTheDataOnConsole()
