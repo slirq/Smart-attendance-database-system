@@ -3,7 +3,7 @@ import pymysql as sql
 import json
 import os
 
-mydb = sql.Connect(host="localhost",user="root",password="1223",db="attendance", autocommit=True)
+mydb = sql.Connect(host="localhost",user="root",password="481526",db="attendance", autocommit=True)
 cur = mydb.cursor()
 dirname = os.path.dirname(__file__)
 path=os.path.join(dirname,'data.json')

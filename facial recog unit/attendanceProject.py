@@ -9,7 +9,7 @@ import cv2
 import numpy as np
 import face_recognition
 import os
-from datetime import datetime,timedelta
+from datetime import datetime
 import pymysql as sql
 
 myDB= sql.connect(host ="localhost",
@@ -44,15 +44,18 @@ def markAttendance(name,subject):
 
 def getSubject():
     now =datetime.now()
-    HOUR=str(now.strftime('%H'))
-    HOUR= HOUR-12 if HOUR>12 else HOUR[-1]
-    MINUTE=str(now.strftime('%M'))
+    HOURint=int(now.strftime('%H'))
+    HOURint= HOURint-12 if HOURint>12 else HOURint[-1]
+    HOUR ="12" #str(HOURint)
+    MINUTE="30"#str(now.strftime('%M'))
     DAY=str(now.strftime("%A"))
     timeStr=str(HOUR + "_" + MINUTE)
     #print(timeStr)
     if(((HOUR == "11" or HOUR=="12") and MINUTE=="30") or ((HOUR != "11" or HOUR!="12") and MINUTE=="00")):
+        print("inserted successfully")
         cur.execute('select '+timeStr+' from timetable where timetable.day="'+DAY+'"')
         curSubject=str(cur.fetchone())
+        print(curSubject)
         return curSubject.split("'")[1]
     else:
         return None
