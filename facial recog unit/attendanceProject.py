@@ -45,10 +45,10 @@ def markAttendance(name,subject):
 def getSubject():
     now =datetime.now()
     HOURint=int(now.strftime('%H'))
-    HOURint= HOURint-12 if HOURint>12 else HOURint[-1]
-    HOUR ="12" #str(HOURint)
-    MINUTE="30"#str(now.strftime('%M'))
-    DAY=str(now.strftime("%A"))
+    HOURint= HOURint-12 if HOURint>12 else HOURint-12;
+    HOUR ="8" #str(HOURint)
+    MINUTE="00"#str(now.strftime('%M'))
+    DAY="friday"#str(now.strftime("%A"))
     timeStr=str(HOUR + "_" + MINUTE)
     #print(timeStr)
     if(((HOUR == "11" or HOUR=="12") and MINUTE=="30") or ((HOUR != "11" or HOUR!="12") and MINUTE=="00")):
