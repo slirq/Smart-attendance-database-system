@@ -41,21 +41,45 @@ def markAttendance(name,subject):
     except Exception as e:
         print("error is "+ e)
         print(subject)
-
+        
+def checkDuplicate(name):
+    try:
+        cur.execute('insert into DUPCHECK values ("'+name+'");')
+        #created a duplicate checking table that truncates itself when subject/timeslot is changed
+        #create table dupcheck (name varchar(10), primary key (name));
+        #:)
+        print("accepted")
+        return True
+    except:
+        print("duplicated detected")
+        return False
+    
+    
 def getSubject():
     now =datetime.now()
-    HOURint=int(now.strftime('%I'))
+    HOURint=11#int(now.strftime('%I'))
     HOUR =str(HOURint)
-    MINUTE="30"#str(now.strftime('%M'))
-    DAY="thursday"#str(now.strftime("%A"))
+    MINUTEint=30#(now.strftime('%M'))
+    MINUTE =str(MINUTEint)
+    DAY="tuesday"#str(now.strftime("%A"))
+    #added seconds parameter to remove the 1 minute window of constant table truncation
+    SECOND =00#str(now.strftime("%S"))    
     timeStr=str(HOUR + "_" + MINUTE)
     #print(timeStr)
-    if(((HOUR == "11" or HOUR=="12") and MINUTE=="30") or ((HOUR != "11" or HOUR!="12") and MINUTE=="00")):
+    if((HOURint != 11 and HOURint !=12 and MINUTEint == 00) or (HOURint ==11 and HOURint ==12 and MINUTEint ==30) and SECOND == 00):
         print("inserted successfully")
         cur.execute('select '+timeStr+' from timetable where timetable.day="'+DAY+'"')
         curSubject=str(cur.fetchone())
+        #----------------------IMPORTANT------------------------------------------------#
+        cur.execute("truncate table dupcheck;")
+        #although this works good in real time , our way of testing by giving synthetic and constant values(eg:Seconds/MINUTES = "00") will cause constant truncation.....
+        #so please comment out the code above while testing or use real time
+        #PS still need to test this system in real time
+        #-------------------------------------------------------------------------------#
         print(curSubject)
         return curSubject.split("'")[1]
+    if((HOURint == 11 and MINUTEint==range(1,29)) or (HOURint ==1 and MINUTEint == range(30,59))):
+        return None # break time
     else:
         return None
 
@@ -105,14 +129,10 @@ while True:
             cv2.rectangle(img,(x1,y2-35),(x2,y2),(0,255,0),cv2.FILLED)
             cv2.putText(img,name,(x1+6,y2-6),cv2.FONT_HERSHEY_COMPLEX,1,(255,255,255),2)
             curSubject = str(getSubject())
-            #print(curSubject+" "+oldSubject+" "+oldname+" "+name )
-            if(curSubject=="None" or (oldname==name and oldSubject==curSubject )):
-                continue
-            else:
+            if(checkDuplicate(name)):
                 markAttendance(name,curSubject)
-            oldSubject=curSubject
-            oldname= name
-    
+            else:
+                continue
  
     cv2.imshow('Webcam',img)
     cv2.waitKey(1)
