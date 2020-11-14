@@ -78,7 +78,7 @@ def getSubject():
         #-------------------------------------------------------------------------------#
         print(curSubject)
         return curSubject.split("'")[1]
-    if((HOURint == 11 and MINUTEint==range(1,29)) or (HOURint ==1 and MINUTEint == range(30,59))):
+    if((HOURint == 11 and MINUTEint==range(1,29)) or (HOURint ==1 and MINUTEint == range(31,59))):
         return None # break time
     else:
         return None

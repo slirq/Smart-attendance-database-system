@@ -1,0 +1,1 @@
+ mysqldump -u root -p attendance --events --triggers --routines > doot2.sql
