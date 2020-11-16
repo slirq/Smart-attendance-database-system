@@ -11,14 +11,24 @@ import face_recognition
 from datetime import datetime
 import pymysql as sql
 import pickle
-
+import os
 myDB= sql.connect(host ="localhost",
                   user="root",
                   password = "1223",
                   db = "attendance",
                   autocommit =True)
 cur = myDB.cursor()
-    
+
+path = 'ImagesAttendance'
+images = []
+classNames = []
+myList = os.listdir(path)
+#print(myList)
+for cl in myList:
+    curImg = cv2.imread(f'{path}/{cl}')
+    images.append(curImg)
+    classNames.append(os.path.splitext(cl)[0])
+
 with open ('encodings', 'rb') as fp:
     encodeListKnown = pickle.load(fp)
 
@@ -110,4 +120,3 @@ cap.release()
 
 # Closes all the frames
 cv2.destroyAllWindows()
-printTheDataOnConsole()
