@@ -19,5 +19,13 @@
   "bugs": {
     "url": "https://github.com/slirq/Smart-attendance-database-system/issues"
   },
-  "homepage": "https://github.com/slirq/Smart-attendance-database-system#readme"
+  "homepage": "https://github.com/slirq/Smart-attendance-database-system#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
 }
