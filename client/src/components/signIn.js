@@ -5,15 +5,18 @@ import {
     Label,
     Input
   } from '@rebass/forms'
-import { Box,Card,Image, Flex, Button } from 'rebass'
+import { Box,Card,Image, Flex} from 'rebass'
 
 export default function signIn() {
     const handleClick=(e)=>{
         let usn=document.querySelector('#usn').value.toLowerCase()
         let password=document.querySelector('#pwd').value
-        axios.post('http:localhost:5000/signIn', {
-            usn: usn,
-            password: password
+        axios( {
+            method:'post',
+            url:'http://localhost:5000/signIn',
+            data:{
+                usn: usn,
+                password: password}
           })
           .catch(function (error) {
             console.log(error);
@@ -31,16 +34,16 @@ export default function signIn() {
                 }} >
                     
                 <Card
-                as='form'
-               
-                sx={{
-                    transform: "translate(50%, 50%)",
-                    mx:"30vw",
-                    width:"20vw",
-                    height:"43vh",
-                    background:"rgba(131,22,219,0.3)",
-                    boxShadow:'0 0 16px rgba(0, 0, 0, .55)'
-                    
+                    as='form'
+                
+                    sx={{
+                        transform: "translate(50%, 50%)",
+                        mx:"30vw",
+                        width:"20vw",
+                        height:"43vh",
+                        background:"rgba(131,22,219,0.3)",
+                        boxShadow:'0 0 16px rgba(0, 0, 0, .55)'
+                        
                 }}
                 >
                 < Label htmlFor='name' mx={"8vw"}>Sign In</Label>
