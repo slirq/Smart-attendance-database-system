@@ -5,7 +5,7 @@ import {
     Label,
     Input
   } from '@rebass/forms'
-import { Box,Card,Image, Flex} from 'rebass'
+import { Text,Box,Card,Image, Flex} from 'rebass'
 
 export default function signIn() {
     const handleClick=(e)=>{
@@ -15,13 +15,13 @@ export default function signIn() {
             method:'post',
             url:'http://localhost:5000/signIn',
             data:{
-                usn: usn,
-                password: password}
+                usn: `${usn}`,
+                password: `${password}`}
           })
           .catch(function (error) {
             console.log(error);
           });
-          console.log(password)
+          console.log(usn)
     }
 
     return (
@@ -46,7 +46,11 @@ export default function signIn() {
                         
                 }}
                 >
-                < Label htmlFor='name' mx={"8vw"}>Sign In</Label>
+                < Text htmlFor='name' 
+                textAlign={"center"} 
+                fontSize={[ 3, 4, 5 ]}
+                fontWeight={"bold"}
+                >Sign In</Text>
                     <Flex  flexDirection={"column"}>
                     
                         <Box width={"20vw"} p={"2vw"} transform= {"translate(50%, 50%)"} >
