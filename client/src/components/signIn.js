@@ -59,7 +59,7 @@ export default function signIn() {
                                     id='usn'
                                     name='usn'
                                     type="text"
-                                    defaultValue='1BI18CS032'
+                                    defaultValue='1BI18CS003'
                                 />
 
                         </Box>

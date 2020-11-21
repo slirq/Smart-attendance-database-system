@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+
 import {
     Label,
     Input,
@@ -29,6 +30,18 @@ export default function signUp() {
             console.log(error);
           });
         }
+    const handlePhoto=(e)=>{
+        // let usn=document.querySelector('#usn').value.toUpperCase()
+        // axios( {
+        //     method:'get',
+        //     url:'http://localhost:2000/',
+        //   })
+        //   .catch(function (error) {
+        //     console.log(error);
+            
+        //   });
+        }
+        
 
     return (
             <Box sx={{
@@ -102,7 +115,7 @@ export default function signUp() {
                                 />
                         </Box>
                         <Box width={"20vw"} py={"0.5vw"} px={"1.5vw"}    transform= {"translate(50%, 50%)"} >
-                        <Button sx={{background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%) ",border:"2px solid black"}} >upload photo</Button>
+                        <Button onClick={handlePhoto}  sx={{background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%) ",border:"2px solid black"}} >upload photo</Button>
 
                         </Box>
                         <Box width={"20vw"} py={"0.5vw"} px={"1.5vw"}   transform= {"translate(50%, 50%)"} >
