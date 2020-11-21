@@ -4,7 +4,9 @@
   "description": "server for the dmp project",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client": "cd ../client && npm start",
+    "server": "nodemon server",
+    "fullApp": "concurrently -n 'client,server' -c 'white,green' \"npm run client\" \"npm run server\""
   },
   "repository": {
     "type": "git",
@@ -21,11 +23,13 @@
   },
   "homepage": "https://github.com/slirq/Smart-attendance-database-system#readme",
   "devDependencies": {
+    "concurrently": "^5.3.0",
     "nodemon": "^2.0.6"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5"
   }
 }
