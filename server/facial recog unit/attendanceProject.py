@@ -23,6 +23,9 @@ path = 'ImagesAttendance'
 images = []
 classNames = []
 myList = os.listdir(path)
+SECTION="A"
+BRANCH="CSE"
+curSubject=""
 #print(myList)
 for cl in myList:
     curImg = cv2.imread(f'{path}/{cl}')
@@ -56,22 +59,23 @@ def checkDuplicate(name):
     
     
 def getSubject():
+    global BRANCH,SECTION,curSubject
     now =datetime.now()
-    HOURint=11#int(now.strftime('%I'))
+    HOURint=8#int(now.strftime('%I'))
     HOUR =str(HOURint)
-    MINUTEint=30#(now.strftime('%M'))
+    MINUTEint=0#(now.strftime('%M'))
     MINUTE =str(MINUTEint)
-    DAY="tuesday"#str(now.strftime("%A"))
+    DAY="monday"#str(now.strftime("%A"))
     #added seconds parameter to remove the 1 minute window of constant table truncation
     SECOND =00#str(now.strftime("%S"))    
     timeStr=str(HOUR + "_" + MINUTE)
     #print(timeStr)
     if((HOURint != 11 and HOURint !=12 and MINUTEint == 00) or (HOURint ==11 and HOURint ==12 and MINUTEint ==30) and SECOND == 00):
         print("inserted successfully")
-        cur.execute('select '+timeStr+' from timetable where timetable.day="'+DAY+'"')
+        cur.execute('select '+timeStr+' from timetable where timetable.day="'+DAY+'" and branch ="'+BRANCH+'" and section ="'+SECTION+'";')
         curSubject=str(cur.fetchone())
         #----------------------IMPORTANT------------------------------------------------#
-        cur.execute("truncate table dupcheck;")
+        #cur.execute("truncate table dupcheck;")
         #although this works good in real time , our way of testing by giving synthetic and constant values(eg:Seconds/MINUTES = "00") will cause constant truncation.....
         #so please comment out the code above while testing or use real time
         #PS still need to test this system in real time
@@ -99,7 +103,7 @@ while True:
         faceDis = face_recognition.face_distance(encodeListKnown,encodeFace)
         #print(faceDis)
         matchIndex = np.argmin(faceDis)
- 
+        Subject = str(getSubject())
         if matches[matchIndex]:
             name = classNames[matchIndex].upper()
             #print(name)
@@ -108,9 +112,9 @@ while True:
             cv2.rectangle(img,(x1,y1),(x2,y2),(0,255,0),2)
             cv2.rectangle(img,(x1,y2-35),(x2,y2),(0,255,0),cv2.FILLED)
             cv2.putText(img,name,(x1+6,y2-6),cv2.FONT_HERSHEY_COMPLEX,1,(255,255,255),2)
-            curSubject = str(getSubject())
+            
             if(checkDuplicate(name)):
-                markAttendance(name,curSubject)
+                markAttendance(name,Subject)
             else:
                 continue
  

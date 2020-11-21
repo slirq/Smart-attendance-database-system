@@ -4,7 +4,8 @@ const mysql = require('mysql2');
 const app =express();
 
 const db = require('../connection');
-exports.signIn = async (req,res)=>{
+exports.signUp = async (req,res)=>{
     let password = req.body.password;
+    
     console.log(password)
 }
