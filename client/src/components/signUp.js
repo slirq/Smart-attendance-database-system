@@ -26,21 +26,26 @@ export default function signUp() {
                 sec:sec
             }
           })
+        
           .catch(function (error) {
             console.log(error);
           });
         }
     const handlePhoto=(e)=>{
-        // let usn=document.querySelector('#usn').value.toUpperCase()
+        let usn=document.querySelector('#usn').value.toUpperCase()
+        console.log("hallo")
         // axios( {
         //     method:'get',
-        //     url:'http://localhost:2000/',
+        //     url:'http://localhost:5000/cam',
+        //     data:{usn:usn}
         //   })
-        //   .catch(function (error) {
-        //     console.log(error);
-            
-        //   });
-        }
+        fetch('http://localhost:5000/cam')
+          .then((msg)=>{console.log(msg,usn)})
+          .catch( (error)=> {
+            console.log(error);
+          });
+        
+    }
         
 
     return (
@@ -56,73 +61,54 @@ export default function signUp() {
                     as='form'
                     sx={{
                         transform: "translate(50%, 30%)",
-                        
                         width:"20vw",
                         mx:"60vh",
-                        
                         height:"wrap-content",
                         background:"rgba(131,22,219,0.3)",
                         boxShadow:'0 0 16px rgba(0, 0, 0, .55)'
-                        
                 }}
                 >
                 < Text htmlFor='name' 
                 textAlign={"center"} 
                 fontSize={[ 3, 4, 5 ]}
-                fontWeight={"bold"}
-                >Sign Up</Text>
+                fontWeight={"bold"}>
+                    Sign Up
+                </Text>
                     <Flex  flexDirection={"column"}>
-                    <Box width={"20vw"} p={"0.5vw"}  px={"1.5vw"}   transform= {"translate(50%, 50%)"} >
+                        <Box width={"20vw"} p={"0.5vw"}  px={"1.5vw"}   transform= {"translate(50%, 50%)"} >
                             < Label htmlFor='name'>USN</Label>
-                                <Input
-                                    id='usn'
-                                    type="text"
-                                    
-                                />
-
+                            <Input  id='usn' type="text"/>
                         </Box>
                         <Box width={"20vw"} py={"0.5vw"} px={"1.5vw"}   transform= {"translate(50%, 50%)"} >
                             < Label htmlFor='name'>password</Label>
-                                <Input
-                                    id='pwd'
-                                    type="password"
-                                    
-                                />
+                                <Input id='pwd'    type="password" />
                         </Box>
                         <Box width={"20vw"}  py={"0.5vw"} px={"1.5vw"}    transform= {"translate(50%, 50%)"} >
                             < Label htmlFor='name'>Full Name</Label>
-                                <Input
-                                    id='name'
-                                    type="text"
-                                    
-                                />
-                            </Box>
+                            <Input  id='name'  type="text"   />
+                        </Box>
                         <Box width={"20vw"}  py={"0.5vw"} px={"1.5vw"}    transform= {"translate(50%, 50%)"} >
                             < Label htmlFor='name'>Branch</Label>
-                                <Input
-                                    id='brnch'
-                                    type="text"
-                                    
-                                />
-                            </Box>
-                            
+                            <Input  id='brnch'     type="text" />
+                        </Box>
                         <Box width={"20vw"}  py={"0.5vw"}  px={"1.5vw"}    transform= {"translate(50%, 50%)"} >
                             < Label htmlFor='name'>Section</Label>
-                                <Input
-                                    id='sec'
-                                    type="text"
-                                    
-                                />
+                            <Input  id='sec' type="text" />
                         </Box>
                         <Box width={"20vw"} py={"0.5vw"} px={"1.5vw"}    transform= {"translate(50%, 50%)"} >
-                        <Button onClick={handlePhoto}  sx={{background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%) ",border:"2px solid black"}} >upload photo</Button>
-
+                            <Button  onClick={handlePhoto}  
+                                    sx={{background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%) ",
+                                    border:"2px solid black"}} >
+                                        upload photo
+                            </Button>
                         </Box>
                         <Box width={"20vw"} py={"0.5vw"} px={"1.5vw"}   transform= {"translate(50%, 50%)"} >
-                        <Button onClick={handleSubmit} sx={{background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%)" ,border:"2px solid black" }} >
-                            SUBMIT
-                        </Button>
-
+                            <Button onClick={handleSubmit} 
+                                    type={"button"}
+                                    sx={{background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%)" ,
+                                    border:"2px solid black" }} >
+                                        SUBMIT
+                            </Button>
                         </Box>
                     </Flex>
                 </Card>
