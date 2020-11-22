@@ -7,7 +7,6 @@ exports.signIn = async (req,res)=>{
     const [result,fields] = await db.execute(sql)
     let finalRes
     result.map(obj=>finalRes=Object.values(obj)[0])
-    console.log(finalRes)
-    
+    res.send({reply:finalRes})
 
 }

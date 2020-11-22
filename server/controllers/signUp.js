@@ -5,8 +5,9 @@ exports.signUp = async (req,res)=>{
     let usn = req.body.usn;
     let name = req.body.name;
     let sec = req.body.sec;
-    let sql = `insert into student values("${usn}","${name}",(select SHA2('${password}',256)),"${sec}");`
-    const [result,fields] = await db.execute(sql)
+    let sql = `insert into student values(?,?,(select SHA2(?,256)),?);`
+    let values=[`${usn}`,`${name}`,`${password}`,`${sec}`]
+    const [result,fields] = await db.execute(sql,values)
     console.log(sql)
 }
    

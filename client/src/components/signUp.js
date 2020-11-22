@@ -48,6 +48,7 @@ export default function signUp() {
                     background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%)",
                     color: 'white',
                     bg: 'gray',
+                    overflow:'hidden'
                 }} >
                     
                 <Card
@@ -58,7 +59,8 @@ export default function signUp() {
                         mx:"60vh",
                         height:"wrap-content",
                         background:"rgba(131,22,219,0.3)",
-                        boxShadow:'0 0 16px rgba(0, 0, 0, .55)'
+                        boxShadow:'0 0 16px rgba(0, 0, 0, .55)',
+                        borderRadius:"2em"
                 }}
                 >
                 < Text htmlFor='name' 
@@ -73,7 +75,7 @@ export default function signUp() {
                             <Input  id='usn' type="text" defaultValue='1BI'/>
                         </Box>
                         <Box width={"20vw"} py={"0.5vw"} px={"1.5vw"}   transform= {"translate(50%, 50%)"} >
-                            < Label htmlFor='name'>password</Label>
+                            < Label htmlFor='name'>Password</Label>
                                 <Input id='pwd'    type="password" />
                         </Box>
                         <Box width={"20vw"}  py={"0.5vw"} px={"1.5vw"}    transform= {"translate(50%, 50%)"} >
@@ -84,14 +86,15 @@ export default function signUp() {
                             < Label htmlFor='name'>Section</Label>
                             <Input  id='sec' type="text" />
                         </Box>
-                        <Box width={"20vw"} py={"0.5vw"} px={"1.5vw"}    transform= {"translate(50%, 50%)"} >
+                        
+                        <Box height={"4vw"} width={"20vw"} py={"0.5vw"} px={"6vw"}    transform= {"translate(50%, 50%)"} >
                             <Button  onClick={handlePhoto}  
                                     sx={{background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%) ",
                                     border:"2px solid black"}} >
-                                        upload photo
+                                        UPLOAD PHOTO
                             </Button>
                         </Box>
-                        <Box width={"20vw"} py={"0.5vw"} px={"1.5vw"}   transform= {"translate(50%, 50%)"} >
+                        <Box width={"20vw"} py={"0.5vw"} px={"7vw"}   transform= {"translate(50%, 50%)"} >
                             <Button onClick={handleSubmit} 
                                     type={"button"}
                                     sx={{background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%)" ,
@@ -99,6 +102,7 @@ export default function signUp() {
                                         SUBMIT
                             </Button>
                         </Box>
+                        
                     </Flex>
                 </Card>
             </Box>
