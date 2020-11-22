@@ -1,11 +1,10 @@
 import React from 'react'
-import lmi from './lmi.svg'
 import axios from 'axios'
 import {
     Label,
     Input
   } from '@rebass/forms'
-import { Text,Box,Card,Image, Flex} from 'rebass'
+import { Text,Box,Card,Button, Flex} from 'rebass'
 
 export default function signIn() {
     const handleClick=(e)=>{
@@ -75,16 +74,15 @@ export default function signIn() {
                             px:"5vw"
                         }}>
 
-                            <Image src={lmi}
-                            sx={{
-                                width: "5em",
-                                height: "5em",
-                              }}
-                              onClick={handleClick}
-                               />
-                            <Label>LET ME IN!!!! </Label>
-                        </Flex>    
-                        
+                        <Box width={"20vw"} py={"0.5vw"} px={"1.5vw"}   transform= {"translate(50%, 50%)"} >
+                            <Button onClick={handleClick} 
+                                    type={"button"}
+                                    sx={{background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%)" ,
+                                    border:"2px solid black" }} >
+                                        SUBMIT
+                            </Button>
+                        </Box>   
+                        </Flex>
                         </Box>
                     </Flex>
                 </Card>

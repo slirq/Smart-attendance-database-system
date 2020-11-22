@@ -5,6 +5,9 @@ exports.signIn = async (req,res)=>{
     let sql = ` (select SHA2('${password}',256) like (select passwordhash from student where usn='${usn}'));`
     // console.log(password);
     const [result,fields] = await db.execute(sql)
-    console.log(result)
+    let finalRes
+    result.map(obj=>finalRes=Object.values(obj)[0])
+    console.log(finalRes)
+    
 
 }
