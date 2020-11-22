@@ -11,7 +11,8 @@ while(cap.isOpened()):
     frame = cv2.resize(frame,(640,640))
     # Display the resulting frame
     if cv2.waitKey(25) & 0xFF == ord(' '):
-        cv2.imwrite("./../../../server/facial recog unit/ImagesAttendance/"+ USN +".jpg",frame)
+        cv2.imwrite("./../server/facial recog unit/ImagesAttendance/"+sys.argv[1]+".jpg",frame)
+        
         break
     elif cv2.waitKey(25) & 0xFF == ord('q'):
         break

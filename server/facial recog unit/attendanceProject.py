@@ -24,7 +24,6 @@ images = []
 classNames = []
 myList = os.listdir(path)
 SECTION="A"
-BRANCH="CSE"
 curSubject=""
 #print(myList)
 for cl in myList:
@@ -72,7 +71,7 @@ def getSubject():
     #print(timeStr)
     if((HOURint != 11 and HOURint !=12 and MINUTEint == 00) or (HOURint ==11 and HOURint ==12 and MINUTEint ==30) and SECOND == 00):
         print("inserted successfully")
-        cur.execute('select '+timeStr+' from timetable where timetable.day="'+DAY+'" and branch ="'+BRANCH+'" and section ="'+SECTION+'";')
+        cur.execute('select '+timeStr+' from timetable where timetable.day="'+DAY+'" and section ="'+SECTION+'";')
         curSubject=str(cur.fetchone())
         #----------------------IMPORTANT------------------------------------------------#
         #cur.execute("truncate table dupcheck;")

@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-
 import {
     Label,
     Input,
@@ -10,11 +9,11 @@ import { Box,Card, Flex,Button,Text } from 'rebass'
 
 export default function signUp() {
     const handleSubmit=(e)=>{
-        let usn=document.querySelector('#usn').value.toLowerCase()
+        let usn=document.querySelector('#usn').value.toUpperCase()
         let password=document.querySelector('#pwd').value
         let name=document.querySelector('#name').value
-        let brnch=document.querySelector('#brnch').value
         let sec=document.querySelector('#sec').value
+        e.preventDefault()
         axios( {
             method:'post',
             url:'http://localhost:5000/signUp',
@@ -22,7 +21,6 @@ export default function signUp() {
                 usn: usn,
                 password: password,
                 name:name,
-                brnch:brnch,
                 sec:sec
             }
           })
@@ -34,17 +32,12 @@ export default function signUp() {
     const handlePhoto=(e)=>{
         let usn=document.querySelector('#usn').value.toUpperCase()
         console.log("hallo")
-        // axios( {
-        //     method:'get',
-        //     url:'http://localhost:5000/cam',
-        //     data:{usn:usn}
-        //   })
-        fetch('http://localhost:5000/cam')
-          .then((msg)=>{console.log(msg,usn)})
-          .catch( (error)=> {
-            console.log(error);
-          });
-        
+        e.preventDefault()
+        axios( {
+            method:'post',
+            url:'http://localhost:5000/cam',
+            data:{usn:usn}
+          }) 
     }
         
 
@@ -60,7 +53,7 @@ export default function signUp() {
                 <Card
                     as='form'
                     sx={{
-                        transform: "translate(50%, 30%)",
+                        transform: "translate(60%, 30%)",
                         width:"20vw",
                         mx:"60vh",
                         height:"wrap-content",
@@ -77,7 +70,7 @@ export default function signUp() {
                     <Flex  flexDirection={"column"}>
                         <Box width={"20vw"} p={"0.5vw"}  px={"1.5vw"}   transform= {"translate(50%, 50%)"} >
                             < Label htmlFor='name'>USN</Label>
-                            <Input  id='usn' type="text"/>
+                            <Input  id='usn' type="text" defaultValue='1BI'/>
                         </Box>
                         <Box width={"20vw"} py={"0.5vw"} px={"1.5vw"}   transform= {"translate(50%, 50%)"} >
                             < Label htmlFor='name'>password</Label>
@@ -86,10 +79,6 @@ export default function signUp() {
                         <Box width={"20vw"}  py={"0.5vw"} px={"1.5vw"}    transform= {"translate(50%, 50%)"} >
                             < Label htmlFor='name'>Full Name</Label>
                             <Input  id='name'  type="text"   />
-                        </Box>
-                        <Box width={"20vw"}  py={"0.5vw"} px={"1.5vw"}    transform= {"translate(50%, 50%)"} >
-                            < Label htmlFor='name'>Branch</Label>
-                            <Input  id='brnch'     type="text" />
                         </Box>
                         <Box width={"20vw"}  py={"0.5vw"}  px={"1.5vw"}    transform= {"translate(50%, 50%)"} >
                             < Label htmlFor='name'>Section</Label>
