@@ -1,21 +1,5 @@
-const {spawn} = require('child_process');
-
-exports.cam= async (req,res)=>{
-    console.log("i came here")
-    var dataToSend;
-    const python = spawn('python', ['cam.py']);
-    python.stdout.on('data', function (data) {
-        console.log('Pipe data from python script ...');
-        dataToSend = data.toString();
-    });
-    python.on('close', (code) => {
-        console.log(`child process close all stdio with code ${code}`);
-        res.send(dataToSend)
-    });
-    // return new Promise((myRes,myRej)=>{
-    //     if(sent === 1)
-    //         myRes("OK")
-    //     else
-    //     myRej("Error")
-    // })
-}
+const m =  require('python-shell');
+exports.cam=(req,res)=>{let py = new m.PythonShell('C:\\Users\\Administrator\\Documents\\DMP\\server\\controllers\\cam.py')
+py.send('usn comes here');
+py.on('message',(msg)=>{console.log(msg)});
+py.end((er,code,signal)=>{if(er)throw er;console.log("exit code was ",code);console.log("the signal was ",signal)});}
