@@ -1,9 +1,9 @@
 import cv2
 import sys
-#from signup.js import USN
+# from signup.js import USN
 cap = cv2.VideoCapture(0)
 text ="press spacebar to take photo or press 'q'to quit"
-#USN = "1BI18CS035"
+# USN = "1BI18CS035"
 
 while(cap.isOpened()):
   # Capture frame-by-frame
