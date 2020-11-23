@@ -8,11 +8,16 @@ import {
 import { Box,Card, Flex,Button,Text } from 'rebass'
 
 export default function signUp() {
-    const handleSubmit=(e)=>{
+    const getValues=()=>{
+
         let usn=document.querySelector('#usn').value.toUpperCase()
         let password=document.querySelector('#pwd').value
         let name=document.querySelector('#name').value
         let sec=document.querySelector('#sec').value
+        return [usn,password,name,sec];
+    }
+    const handleSubmit=(e)=>{
+        const[usn,password,name,sec]=getValues();
         e.preventDefault()
         axios( {
             method:'post',
@@ -24,13 +29,12 @@ export default function signUp() {
                 sec:sec
             }
           })
-        
           .catch(function (error) {
             console.log(error);
           });
         }
     const handlePhoto=(e)=>{
-        let usn=document.querySelector('#usn').value.toUpperCase()
+        const[usn]=getValues();
         console.log("hallo")
         e.preventDefault()
         axios( {

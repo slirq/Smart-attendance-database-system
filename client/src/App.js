@@ -7,7 +7,7 @@ function App() {
   return (
     <Router>
       <UserContext>
-        <Route exact path='/' Redirect='/signIN'>
+        <Route exact path='/' Redirect='/signIn'>
           <Redirect to='signIn'/>
         </Route>
         <Route exact path='/signUp' component={SignUp}/>
