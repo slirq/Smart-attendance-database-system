@@ -1,4 +1,5 @@
-import React from 'react'
+import React ,{useContext}from 'react'
+import {MyContext} from "../context/context"
 import axios from 'axios'
 import {
     Label,
@@ -7,7 +8,9 @@ import {
   } from '@rebass/forms'
 import { Box,Card, Flex,Button,Text } from 'rebass'
 
-export default function signUp() {
+export default function SignUp() {
+    let confirmation=0;
+    const {isCreated ,setCreated} = useContext(MyContext)
     const getValues=()=>{
 
         let usn=document.querySelector('#usn').value.toUpperCase()
@@ -16,22 +19,26 @@ export default function signUp() {
         let sec=document.querySelector('#sec').value
         return [usn,password,name,sec];
     }
-    const handleSubmit=(e)=>{
+    const handleSubmit = async (e)=>{
         const[usn,password,name,sec]=getValues();
-        e.preventDefault()
-        axios( {
-            method:'post',
-            url:'http://localhost:5000/signUp',
-            data:{
-                usn: usn,
-                password: password,
-                name:name,
-                sec:sec
+        
+        
+        try{confirmation = await axios( { method:'post',
+                                                url:'http://localhost:5000/signUp',
+                                                data:{usn: usn,
+                                                     password: password,
+                                                     name:name,
+                                                      sec:sec
+                                                    }  
+                                            }    
+                                        )
+                setCreated(confirmation.data.reply);
+                // console.log(confirmation)
+                }
+          catch(error){
+                console.log("error is",error)
             }
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+            e.preventDefault()
         }
     const handlePhoto=(e)=>{
         const[usn]=getValues();
@@ -90,7 +97,7 @@ export default function signUp() {
                             < Label htmlFor='name'>Section</Label>
                             <Input  id='sec' type="text" />
                         </Box>
-                        
+                        <Text px={"4em"} color={isCreated?"green":"orange"}>{isCreated?"Yay you've registered":"waiting for ye to submit ...."}</Text>
                         <Box height={"4vw"} width={"20vw"} py={"0.5vw"} px={"6vw"}    transform= {"translate(50%, 50%)"} >
                             <Button  onClick={handlePhoto}  
                                     sx={{background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%) ",
