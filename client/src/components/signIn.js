@@ -6,6 +6,7 @@ import {Label,Input} from '@rebass/forms'
 import { Text,Box,Card,Button, Flex,Link} from 'rebass'
 
 export default function SignIn() {
+    
     const {isVerified ,setVerified} = useContext(MyContext)
     const enter=(e)=>{if(e.which===13)SignInVerify();}
     const SignInVerify = async ()=>{
@@ -16,7 +17,9 @@ export default function SignIn() {
                                         usn: `${usn}`,
                                         password: `${password}`} })
                                         console.log(response.data.reply)
-           setVerified(response.data.reply?1:0)
+            let result=response.data.reply?1:0;
+            setVerified(result)
+            localStorage.setItem('verified',result)
             }
         catch(error){console.log(error)}
     }
