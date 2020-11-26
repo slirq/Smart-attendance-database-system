@@ -1,12 +1,8 @@
 import React ,{useContext}from 'react'
 import {MyContext} from "../context/context"
 import axios from 'axios'
-import {
-    Label,
-    Input,
-    
-  } from '@rebass/forms'
-import { Box,Card, Flex,Button,Text } from 'rebass'
+import {Input,Label} from '@rebass/forms'
+import { Box,Card, Flex,Button,Text,Link } from 'rebass'
 
 export default function SignUp() {
     let confirmation=0;
@@ -56,64 +52,130 @@ export default function SignUp() {
             <Box sx={{
                     height:"100vh",
                     width:"100vw",
-                    background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%)",
-                    color: 'white',
+                    background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%)",   
                     bg: 'gray',
-                    overflow:'hidden'
+                    overflow:'hidden',
+                    display:"flex",
+                    justifyContent:"center",
+                    alignItems:"center"
                 }} >
                     
                 <Card
                     as='form'
                     sx={{
-                        transform: "translate(60%, 30%)",
-                        width:"20vw",
-                        mx:"60vh",
-                        height:"wrap-content",
+                        height:"50vh",
+                        width:"35vw",
                         background:"rgba(131,22,219,0.3)",
                         boxShadow:'0 0 16px rgba(0, 0, 0, .55)',
-                        borderRadius:"2em"
+                        borderRadius:"2em",
+                        display:"flex",
+                        justifyContent:"center",
+                        alignItems:"center"
                 }}
                 >
                 < Text htmlFor='name' 
                 textAlign={"center"} 
                 fontSize={[ 3, 4, 5 ]}
-                fontWeight={"bold"}>
+                fontWeight={"bold"}
+                sx={{
+                    borderRight:"2em"
+                }}>
                     Sign Up
                 </Text>
-                    <Flex  flexDirection={"column"}>
-                        <Box width={"20vw"} p={"0.5vw"}  px={"1.5vw"}   transform= {"translate(50%, 50%)"} >
+                    <Flex paddingLeft={"2.6em"} flexDirection={"column"} sx={{
+                                        // border:"2px solid black",
+                                        marginRight:".6em",
+                                        display:"flex",
+                                        justifyContent:"center",
+                                        alignItems:"center"
+                                        }}>
+                        <Box width={"15vw"}    >
                             < Label htmlFor='name'>USN</Label>
                             <Input  id='usn' type="text" defaultValue='1BI'/>
                         </Box>
-                        <Box width={"20vw"} py={"0.5vw"} px={"1.5vw"}   transform= {"translate(50%, 50%)"} >
+                        <Box width={"15vw"}  >
                             < Label htmlFor='name'>Password</Label>
                                 <Input id='pwd'    type="password" />
                         </Box>
-                        <Box width={"20vw"}  py={"0.5vw"} px={"1.5vw"}    transform= {"translate(50%, 50%)"} >
+                        <Box width={"15vw"}  >
                             < Label htmlFor='name'>Full Name</Label>
                             <Input  id='name'  type="text"   />
                         </Box>
-                        <Box width={"20vw"}  py={"0.5vw"}  px={"1.5vw"}    transform= {"translate(50%, 50%)"} >
+                        <Box width={"15vw"}  >
                             < Label htmlFor='name'>Section</Label>
                             <Input  id='sec' type="text" />
                         </Box>
-                        <Text px={"4em"} color={isCreated?"green":"orange"}>{isCreated?"Yay you've registered":"waiting for ye to submit ...."}</Text>
-                        <Box height={"4vw"} width={"20vw"} py={"0.5vw"} px={"6vw"}    transform= {"translate(50%, 50%)"} >
-                            <Button  onClick={handlePhoto}  
-                                    sx={{background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%) ",
-                                    border:"2px solid black"}} >
+                        <Text
+                            sx={{
+                                display:"flex",
+                                justifyContent:"center",
+                                alignItems:"center",
+                                my:".2em"
+                                }}  
+                            color={isCreated?"green":"orange"}>
+                                {isCreated?"Yay you've registered":"waiting for ye to submit ...."}
+                        </Text>
+                        <Box 
+                            p={"unset"}
+                            height={"10vh"} 
+                            width={"20vw"}   
+                            sx={{
+                                    display:"flex",
+                                    justifyContent:"center",
+                                    alignItems:"center"
+                            }}
+                            >
+                            <Button onClick={handlePhoto}  
+                                    sx={{
+                                        height:"3em",
+                                        width:"7em",
+                                        p:"unset",
+                                        background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%) ",
+                                        border:"2px solid black",
+                                        marginRight:".6em",
+                                        borderRadius:".7em",
+                                        color:"black",
+                                        fontFamily:"Sansita Swashed"
+                                        }} >
                                         UPLOAD PHOTO
                             </Button>
-                        </Box>
-                        <Box width={"20vw"} py={"0.5vw"} px={"7vw"}   transform= {"translate(50%, 50%)"} >
                             <Button onClick={handleSubmit} 
                                     type={"button"}
-                                    sx={{background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%)" ,
-                                    border:"2px solid black" }} >
+                                    sx={{
+                                        height:"3em",
+                                        width:"6.5em",
+                                        p:"unset",
+                                        color:"black",
+                                        background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%)" ,
+                                        border:"2px solid black",
+                                        borderRadius:".7em",
+                                        fontFamily:"Sansita Swashed"
+                                        }} >
                                         SUBMIT
                             </Button>
                         </Box>
-                        
+                        <Box sx={{
+                                display:"flex",
+                                justifyContent:"center",
+                                alignItems:"center"
+                            }}>
+                        <Link       href="/signIn"
+                                    type={"button"}
+                                    sx={{
+                                        height:"2em",
+                                        width:"8em",
+                                        background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%)" ,
+                                        border:"2px solid black",
+                                        textDecoration:"none",
+                                        color:"black",
+                                        display:"flex",
+                                        justifyContent:"center",
+                                        alignItems:"center",
+                                        borderRadius:".7em"
+                                        }} >
+                                        Sign in maybe?
+                        </Link>
+                        </Box>
                     </Flex>
                 </Card>
             </Box>
