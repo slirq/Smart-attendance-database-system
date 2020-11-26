@@ -33,12 +33,11 @@ export default function stuDashBoard() {
 
     return(
         <Box sx={{
-            height:"100vh",
-            width:"100vw",
+            height:"100%",
+            width:"100%",
             background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%)",
             color: 'white',
             bg: 'gray',
-            overflow:'hidden',
             display:"flex",
             justifyContent:"center",
             alignItems:"center",
