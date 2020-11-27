@@ -1,25 +1,24 @@
-import React ,{useContext}from 'react'
+import React ,{useContext, useState,useRef}from 'react'
 import {MyContext} from "../context/context"
 import axios from 'axios'
-import {Input,Label} from '@rebass/forms'
+import {Input,Label,Radio,Select} from '@rebass/forms'
 import { Box,Card, Flex,Button,Text,Link } from 'rebass'
 
 export default function SignUp() {
     let confirmation=0;
     const {isCreated ,setCreated} = useContext(MyContext)
-    const getValues=()=>{
-
-        let usn=document.querySelector('#usn').value.toUpperCase()
-        let password=document.querySelector('#pwd').value
-        let name=document.querySelector('#name').value
-        let sec=document.querySelector('#sec').value
-        return [usn,password,name,sec];
-    }
+    const [isStaff,setStaff] = useState(false)
+    let usn=useRef(null)
+    let password=useRef(null)
+    let name=useRef(null)
+    let sec=useRef(null)
     const handleSubmit = async (e)=>{
-        const[usn,password,name,sec]=getValues();
-        
-        
-        try{confirmation = await axios( { method:'post',
+        [usn,password,name,sec] = [usn.value.toUpperCase(),
+            password.value,
+            name.value,
+            sec.value]
+        try{
+            confirmation = await axios( { method:'post',
                                                 url:'http://localhost:5000/signUp',
                                                 data:{usn: usn,
                                                      password: password,
@@ -29,7 +28,6 @@ export default function SignUp() {
                                             }    
                                         )
                 setCreated(confirmation.data.reply);
-                // console.log(confirmation)
                 }
           catch(error){
                 console.log("error is",error)
@@ -37,8 +35,7 @@ export default function SignUp() {
             e.preventDefault()
         }
     const handlePhoto=(e)=>{
-        const[usn]=getValues();
-        console.log("hallo")
+        usn = usn.value.toUpperCase()
         e.preventDefault()
         axios( {
             method:'post',
@@ -46,7 +43,61 @@ export default function SignUp() {
             data:{usn:usn}
           }) 
     }
-        
+    const student=()=>{
+        return (
+            <>
+                <Box width={"15vw"}    >
+                    < Label >USN</Label>
+                    <Input  ref={el=>usn=el} type="text" defaultValue='1BI'/>
+                </Box>
+                <Box width={"15vw"}  >
+                    < Label >Password</Label>
+                    <Input ref={el=>password=el}    type="password" />
+                </Box>
+                <Box width={"15vw"}  >
+                    < Label >Full Name</Label>
+                    <Input  ref={el=>name=el}  type="text"   />
+                </Box>
+                <Box width={"15vw"}  >
+                    < Label >Section</Label>
+                    <Input  ref={el=>sec=el} type="text" />
+                </Box>
+            </>
+        )
+    }
+    const staff=()=>{
+        return (
+            <>
+                <Box width={"15vw"}  >
+                    < Label >Full Name</Label>
+                    <Input  ref={el=>name=el}  type="text"   />
+                </Box>
+                <Box width={"15vw"}  >
+                    < Label >Password</Label>
+                    <Input ref={el=>password=el}    type="password" />
+                </Box>
+                <Box width={"15vw"}  >
+                    < Label >Section in charge</Label>
+                    <Input  ref={el=>sec=el} type="text" />
+                </Box>
+                <Box width={"15vw"}  >
+                    < Label >Your Subject?</Label>
+                    <Select
+                        fontFamily={"Sansita Swashed"}
+                        id='location'
+                        name='location'
+                        defaultValue='NYC'>
+                        <option>ME</option>
+                        <option>CNS</option>
+                        <option>DBMS</option>
+                        <option>ATC</option>
+                        <option>ADP</option>
+                        <option>UNIX</option>
+                    </Select>
+                </Box>
+            </>
+        )
+    }
 
     return (
             <Box sx={{
@@ -73,7 +124,7 @@ export default function SignUp() {
                         alignItems:"center"
                 }}
                 >
-                < Text htmlFor='name' 
+                < Text  
                 textAlign={"center"} 
                 fontSize={[ 3, 4, 5 ]}
                 fontWeight={"bold"}
@@ -89,22 +140,9 @@ export default function SignUp() {
                                         justifyContent:"center",
                                         alignItems:"center"
                                         }}>
-                        <Box width={"15vw"}    >
-                            < Label htmlFor='name'>USN</Label>
-                            <Input  id='usn' type="text" defaultValue='1BI'/>
-                        </Box>
-                        <Box width={"15vw"}  >
-                            < Label htmlFor='name'>Password</Label>
-                                <Input id='pwd'    type="password" />
-                        </Box>
-                        <Box width={"15vw"}  >
-                            < Label htmlFor='name'>Full Name</Label>
-                            <Input  id='name'  type="text"   />
-                        </Box>
-                        <Box width={"15vw"}  >
-                            < Label htmlFor='name'>Section</Label>
-                            <Input  id='sec' type="text" />
-                        </Box>
+                        < Label width={"15vw"} m={".3em"}>Staff? <Radio value="red" onClick={e=>setStaff(!isStaff)} /> </Label>
+                        {isStaff?staff():student()}
+
                         <Text
                             sx={{
                                 display:"flex",

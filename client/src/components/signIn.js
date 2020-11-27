@@ -4,9 +4,10 @@ import { useContext } from "react";
 import {MyContext} from "../context/context"
 import {Label,Input} from '@rebass/forms'
 import { Text,Box,Card,Button, Flex,Link} from 'rebass'
+import { useHistory } from 'react-router-dom';
 
 export default function SignIn() {
-    
+    let history = useHistory()
     const {isVerified ,setVerified} = useContext(MyContext)
     const enter=(e)=>{if(e.which===13)SignInVerify();}
     const SignInVerify = async ()=>{
@@ -19,8 +20,11 @@ export default function SignIn() {
                                         console.log(response.data.reply)
             let result=response.data.reply?1:0;
             setVerified(result)
-            localStorage.setItem('verified',result)
+            if(result){
+                history.push('stuDashBoard')
             }
+            }
+            
         catch(error){console.log(error)}
     }
     const handleClick=(e)=>{ SignInVerify()  }

@@ -18,8 +18,8 @@ function App() {
             <Redirect to='signIn'/>
           </Route>
           <Route exact path='/signIn' component={SignIn} />
-          <Route exact path='/stuDashBoard' component={stuDashBoard} />
-          <ProtectedRoute exact path='/signUp' component={SignUp} />
+          <Route exact path='/signUp' component={SignUp} />
+          <ProtectedRoute exact path='/stuDashBoard' component={stuDashBoard} />
         </Switch>
       </UserContext>
     </Router>

@@ -1,8 +1,6 @@
 import React from 'react'
-import axios from 'axios'
-import {Label,Input} from '@rebass/forms'
 import  {PieChart}  from 'react-minimal-pie-chart'
-import { Text,Box,Card,Button, Flex,Link,Heading,} from 'rebass'
+import { Text,Box,Card, Flex,Heading,} from 'rebass'
 
 export default function stuDashBoard() {
 
