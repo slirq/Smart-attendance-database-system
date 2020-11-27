@@ -52,7 +52,7 @@ export default function SignUp() {
             <Box sx={{
                     height:"100vh",
                     width:"100vw",
-                    background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%)",   
+                    background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 6%)",   
                     bg: 'gray',
                     overflow:'hidden',
                     display:"flex",
@@ -65,7 +65,7 @@ export default function SignUp() {
                     sx={{
                         height:"50vh",
                         width:"35vw",
-                        background:"rgba(131,22,219,0.3)",
+                        background:"rgba(131,22,219,0.8)",
                         boxShadow:'0 0 16px rgba(0, 0, 0, .55)',
                         borderRadius:"2em",
                         display:"flex",

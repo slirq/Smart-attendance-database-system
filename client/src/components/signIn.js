@@ -28,7 +28,7 @@ export default function SignIn() {
             <Box sx={{
                     height:"100vh",
                     width:"100vw",
-                    background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%)",
+                    background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 6%)",
                     color: 'white',
                     bg: 'gray',
                     overflow:'hidden',
@@ -44,7 +44,7 @@ export default function SignIn() {
                         width:"25vw",
                         height:"40vh",
                         background:"rgba(131,22,219,0.3)",
-                        boxShadow:'0 0 2em rgba(0, 0, 0, .6)',
+                        boxShadow:'0 0 2em rgba(0, 0, 0, .8)',
                         borderRadius:"2em",
                         display:"flex",
                         justifyContent:"center",

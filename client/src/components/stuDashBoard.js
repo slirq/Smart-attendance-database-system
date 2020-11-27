@@ -5,6 +5,11 @@ import  {PieChart}  from 'react-minimal-pie-chart'
 import { Text,Box,Card,Button, Flex,Link,Heading,} from 'rebass'
 
 export default function stuDashBoard() {
+
+
+
+
+
     const Table = ({ columns, data }) => (
         <Box width={[1, 3 / 4, 2 / 2]}>
           <Flex flexWrap="wrap">
@@ -14,8 +19,8 @@ export default function stuDashBoard() {
                   <Text
                     p={2}
                     justifyContent="center"
-            alignItems="center"
-            marginLeft='6vh'
+                    alignItems="center"
+                    marginLeft='6vh'
                     style={{
                       fontWeight: index < columns ? "bold" : "normal" 
                     }}
@@ -35,7 +40,7 @@ export default function stuDashBoard() {
         <Box sx={{
             height:"100%",
             width:"100%",
-            background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 50%)",
+            background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 6%)",
             color: 'white',
             bg: 'gray',
             display:"flex",
