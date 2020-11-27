@@ -1,39 +1,13 @@
 import React from 'react'
 import  {PieChart}  from 'react-minimal-pie-chart'
+<<<<<<< Updated upstream
 import { Text,Box,Card, Flex,Heading,} from 'rebass'
 
+=======
+import { Text,Box,Card,Button, Flex,Link,Heading,} from 'rebass'
+import Table from './smallComponents/Table'
+>>>>>>> Stashed changes
 export default function stuDashBoard() {
-
-
-
-
-
-    const Table = ({ columns, data }) => (
-        <Box width={[1, 3 / 4, 2 / 2]}>
-          <Flex flexWrap="wrap">
-            {data.map((item, index) => {
-              return (
-                <Box px={2} width={1 / columns}>
-                  <Text
-                    p={2}
-                    justifyContent="center"
-                    alignItems="center"
-                    marginLeft='6vh'
-                    style={{
-                      fontWeight: index < columns ? "bold" : "normal" 
-                    }}
-                  >
-                    {item}
-                  </Text>
-                </Box>
-              );
-            })}
-          </Flex>
-        </Box>
-      );
-            
-
-
     return(
         <Box sx={{
             height:"100%",
