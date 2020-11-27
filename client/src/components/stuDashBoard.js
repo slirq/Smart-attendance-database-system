@@ -1,12 +1,7 @@
 import React from 'react'
 import  {PieChart}  from 'react-minimal-pie-chart'
-<<<<<<< Updated upstream
-import { Text,Box,Card, Flex,Heading,} from 'rebass'
-
-=======
 import { Text,Box,Card,Button, Flex,Link,Heading,} from 'rebass'
 import Table from './smallComponents/Table'
->>>>>>> Stashed changes
 export default function stuDashBoard() {
     return(
         <Box sx={{
