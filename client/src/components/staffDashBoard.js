@@ -3,19 +3,22 @@ import axios from 'axios'
 import {Label,Input,Select} from '@rebass/forms'
 import Table from './smallComponents/Table'
 import { Text,Box,Card,Button, Flex,Link,Heading} from 'rebass'
-
+import UseStepper from 'use-stepper';
 
 
 
 export default function staffDashBoard() {
 
+  const {
+    getFormProps,
+    getInputProps,
+    getIncrementProps,
+    getDecrementProps,
+  } = UseStepper()
+
+
+
   const handleTTChange=(e)=>{  }
-
-
-
-    
-            
-
 
     return(
         <Box sx={{
@@ -35,7 +38,7 @@ export default function staffDashBoard() {
                         width:"90%",
                         height:"wrap-content",
                         background:"rgba(131,22,219,0.8)",
-                        boxShadow:'0 0 2em rgba(0, 0, 0, .7)',
+                        boxShadow:'0 0 2em rgba(0, 0, 0, .7)', 
                         borderRadius:"2em",
                         display:"top",
                         marginY:'2vh'
@@ -86,22 +89,69 @@ export default function staffDashBoard() {
                                           marginRight={".2em"}
                                           color={"White"}
                                               >
-                                                  Facial Recognition System 
+                                                  Total classes completed in *subject name* 
                                               </Text>     
-                                        <Box
-                        
-                                        sx={{
-                                borderRadius:"2em",
-                                margin:'2vh',
-                                marginBottom:'0.1vh',
-                                display:'flex',
-                                justifyContent:"center",
-                                  alignItems:"center",
+                                       
+                                  <Box {...getFormProps()}
+
+
+                                sx={{
+                                    borderRadius:"2em",
+                                    margin:'2vh',
+                                    marginBottom:'0.1vh',
+                                    display:'flex',
+                                    justifyContent:"center",
+                                    alignItems:"center",
+                                    
+                                    }}
                                   
-                                }}
-                                        >
+                                  >
                                       <Button variant='primary'
-                                       //onClick={handleTTChange} 
+                                    {...getDecrementProps()}
+                                    type={"button"}
+                                    color={"black"}
+                                    
+                                   htmlFor='name' 
+                                   fontSize={[ 3, 4, 4 ]}
+                                   fontWeight={"bold"}
+                                    
+                                    sx={{
+                                    height:"4em",
+                                    width:"33%",
+                                    textAlign:"center",
+                                    background:"Red",
+                                    marginY:"2vh", 
+                                    marginX:".2em",
+                                    border:"2px solid black",
+                                    borderRadius:".7em" }}
+                                      >-</Button>
+
+
+
+                                      <Input variant='primary'
+                                        {...getInputProps()}
+                                       type={"button"}
+                                       color={"black"}
+                                       backgroundColor='white'
+                                      htmlFor='name' 
+                                      fontSize={[ 3, 4, 4 ]}
+                                      fontWeight={"bold"}
+                                      padding='3.5vh'
+                                      
+                                       sx={{
+                                       height:"4em",
+                                       width:"33%",
+                                       textAlign:"center",
+                                       
+                                       marginY:"2vh", 
+                                       marginX:".2em",
+                                       border:"2px solid black",
+                                       borderRadius:".7em" }}
+                                      />
+
+
+                                      <Button variant='primary'
+                                       {...getIncrementProps()}
                                        type={"button"}
                                        color={"black"}
                                        
@@ -111,38 +161,17 @@ export default function staffDashBoard() {
                                       
                                        sx={{
                                        height:"4em",
-                                       width:"50%",
+                                       width:"33%",
                                        textAlign:"center",
                                        background:"green",
                                        marginY:"2vh", 
                                        marginX:".2em",
                                        border:"2px solid black",
                                        borderRadius:".7em" }}
-                                      >Start</Button>
-
-
-                                      <Button variant='primary'
-                                       //onClick={handleTTChange} 
-                                       type={"button"}
-                                       color={"black"}
-                                       
-                                      htmlFor='name' 
-                                      fontSize={[ 3, 4, 4 ]}
-                                      fontWeight={"bold"}
-                                       
-                                       sx={{
-                                       height:"4em",
-                                       width:"50%",
-                                       textAlign:"center",
-                                       background:"Red",
-                                       marginY:"2vh", 
-                                       marginX:".2em",
-                                       border:"2px solid black",
-                                       borderRadius:".7em" }}
-                                      >Stop</Button>
-                                        
+                                      >+</Button>
                                         
                                         </Box>
+                                        
                                         
                                         
                                         
@@ -172,7 +201,7 @@ export default function staffDashBoard() {
                                           marginRight={".2em"}
                                           color={"White"}
                                               >
-                                                  Total classes completed in *subject name*
+                                                  Facial Recogntion System
                                               </Text>     
                                         <Box
                         
@@ -224,7 +253,7 @@ export default function staffDashBoard() {
                                        marginY:"2vh", 
                                        marginX:".2em",
                                        border:"2px solid black",
-                                       borderRadius:".7em" }}
+                                       borderRadius:".7em" }}                                       
                                       >Stop</Button>
                                         
                                         
@@ -243,7 +272,7 @@ export default function staffDashBoard() {
                                 <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',
                                 borderRadius:"2em",
                                 margin:'2vh',
-                                marginY:'0.1vh',
+                                marginY:'0.2vh',
                                 
                                 }}>
                                       <Heading p={3} bg='muted'>
@@ -374,7 +403,7 @@ export default function staffDashBoard() {
                               <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',
                                 borderRadius:"2em",
                                 margin:'2vh',
-                                marginY:'0.1vh' }}>
+                                marginY:'0.2vh' }}>
                                   <Heading p={3} bg='muted'>
                                           < Text 
                                           paddingBottom='2vh'
