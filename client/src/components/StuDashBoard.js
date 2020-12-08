@@ -1,10 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState,useContext,useRef } from 'react'
 import  {PieChart}  from 'react-minimal-pie-chart'
-import { Text,Box,Card,Button, Flex,Link,Heading,} from 'rebass'
+import {Text,Box,Card,Heading,} from 'rebass'
+import {MyContext }from '../context/context'
 import Table from './smallComponents/Table'
+import axios from 'axios'
 
-export default function stuDashBoard() {
-    return(
+
+export default function StuDashBoard() {    
+    const {uniqueID} = useContext(MyContext)
+    let [responseFromServer,SetResponseFromServer] = useState({});
+    let name = useRef(null)
+    const fetchData = async ()=>{
+             const result= await axios({
+                 "method":"post",
+                 "url":"http://localhost:5000/getAttendance",
+                 "data":{
+                     uniqueID:uniqueID
+                        }
+                })
+                console.log(result.data)
+                return result.data 
+            }
+
+
+    useEffect(() => {
+        (async()=>{
+                SetResponseFromServer(await fetchData());
+                console.log(responseFromServer)
+                // name.textContent =  responseFromServer[1][2]
+        })();
+        console.log(name)
+        // eslint-disable-next-line
+    },[SetResponseFromServer])
+
+    return(responseFromServer?(
         <Box sx={{
             height:"100%",
             width:"100%",
@@ -14,7 +43,7 @@ export default function stuDashBoard() {
             display:"flex",
             justifyContent:"center",
             alignItems:"center",
-        }} >
+        } }>
         <Card
 
                     sx={{
@@ -38,19 +67,19 @@ export default function stuDashBoard() {
                             
                         }}>
                         <Heading p={3} bg='muted'>
-                            < Text 
+                            <Text ref={(el)=>name = el}
                             htmlFor='name' 
                             fontSize={[ 3, 4, 8 ]}
                             fontWeight={"bold"}
                             marginRight={".2em"}
                             color={"black"}
                                 >
-                                    FULL NAME
+                                    {`${name}`}
                                 </Text>
                          </Heading>
-                            <Box p={3} color='background' bg='primary' fontSize={[ 3, 4, 4 ]}>
+                            {/* <Box p={3} color='background' bg='primary' fontSize={[ 3, 4, 4 ]}>
                                 info and stuff
-                            </Box>
+                            </Box> */}
                     </Box>
                     <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',
                                 borderRadius:"2em",
@@ -58,7 +87,7 @@ export default function stuDashBoard() {
                                 marginBottom:'0.1vh'
                 }}>
                     <Heading p={3} bg='muted'>
-                            < Text 
+                            <Text 
                             paddingBottom='2vh'
                             htmlFor='name' 
                             fontSize={[ 3, 4, 6 ]}
@@ -68,7 +97,7 @@ export default function stuDashBoard() {
                                 >
                                     Time Table
                                 </Text>
-                                < Text 
+                                <Text 
                             paddingBottom='2vh'
                             htmlFor='name' 
                             display='flex'
@@ -98,14 +127,13 @@ export default function stuDashBoard() {
                     
                     columns={8}
                     data={[
+                        "ATCI",
+                        "ME",
+                        "CNS",
                         "ADP",
                         "UNIX",
-                        "ME",
-                        "ADP",
-                        "DBMS",
-                        "ATCI",
-                        "",
-                        ""
+                        "EVS",
+                        "DBMS"
                     ]}
                     />
                     </Heading>
@@ -136,7 +164,7 @@ export default function stuDashBoard() {
                                 { title: 'One', value: 10, color: '#E38627' },
                                 { title: 'Two', value: 15, color: '#C13C37' }, ]}
                             />  
-                           < Text 
+                           <Text 
                             position='absolute'
                             fontSize={[ 1, 3, 5 ]}
                             fontWeight={"bold"}
@@ -303,9 +331,7 @@ export default function stuDashBoard() {
                              width:'17%',
                              height:'25%',
                             padding:'2vh'
-                                 }} >
-    
-                                
+                                 }} >                               
                              <PieChart radius='50'
                             data={[
                                 { title: 'One', value: 10, color: '#E38627' },
@@ -323,7 +349,6 @@ export default function stuDashBoard() {
                                 </Text>
                             </Card>   
                     </Box>
-
                     <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',
                                 borderRadius:"2em",
                                 margin:'2vh',
@@ -352,8 +377,7 @@ export default function stuDashBoard() {
                                 >
                                     1BI18CSxxx
                                 </Text>
-                                <Table
-                                    
+                                <Table                                
                                     columns={6}
                                     data={[
                                         "ADP",
@@ -365,8 +389,7 @@ export default function stuDashBoard() {
                                     
                                     ]}
                                     />
-                                    <Table
-                    
+                                    <Table                    
                     columns={6}
                     data={[
                         "26/30",
@@ -380,14 +403,10 @@ export default function stuDashBoard() {
                     />
                     </Heading>
                     </Box>
-                    
-                  
-
                 </Card>
-        
-        
     </Box>
-
-
+    )
+    :
+    "Loading"
     )
 }

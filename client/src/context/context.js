@@ -3,8 +3,9 @@ const MyContext = createContext();
 const UserContext=props=>{
     const [isVerified,setVerified] = useState(0);
     const [isCreated,setCreated] = useState(0);
+    const [uniqueID,setUniqueID] = useState("")
     return(
-        <MyContext.Provider value={{isVerified,setVerified,isCreated,setCreated}}>
+        <MyContext.Provider value={{isVerified,setVerified,isCreated,setCreated,uniqueID,setUniqueID}}>
             {props.children}
         </MyContext.Provider>
     );

@@ -3,14 +3,12 @@ import React from 'react'
 import SignIn from './components/signIn'
 import {UserContext} from './context/context'
 import SignUp from './components/signUp'
-import stuDashBoard from './components/stuDashBoard'
-import staffDashBoard from './components/staffDashBoard'
+import StuDashBoard from './components/StuDashBoard'
+import StaffDashBoard from './components/staffDashBoard'
 import ProtectedRoute from './ProtectedRoute'
 import {Route,BrowserRouter as Router, Redirect ,Switch  } from "react-router-dom";
 import { } from '@rebass/forms';
 function App() {
-  
-
   return (
     <Router>
       <UserContext>
@@ -20,12 +18,11 @@ function App() {
           </Route>
           <Route exact path='/signIn' component={SignIn} />
           <Route exact path='/signUp' component={SignUp} />
-          <Route exact path='/staffDashBoard' component={staffDashBoard} />
-          <ProtectedRoute exact path='/stuDashBoard' component={stuDashBoard} />
+          <Route exact path='/staffDashBoard' component={StaffDashBoard} />
+          <ProtectedRoute exact path='/stuDashBoard' component={StuDashBoard} />
         </Switch>
       </UserContext>
     </Router>
   );
 }
-
 export default App;

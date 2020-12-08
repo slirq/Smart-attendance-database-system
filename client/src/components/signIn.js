@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 
 export default function SignIn() {
     let history = useHistory()
-    const {isVerified ,setVerified} = useContext(MyContext)
+    const {isVerified ,setVerified,uniqueID,setUniqueID} = useContext(MyContext)
     const enter=(e)=>{if(e.which===13)SignInVerify();}
     const SignInVerify = async ()=>{
         let usn=document.querySelector('#usn').value.toLowerCase()
@@ -21,6 +21,7 @@ export default function SignIn() {
             let result=response.data.reply?1:0;
             setVerified(result)
             if(result){
+                setUniqueID(usn)
                 history.push('stuDashBoard')
             }
             }
@@ -100,6 +101,7 @@ export default function SignIn() {
                                     color={"black"}
                                     sx={{
                                     height:"3em",
+                                    fontFamily:"Sansita Swashed",
                                     flexDirection:"rows",
                                     textAlign:"center",
                                     background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%)" ,
