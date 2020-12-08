@@ -29,7 +29,6 @@ export default function StuDashBoard() {
                 console.log(responseFromServer)
                 // name.textContent =  responseFromServer[1][2]
         })();
-        console.log(name)
         // eslint-disable-next-line
     },[SetResponseFromServer])
 
