@@ -1,38 +1,70 @@
-import React, { useEffect, useState,useContext,useRef } from 'react'
-import  {PieChart}  from 'react-minimal-pie-chart'
-import {Text,Box,Card,Heading,} from 'rebass'
+import React, { useEffect,useContext,useRef, useReducer } from 'react'
+import {Text,Box,Card,Heading,Flex} from 'rebass'
 import {MyContext }from '../context/context'
 import Table from './smallComponents/Table'
 import axios from 'axios'
+import PieChartTable from './smallComponents/PieCharts'
+
+const initialState={
+    loading:true,
+    error:'',
+    responseFromServer:[]
+}
+const reducer =(state,action)=>{
+    // console.log(action.payload,"action type is ")
+    switch(action.type){
+        case "fetched":
+            return {
+                loading:false,
+                error:'',
+                responseFromServer:action.payload
+            }
+        case "notFetched":
+            return {
+                loading:false,
+                error:"something went wrong",
+                responseFromServer:[]
+            }
+        default:return state
+    }
+}
 
 
 export default function StuDashBoard() {    
     const {uniqueID} = useContext(MyContext)
-    let [responseFromServer,SetResponseFromServer] = useState({});
-    let name = useRef(null)
+    const [state,dispatch]=useReducer(reducer,initialState)
+    let name,usn
+    let subjects = [ "ATCI","ME","CNS","ADP","UNIX","EVS","DBMS"]
+    // let [data, setData] = useState(["test"])
+    let attendance = []
     const fetchData = async ()=>{
-             const result= await axios({
-                 "method":"post",
-                 "url":"http://localhost:5000/getAttendance",
+            let attendance = []
+            const result= await axios({"method":"post","url":"http://localhost:5000/getAttendance",
                  "data":{
                      uniqueID:uniqueID
+                        }})
+            result.data[0].map((subject,index)=>{
+                        index += 2
+                        if(index<result.data[0].length){
+                            // console.log("index is ",result.data[0][index]/result.data[2][index-1] )
+                            attendance.push(result.data[0][index]/result.data[2][index-1]*100 )
                         }
-                })
-                console.log(result.data)
-                return result.data 
+                        return subject
+                    })
+            result.data.push(attendance)
+            return result.data 
             }
-
-
     useEffect(() => {
-        (async()=>{
-                SetResponseFromServer(await fetchData());
-                console.log(responseFromServer)
-                // name.textContent =  responseFromServer[1][2]
+        (
+            async()=>{
+                let reply = await fetchData()
+                dispatch({type:"fetched",payload:reply})
+
         })();
         // eslint-disable-next-line
-    },[SetResponseFromServer])
+    },[])
 
-    return(responseFromServer?(
+    return(state.loading?"Loading":(
         <Box sx={{
             height:"100%",
             width:"100%",
@@ -43,7 +75,7 @@ export default function StuDashBoard() {
             justifyContent:"center",
             alignItems:"center",
         } }>
-        <Card
+                <Card
 
                     sx={{
                         position:"relative",
@@ -54,49 +86,44 @@ export default function StuDashBoard() {
                         borderRadius:"2em",
                         display:"top",
                         marginY:'2vh'
-                        //padding:"43vh 80vh"
-                        //flex-direction:"row",
-                }}
-                >
+                    }}>
                     <Box
                         sx={{
                             display: 'grid',
                             gridGap: 1,
-                            gridTemplateColumns: 'repeat(auto-fit, minmax(1vh, 1fr))',
-                            
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(1vh, 1fr))',        
                         }}>
+
                         <Heading p={3} bg='muted'>
-                            <Text ref={(el)=>name = el}
-                            htmlFor='name' 
-                            fontSize={[ 3, 4, 8 ]}
-                            fontWeight={"bold"}
-                            marginRight={".2em"}
-                            color={"black"}
-                                >
-                                    {`${name}`}
-                                </Text>
+
+                            <Text 
+                                    htmlFor='name' 
+                                    fontSize={[ 3, 4, 8 ]}
+                                    fontWeight={"bold"}
+                                    marginRight={".2em"}
+                                    color={"black"}>
+                                    {`${state.responseFromServer[1][1]}`}
+                            </Text>
                          </Heading>
-                            {/* <Box p={3} color='background' bg='primary' fontSize={[ 3, 4, 4 ]}>
-                                info and stuff
-                            </Box> */}
                     </Box>
+
                     <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',
                                 borderRadius:"2em",
                                 margin:'2vh',
                                 marginBottom:'0.1vh'
-                }}>
+                                }}>
+
                     <Heading p={3} bg='muted'>
-                            <Text 
+                        <Text 
                             paddingBottom='2vh'
                             htmlFor='name' 
                             fontSize={[ 3, 4, 6 ]}
                             fontWeight={"bold"}
                             marginRight={".2em"}
-                            color={"White"}
-                                >
+                            color={"White"}>
                                     Time Table
-                                </Text>
-                                <Text 
+                        </Text>
+                        <Text 
                             paddingBottom='2vh'
                             htmlFor='name' 
                             display='flex'
@@ -104,14 +131,11 @@ export default function StuDashBoard() {
                             fontSize={[ 3, 4, 5 ]}
                             fontWeight={"bold"}
                             marginRight={".2em"}
-                            color={"White"}
-                                >
-                                    Day
-                                </Text>
-                                <Table
-                                    
-                                    columns={8}
-                                    data={[
+                            color={"White"}>
+                                            Day
+                        </Text>
+                        <Table   columns={8}
+                                 data={[
                                         "8AM",
                                         "9AM",
                                         "10AM",
@@ -120,251 +144,34 @@ export default function StuDashBoard() {
                                         "2PM",
                                         "3PM",
                                         "4PM"
-                                    ]}
-                                    />
-                                    <Table
-                    
-                    columns={8}
-                    data={[
-                        "ATCI",
-                        "ME",
-                        "CNS",
-                        "ADP",
-                        "UNIX",
-                        "EVS",
-                        "DBMS"
-                    ]}
-                    />
+                                    ]}/>
+                        <Table
+                            columns={8}
+                            data={subjects}/>
                     </Heading>
                     </Box>
-                    <Box sx={{ display: 'flex',
-                    }}
-                   >
-                            <Card
-                            display='absolute'
-                            
-                             sx={{
-                            marginTop:'auto',
-                            background: 'white',
-                            justifyContent:"center",
-                            alignItems:"center",
-                             borderRadius:"2em",
-                             marginY:'2vh',
-                             marginRight:'.5vh',
-                             marginLeft:'2vh',
-                             width:'17%',
-                             height:'25%',
-                            padding:'2vh'
-                                 }} >
-    
-                                
-                             <PieChart radius='50'
-                            data={[
-                                { title: 'One', value: 10, color: '#E38627' },
-                                { title: 'Two', value: 15, color: '#C13C37' }, ]}
-                            />  
-                           <Text 
-                            position='absolute'
-                            fontSize={[ 1, 3, 5 ]}
-                            fontWeight={"bold"}
-                            paddingTop="0.5em"
-                            paddingX="3.9vw"
-                            color={"Black"}
-                            
-                                > DBMS
-                                </Text>
-
-                            </Card>
-                            <Card
-                            display='absolute'
-                            
-                             sx={{
-                            marginTop:'auto',
-                            background: 'white',
-                            justifyContent:"center",
-                            alignItems:"center",
-                             borderRadius:"2em",
-                             marginY:'2vh',
-                             marginRight:'.5vh',
-                             marginLeft:'0.5vh',
-                             width:'17%',
-                             height:'25%',
-                            padding:'2vh'
-                                 }} >
-    
-                                
-                             <PieChart radius='50'
-                            data={[
-                                { title: 'One', value: 10, color: '#E38627' },
-                                { title: 'Two', value: 15, color: '#C13C37' }, ]}
-                            />  
-                           < Text 
-                            position='absolute'
-                            fontSize={[ 1, 3, 5 ]}
-                            fontWeight={"bold"}
-                            paddingTop="0.5em"
-                            paddingX="3.9vw"
-                            color={"Black"}
-                            
-                                > ADP
-                                </Text>
-
-                            </Card>
-                            <Card
-                            display='absolute'
-                            
-                             sx={{
-                            marginTop:'auto',
-                            background: 'white',
-                            justifyContent:"center",
-                            alignItems:"center",
-                             borderRadius:"2em",
-                             marginY:'2vh',
-                             marginRight:'.5vh',
-                             marginLeft:'0.5vh',
-                             width:'17%',
-                             height:'25%',
-                            padding:'2vh'
-                                 }} >
-    
-                                
-                             <PieChart radius='50'
-                            data={[
-                                { title: 'One', value: 10, color: '#E38627' },
-                                { title: 'Two', value: 15, color: '#C13C37' }, ]}
-                            />  
-                           < Text 
-                            position='absolute'
-                            fontSize={[ 1, 3, 5 ]}
-                            fontWeight={"bold"}
-                            paddingTop="0.5em"
-                            paddingX="3.9vw"
-                            color={"Black"}
-                            
-                                > ATCI
-                                </Text>
-
-                            </Card>
-                            <Card
-                            display='absolute'
-                            
-                             sx={{
-                            marginTop:'auto',
-                            background: 'white',
-                            justifyContent:"center",
-                            alignItems:"center",
-                             borderRadius:"2em",
-                             marginY:'2vh',
-                             marginRight:'.5vh',
-                             marginLeft:'0.5vh',
-                             width:'17%',
-                             height:'25%',
-                            padding:'2vh'
-                                 }} >
-    
-                                
-                             <PieChart radius='50'
-                            data={[
-                                { title: 'One', value: 10, color: '#E38627' },
-                                { title: 'Two', value: 15, color: '#C13C37' }, ]}
-                            />  
-                           < Text 
-                            position='absolute'
-                            fontSize={[ 1, 3, 5 ]}
-                            fontWeight={"bold"}
-                            paddingTop="0.5em"
-                            paddingX="3.9vw"
-                            color={"Black"}
-                            
-                                > ME
-                                </Text>
-
-                            </Card>
-                            <Card
-                            display='absolute'
-                            
-                             sx={{
-                            marginTop:'auto',
-                            background: 'white',
-                            justifyContent:"center",
-                            alignItems:"center",
-                             borderRadius:"2em",
-                             marginY:'2vh',
-                             marginRight:'.5vh',
-                             marginLeft:'0.5vh',
-                             width:'17%',
-                             height:'25%',
-                            padding:'2vh'
-                                 }} >
-    
-                                
-                             <PieChart radius='50'
-                            data={[
-                                { title: 'One', value: 10, color: '#E38627' },
-                                { title: 'Two', value: 15, color: '#C13C37' }, ]}
-                            />  
-                           < Text 
-                            position='absolute'
-                            fontSize={[ 1, 3, 5 ]}
-                            fontWeight={"bold"}
-                            paddingTop="0.5em"
-                            paddingX="3.9vw"
-                            color={"Black"}
-                            
-                                > CNS
-                                </Text>
-
-                            </Card>
-                            <Card
-                            display='absolute'
-                            
-                             sx={{
-                            marginTop:'auto',
-                            background: 'white',
-                            justifyContent:"center",
-                            alignItems:"center",
-                             borderRadius:"2em",
-                             marginY:'2vh',
-                             marginRight:'2vh',
-                             marginLeft:'0.5vh',
-                             width:'17%',
-                             height:'25%',
-                            padding:'2vh'
-                                 }} >                               
-                             <PieChart radius='50'
-                            data={[
-                                { title: 'One', value: 10, color: '#E38627' },
-                                { title: 'Two', value: 15, color: '#C13C37' }, ]}
-                            />  
-                           < Text 
-                            position='absolute'
-                            fontSize={[ 1, 3, 5 ]}
-                            fontWeight={"bold"}
-                            paddingTop="0.5em"
-                            paddingX="3.9vw"
-                            color={"Black"}
-                            
-                                > UNIX
-                                </Text>
-                            </Card>   
+                    <Box sx={{ display: 'flex',}}>
+                   <PieChartTable subjects = {subjects} attendance={state.responseFromServer[3]} />
                     </Box>
+                    <Text color={"rgba(255,20,20,0.9)"}
+
+                    >Red is bad</Text>
                     <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',
                                 borderRadius:"2em",
                                 margin:'2vh',
-                                marginTop:'0.1vh'
-                }}>
+                                marginTop:'0.1vh'}}>
                     <Heading p={3} bg='muted'>
-                            < Text 
+                            <Text 
                             paddingBottom='2vh'
                             htmlFor='name' 
                             fontSize={[ 3, 4, 6 ]}
                             fontWeight={"bold"}
                             marginRight={".2em"}
-                            color={"White"}
-                                >
+                            color={"White"}>
                                     ATTENDANCE
-                                </Text>
-                                < Text 
+                            </Text>
+
+                            <Text 
                             paddingBottom='2vh'
                             htmlFor='name' 
                             display='flex'
@@ -372,40 +179,14 @@ export default function StuDashBoard() {
                             fontSize={[ 3, 4, 5 ]}
                             fontWeight={"bold"}
                             marginRight={".2em"}
-                            color={"White"}
-                                >
-                                    1BI18CSxxx
-                                </Text>
-                                <Table                                
-                                    columns={6}
-                                    data={[
-                                        "ADP",
-                                        "UNIX",
-                                        "ME",
-                                        "ADP",
-                                        "DBMS",
-                                        "ATCI",
-                                    
-                                    ]}
-                                    />
-                                    <Table                    
-                    columns={6}
-                    data={[
-                        "26/30",
-                        "26/30",
-                        "26/30",
-                        "26/30",
-                        "26/30",
-                        "26/30",
-                
-                    ]}
-                    />
+                            color={"White"}> {`${state.responseFromServer[0][0]}`}   
+                            </Text>
+                            <Table  columns={7}  data={subjects}/>
+                            <Table columns={7}  data={state.responseFromServer[3]} />
                     </Heading>
                     </Box>
                 </Card>
-    </Box>
+    </Box>)
     )
-    :
-    "Loading"
-    )
+    
 }

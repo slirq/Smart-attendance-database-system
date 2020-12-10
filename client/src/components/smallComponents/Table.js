@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text,Box,Card,Button, Flex,Link,Heading} from 'rebass'
+import { Text,Box, Flex} from 'rebass'
 export default function Table({ columns, data }) {
 
 
