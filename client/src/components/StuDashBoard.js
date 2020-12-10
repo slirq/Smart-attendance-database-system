@@ -1,5 +1,5 @@
-import React, { useEffect,useContext,useRef, useReducer } from 'react'
-import {Text,Box,Card,Heading,Flex} from 'rebass'
+import React, { useEffect,useContext, useReducer } from 'react'
+import {Text,Box,Card,Heading} from 'rebass'
 import {MyContext }from '../context/context'
 import Table from './smallComponents/Table'
 import axios from 'axios'
@@ -28,30 +28,12 @@ const reducer =(state,action)=>{
         default:return state
     }
 }
-
-
 export default function StuDashBoard() {    
     const {uniqueID} = useContext(MyContext)
     const [state,dispatch]=useReducer(reducer,initialState)
-    let name,usn
     let subjects = [ "ATCI","ME","CNS","ADP","UNIX","EVS","DBMS"]
-    // let [data, setData] = useState(["test"])
-    let attendance = []
     const fetchData = async ()=>{
-            let attendance = []
-            const result= await axios({"method":"post","url":"http://localhost:5000/getAttendance",
-                 "data":{
-                     uniqueID:uniqueID
-                        }})
-            result.data[0].map((subject,index)=>{
-                        index += 2
-                        if(index<result.data[0].length){
-                            // console.log("index is ",result.data[0][index]/result.data[2][index-1] )
-                            attendance.push(result.data[0][index]/result.data[2][index-1]*100 )
-                        }
-                        return subject
-                    })
-            result.data.push(attendance)
+            const result= await axios({"method":"post","url":"http://localhost:5000/getAttendance","data":{uniqueID:uniqueID }})
             return result.data 
             }
     useEffect(() => {
@@ -132,26 +114,29 @@ export default function StuDashBoard() {
                             fontWeight={"bold"}
                             marginRight={".2em"}
                             color={"White"}>
-                                            Day
+                                            {state.responseFromServer[4]}
                         </Text>
                         <Table   columns={8}
                                  data={[
-                                        "8AM",
-                                        "9AM",
-                                        "10AM",
-                                        "11:30AM",
-                                        "12:30PM",
-                                        "2PM",
-                                        "3PM",
-                                        "4PM"
+                                        "8",
+                                        "9",
+                                        "10",
+                                        "11:30",
+                                        "12:30",
+                                        "14:00",
+                                        "15:00",
+                                        "16:00"
                                     ]}/>
                         <Table
                             columns={8}
-                            data={subjects}/>
+                            data={state.responseFromServer[3]}/>
                     </Heading>
                     </Box>
                     <Box sx={{ display: 'flex',}}>
-                   <PieChartTable subjects = {subjects} attendance={state.responseFromServer[3]} />
+                   <PieChartTable 
+                   subjects = {subjects} 
+                   studentAttendance={state.responseFromServer[0]}
+                   totalAttendance={state.responseFromServer[2]} />
                     </Box>
                     <Text color={"rgba(255,20,20,0.9)"}
 
@@ -179,10 +164,11 @@ export default function StuDashBoard() {
                             fontSize={[ 3, 4, 5 ]}
                             fontWeight={"bold"}
                             marginRight={".2em"}
-                            color={"White"}> {`${state.responseFromServer[0][0]}`}   
+                            color={"White"}> {`${state.responseFromServer[1][0]}`}   
                             </Text>
                             <Table  columns={7}  data={subjects}/>
-                            <Table columns={7}  data={state.responseFromServer[3]} />
+                            <Table columns={7}  data={state.responseFromServer[0]} />
+                            <Table columns={7}  data={state.responseFromServer[2]} />
                     </Heading>
                     </Box>
                 </Card>

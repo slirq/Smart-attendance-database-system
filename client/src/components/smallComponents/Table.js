@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text,Box, Flex} from 'rebass'
 export default function Table({ columns, data }) {
-
+  // console.log(data) 
 
     return (
         

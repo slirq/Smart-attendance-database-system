@@ -2,9 +2,13 @@ import React from 'react'
 import { PieChart } from 'react-minimal-pie-chart'
 import {Text,Card} from 'rebass'
 
-export default function PieCharts({subjects,attendance}) {
-    return (   subjects.map( (subject,index)=>{    return(
-         <Card
+export default function PieCharts({subjects,studentAttendance,totalAttendance}) {
+    return (   subjects.map( (subject,index)=>{ 
+        let percentageFillForStudents =  studentAttendance[index] /(studentAttendance[index]+ totalAttendance[index])*100
+        let percentageFillForTC =  (totalAttendance[index]-studentAttendance[index])/(studentAttendance[index]+ totalAttendance[index])*100
+         return(
+            
+                    <Card
                             display='absolute'
                             sx={{
                                     marginTop:'auto',
@@ -19,13 +23,14 @@ export default function PieCharts({subjects,attendance}) {
                                     height:'25%',
                                     padding:'2vh'
                                  }} > 
-                             <PieChart radius='50'
-                            
-                            data={[
-                                { title: 'One',
-                                value: 10,
-                                color: 'rgba(255,20,20,0.9)' },
-                                { title: 'Two', value: attendance[index], color: 'rgba(20,255,20,0.9)' }, ]}
+                             <PieChart radius='50' key={index}
+                                data={[
+                                { title: `present with ${studentAttendance[index]} classes`,
+                                value: percentageFillForStudents ,
+                                color:  'rgba(20,255,20,0.9)' },
+                        
+                                { title: `absent with ${totalAttendance[index]-studentAttendance[index]}`,
+                                 value:percentageFillForTC, color: 'rgba(255,20,20,0.9)' }, ]}
                             />  
                            <Text 
                             position='absolute'
@@ -35,6 +40,7 @@ export default function PieCharts({subjects,attendance}) {
                             paddingX="3.9vw"
                             color={"Black"}
                             > {subject}
+
                                 </Text>
             </Card>)
     }))
