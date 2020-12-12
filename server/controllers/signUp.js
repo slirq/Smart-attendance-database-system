@@ -7,10 +7,9 @@ exports.signUp = async (req,res)=>{
     let subject = req.body.subject
     let sqlForID= 'select ID from staff;'
     
-    // let sql = usn===0?sqlForStudent:sqlForStaff
-    // let values=valuesForStudent
+    
     try{
-        // console.log(values)
+        
         if(usn===0) {
             const [resForID,fID] = await db.execute(sqlForID)
             const newID =  createNewId(resForID)
@@ -46,7 +45,6 @@ const createNewId=(resForID)=>{
         let index = 8
         for(let i = 0;i<numOfDigits;i++){
                 digits+=resForID[lastEntry].ID[index]
-                // console.log(resForID[lastEntry].ID[index])
                 index++;
         }
         newID = "BITstaff"+(Number(digits)+1)                

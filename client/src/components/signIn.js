@@ -13,18 +13,21 @@ export default function SignIn() {
     let  msg = useRef(null)
     const enter=(e)=>{if(e.which===13)SignInVerify();}
     const SignInVerify = async (e)=>{
-        let usn=document.querySelector('#usn').value.toLowerCase()
+        let usn=document.querySelector('#usn').value
         let password=document.querySelector('#pwd').value
+        let staff = isStaff
         try{
             const response = await axios( {method:'post',url:'http://localhost:5000/signIn', data:{
-                                        usn: `${usn}`,
-                                        password: `${password}`} })
+                                        uniqueID: `${usn}`,
+                                        password: `${password}`,
+                                        staff: staff } })
                                         // console.log(response.data.reply)
             let result=response.data.reply?1:0;
+            console.log(usn )
             setVerified(result)
             if(result){
                 setUniqueID(usn)
-                history.push('stuDashBoard')
+                isStaff?history.push('staffDashBoard'):history.push('stuDashBoard')
             }
             else{
                 msg.textContent="wrong password there buddy"
