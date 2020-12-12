@@ -1,1 +1,1 @@
- mysqldump -u test -p attendance --events --triggers --routines > doot5.sql
+ mysqldump -u test -p attendance --events --triggers --routines > doot6.sql
