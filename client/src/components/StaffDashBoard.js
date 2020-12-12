@@ -1,8 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-import {Label,Input,Select} from '@rebass/forms'
+import {Input} from '@rebass/forms'
 import Table from './smallComponents/Table'
-import { Text,Box,Card,Button, Flex,Link,Heading} from 'rebass'
+import { Text,Box,Card,Button,Heading} from 'rebass'
 import UseStepper from 'use-stepper';
 
 
@@ -15,10 +15,6 @@ export default function staffDashBoard() {
     getIncrementProps,
     getDecrementProps,
   } = UseStepper()
-
-
-
-  const handleTTChange=(e)=>{  }
 
     return(
         <Box sx={{
@@ -54,7 +50,7 @@ export default function staffDashBoard() {
                             
                         }}>
                         <Heading p={3} bg='muted'>
-                            < Text 
+                            <Text 
                             htmlFor='name' 
                             fontSize={[ 3, 4, 8 ]}
                             fontWeight={"bold"}
@@ -68,11 +64,6 @@ export default function staffDashBoard() {
                                 info and stuff
                             </Box>
                           </Box>
-
-
-
-
-                          
                           <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',
                                 borderRadius:"2em",
                                 margin:'2vh',
@@ -81,7 +72,7 @@ export default function staffDashBoard() {
                                
                                 }}>
                                       <Heading p={3} bg='muted' width='100%'>
-                                      < Text 
+                                      <Text 
                                           paddingBottom='2vh'
                                           htmlFor='name' 
                                           fontSize={[ 3, 4, 6 ]}
@@ -171,16 +162,6 @@ export default function staffDashBoard() {
                                       >+</Button>
                                         
                                         </Box>
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
                                         </Heading></Box>
 
 
@@ -193,7 +174,7 @@ export default function staffDashBoard() {
                                
                                 }}>
                                       <Heading p={3} bg='muted' width='100%'>
-                                      < Text 
+                                      <Text 
                                           paddingBottom='2vh'
                                           htmlFor='name' 
                                           fontSize={[ 3, 4, 6 ]}

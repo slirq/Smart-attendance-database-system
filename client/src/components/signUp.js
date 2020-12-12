@@ -13,17 +13,20 @@ export default function SignUp() {
     let name=useRef(null)
     let sec=useRef(null)
     const handleSubmit = async (e)=>{
-        [usn,password,name,sec] = [usn.value.toUpperCase(),
-            password.value,
-            name.value,
-            sec.value]
+        let usnValue=0,passwordValue,nameValue,secValue,subjectValue=0
+        if(!isStaff){
+        [usnValue]= [usn.value.toUpperCase()]
+        }
+        [passwordValue,nameValue,secValue] =[password.value,name.value,sec.value]
         try{
             confirmation = await axios( { method:'post',
                                                 url:'http://localhost:5000/signUp',
-                                                data:{usn: usn,
-                                                     password: password,
-                                                     name:name,
-                                                      sec:sec
+                                                data:{
+                                                    usn: usnValue,
+                                                    password: passwordValue,
+                                                    name:nameValue,
+                                                    sec:secValue,
+                                                    subject:subjectValue
                                                     }  
                                             }    
                                         )
@@ -47,19 +50,19 @@ export default function SignUp() {
         return (
             <>
                 <Box width={"15vw"}    >
-                    < Label >USN</Label>
+                    <Label >USN</Label>
                     <Input  ref={el=>usn=el} type="text" defaultValue='1BI'/>
                 </Box>
                 <Box width={"15vw"}  >
-                    < Label >Password</Label>
+                    <Label >Password</Label>
                     <Input ref={el=>password=el}    type="password" />
                 </Box>
                 <Box width={"15vw"}  >
-                    < Label >Full Name</Label>
+                    <Label >Full Name</Label>
                     <Input  ref={el=>name=el}  type="text"   />
                 </Box>
                 <Box width={"15vw"}  >
-                    < Label >Section</Label>
+                    <Label >Section</Label>
                     <Input  ref={el=>sec=el} type="text" />
                 </Box>
             </>
@@ -69,19 +72,19 @@ export default function SignUp() {
         return (
             <>
                 <Box width={"15vw"}  >
-                    < Label >Full Name</Label>
+                    <Label >Full Name</Label>
                     <Input  ref={el=>name=el}  type="text"   />
                 </Box>
                 <Box width={"15vw"}  >
-                    < Label >Password</Label>
+                    <Label >Password</Label>
                     <Input ref={el=>password=el}    type="password" />
                 </Box>
                 <Box width={"15vw"}  >
-                    < Label >Section in charge</Label>
+                    <Label >Section in charge</Label>
                     <Input  ref={el=>sec=el} type="text" />
                 </Box>
                 <Box width={"15vw"}  >
-                    < Label >Your Subject?</Label>
+                    <Label >Your Subject?</Label>
                     <Select
                         fontFamily={"Sansita Swashed"}
                         id='location'
@@ -124,7 +127,7 @@ export default function SignUp() {
                         alignItems:"center"
                 }}
                 >
-                < Text  
+                <Text  
                 textAlign={"center"} 
                 fontSize={[ 3, 4, 5 ]}
                 fontWeight={"bold"}
@@ -133,14 +136,14 @@ export default function SignUp() {
                 }}>
                     Sign Up
                 </Text>
-                    <Flex paddingLeft={"2.6em"} flexDirection={"column"} sx={{
+                    <Flex  flexDirection={"column"} sx={{
                                         // border:"2px solid black",
                                         marginRight:".6em",
                                         display:"flex",
                                         justifyContent:"center",
                                         alignItems:"center"
                                         }}>
-                        < Label width={"15vw"} m={".3em"}>Staff? <Radio value="red" onClick={e=>setStaff(!isStaff)} /> </Label>
+                        <Label width={"15vw"} m={".3em"}>Staff? <Radio value="red" onClick={e=>setStaff(!isStaff)} /> </Label>
                         {isStaff?staff():student()}
 
                         <Text
@@ -148,7 +151,7 @@ export default function SignUp() {
                                 display:"flex",
                                 justifyContent:"center",
                                 alignItems:"center",
-                                my:".2em"
+                                // my:".2em"
                                 }}  
                             color={isCreated?"green":"orange"}>
                                 {isCreated?"Yay you've registered":"waiting for ye to submit ...."}
@@ -170,7 +173,6 @@ export default function SignUp() {
                                         p:"unset",
                                         background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%) ",
                                         border:"2px solid black",
-                                        marginRight:".6em",
                                         borderRadius:".7em",
                                         color:"black",
                                         fontFamily:"Sansita Swashed"

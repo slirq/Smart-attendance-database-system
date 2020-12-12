@@ -1,34 +1,39 @@
 import React from 'react'
 import axios from 'axios'
-import { useContext } from "react";
+import { useContext,useState,useRef } from "react";
 import {MyContext} from "../context/context"
-import {Label,Input} from '@rebass/forms'
+import {Label,Input,Radio} from '@rebass/forms'
 import { Text,Box,Card,Button, Flex,Link} from 'rebass'
 import { useHistory } from 'react-router-dom';
 
 export default function SignIn() {
     let history = useHistory()
     const {isVerified ,setVerified,uniqueID,setUniqueID} = useContext(MyContext)
+    const [isStaff, setStaff] = useState(false)
+    let  msg = useRef(null)
     const enter=(e)=>{if(e.which===13)SignInVerify();}
-    const SignInVerify = async ()=>{
+    const SignInVerify = async (e)=>{
         let usn=document.querySelector('#usn').value.toLowerCase()
         let password=document.querySelector('#pwd').value
         try{
             const response = await axios( {method:'post',url:'http://localhost:5000/signIn', data:{
                                         usn: `${usn}`,
                                         password: `${password}`} })
-                                        console.log(response.data.reply)
+                                        // console.log(response.data.reply)
             let result=response.data.reply?1:0;
             setVerified(result)
             if(result){
                 setUniqueID(usn)
                 history.push('stuDashBoard')
             }
+            else{
+                msg.textContent="wrong password there buddy"
+            }
             }
             
         catch(error){console.log(error)}
     }
-    const handleClick=(e)=>{ SignInVerify()  }
+    
     return (
             <Box sx={{
                     height:"100vh",
@@ -40,6 +45,7 @@ export default function SignIn() {
                     display:"flex",
                     justifyContent:"center",
                     alignItems:"center",
+                    fontFamily:"Sansita Swashed"
                 }} >
                     
                 <Card
@@ -57,37 +63,30 @@ export default function SignIn() {
                         
                 }}
                 >
-                    < Text 
+                
+                    <Text 
                             htmlFor='name' 
                             fontSize={[ 3, 4, 5 ]}
                             fontWeight={"bold"}
                             marginRight={".2em"}
-                            color={"black"}
-                    >Sign In
+                            color={"black"}>
+                            Sign In
                     </Text>
                     <Flex  flexDirection={"column"} 
                                     sx={{
-
                                         height:"40vh",
                                         paddingLeft:".5em",
                                         display:"flex",
                                         justifyContent:"center",
-                                        alignItems:"unset",}} 
-                                        >
+                                        alignItems:"unset",}}>
+                        <Label width={"15vw"} color={"black"}>
+                            Staff? <Radio value="red" onClick={e=>setStaff(!isStaff)} /> 
+                        </Label>
                         <Label htmlFor='name' color={"black"} paddingBottom={".4em"}>USN</Label>
                         <Input  id='usn'    name='usn'   color={"black"} paddingBottom={".6em"}  type="text"     defaultValue='1BI18CS032'/>
-                        < Label htmlFor='name' color={"black"} paddingBottom={".4em"} >Password</Label>
+                        <Label htmlFor='name' color={"black"} paddingBottom={".4em"} >Password</Label>
                         <Input  id='pwd'    type="password" color={"black"} paddingBottom={".4em"}   onKeyUp={enter}   />
-                        <Box id="message">
-                            {isVerified?
-                                <Text sx={{color:"green"}} paddingBottom={".4em"}>
-                                    Hol'up we signing you in....
-                                </Text>
-                                :
-                                <Text sx={{color:"red"}} paddingBottom={".4em"} >
-                                    ooh thats wrong password buddy
-                                </Text>}
-                        </Box>
+                        <Box id="message" ref={el=>msg = el} sx={{color:"red", fontFamily:"Sansita Swashed"}}></Box>
                         <Box name={"buttons"} 
                             p={".4em"}
                             sx={{
@@ -96,7 +95,7 @@ export default function SignIn() {
                             alignItems:"unset",
                             justifyContent:"unset"
                         }}>
-                            <Button onClick={handleClick} 
+                            <Button onClick={SignInVerify} 
                                     type={"button"}
                                     color={"black"}
                                     sx={{

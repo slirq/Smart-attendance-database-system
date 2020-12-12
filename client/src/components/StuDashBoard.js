@@ -139,7 +139,7 @@ export default function StuDashBoard() {
                    totalAttendance={state.responseFromServer[2]} />
                     </Box>
                     <Text color={"rgba(255,20,20,0.9)"}
-
+                    textAlign={"center"}
                     >Red is bad</Text>
                     <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',
                                 borderRadius:"2em",

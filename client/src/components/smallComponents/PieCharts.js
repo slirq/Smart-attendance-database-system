@@ -29,7 +29,7 @@ export default function PieCharts({subjects,studentAttendance,totalAttendance}) 
                                 value: percentageFillForStudents ,
                                 color:  'rgba(20,255,20,0.9)' },
                         
-                                { title: `absent with ${totalAttendance[index]-studentAttendance[index]}`,
+                                { title: `absent with ${totalAttendance[index]-studentAttendance[index]} classes`,
                                  value:percentageFillForTC, color: 'rgba(255,20,20,0.9)' }, ]}
                             />  
                            <Text 

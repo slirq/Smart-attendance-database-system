@@ -4,7 +4,7 @@ import SignIn from './components/signIn'
 import {UserContext} from './context/context'
 import SignUp from './components/signUp'
 import StuDashBoard from './components/StuDashBoard'
-import StaffDashBoard from './components/staffDashBoard'
+import StaffDashBoard from './components/StaffDashBoard'
 import ProtectedRoute from './ProtectedRoute'
 import {Route,BrowserRouter as Router, Redirect ,Switch  } from "react-router-dom";
 import { } from '@rebass/forms';
