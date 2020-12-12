@@ -1,13 +1,53 @@
-import React from 'react'
+import React,{useEffect,useReducer,useContext} from 'react'
 import axios from 'axios'
+import {MyContext }from '../context/context'
 import {Input} from '@rebass/forms'
 import Table from './smallComponents/Table'
 import { Text,Box,Card,Button,Heading} from 'rebass'
 import UseStepper from 'use-stepper';
+const initialState={
+    loading:true,
+    error:'',
+    responseFromServer:[]
+}
+const reducer =(state,action)=>{
+    // console.log(action.payload,"action type is ")
+    switch(action.type){
+        case "fetched":
+            return {
+                loading:false,
+                error:'',
+                responseFromServer:action.payload
+            }
+        case "notFetched":
+            return {
+                loading:false,
+                error:"something went wrong",
+                responseFromServer:[]
+            }
+        default:return state
+    }
+}
 
 
+export default function StaffDashBoard() {
+    const {uniqueID} = useContext(MyContext)
+    const [state,dispatch]=useReducer(reducer,initialState)
+    const fetchData = async ()=>{
+        const result= await axios({"method":"post","url":"http://localhost:5000/getStaffInfo","data":{uniqueID:uniqueID }})
+        return result.data 
+        }
+    console.log(state)
+    useEffect(() => {
+    (
+        async()=>{
+            let reply = await fetchData()
+            dispatch({type:"fetched",payload:reply})
 
-export default function staffDashBoard() {
+    })();
+    // eslint-disable-next-line
+    },[])
+
 
   const {
     getFormProps,
@@ -16,7 +56,7 @@ export default function staffDashBoard() {
     getDecrementProps,
   } = UseStepper()
 
-    return(
+    return(state.loading?"LOADING":
         <Box sx={{
             height:"100%",
             width:"100%",
@@ -57,12 +97,9 @@ export default function staffDashBoard() {
                             marginRight={".2em"}
                             color={"black"}
                                 >
-                                    TEACHER NAME
+                                   {`${state.responseFromServer[0][0]}`}
                                 </Text>
                          </Heading>
-                            <Box p={2} color='background' bg='primary' fontSize={[ 3, 4, 4 ]}>
-                                info and stuff
-                            </Box>
                           </Box>
                           <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',
                                 borderRadius:"2em",
@@ -80,7 +117,7 @@ export default function staffDashBoard() {
                                           marginRight={".2em"}
                                           color={"White"}
                                               >
-                                                  Total classes completed in *subject name* 
+                                                  {`Total classes completed in ${state.responseFromServer[0][1]}`}
                                               </Text>     
                                        
                                   <Box {...getFormProps()}
@@ -163,15 +200,11 @@ export default function staffDashBoard() {
                                         
                                         </Box>
                                         </Heading></Box>
-
-
-
                                         <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',
                                 borderRadius:"2em",
                                 margin:'2vh',
                                 marginY:'0.1vh',
                                 display:'flex',
-                               
                                 }}>
                                       <Heading p={3} bg='muted' width='100%'>
                                       <Text 
@@ -236,18 +269,7 @@ export default function staffDashBoard() {
                                        border:"2px solid black",
                                        borderRadius:".7em" }}                                       
                                       >Stop</Button>
-                                        
-                                        
                                         </Box>
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
                                         </Heading></Box>
 
                                 <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',
@@ -258,7 +280,7 @@ export default function staffDashBoard() {
                                 }}>
                                       <Heading p={3} bg='muted'>
 
-                                          < Text 
+                                          <Text 
                                           paddingBottom='2vh'
                                           htmlFor='name' 
                                           fontSize={[ 3, 4, 6 ]}

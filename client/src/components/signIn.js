@@ -85,7 +85,7 @@ export default function SignIn() {
                         <Label width={"15vw"} color={"black"}>
                             Staff? <Radio value="red" onClick={e=>setStaff(!isStaff)} /> 
                         </Label>
-                        <Label htmlFor='name' color={"black"} paddingBottom={".4em"}>USN</Label>
+                        <Label htmlFor='name' color={"black"} paddingBottom={".4em"}>{isStaff?"Staff ID":"USN"}</Label>
                         <Input  id='usn'    name='usn'   color={"black"} paddingBottom={".6em"}  type="text"     defaultValue='1BI18CS032'/>
                         <Label htmlFor='name' color={"black"} paddingBottom={".4em"} >Password</Label>
                         <Input  id='pwd'    type="password" color={"black"} paddingBottom={".4em"}   onKeyUp={enter}   />

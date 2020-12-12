@@ -2,8 +2,8 @@ import csv
 import pymysql as sql
 import json
 import os
-
-mydb = sql.Connect(host="localhost",user="root",password="481526",db="attendance", autocommit=True)
+import time 
+mydb = sql.Connect(host="localhost",user="test",password="481526",db="attendance", autocommit=True)
 cur = mydb.cursor()
 dirname = os.path.dirname(__file__)
 path=os.path.join(dirname,'data.json')
@@ -27,6 +27,7 @@ try:
         section = 'A'
         print(day,eight,nine,ten,eleven,twelve,two,three,four)
         cur.execute("INSERT INTO timetable(day, 8_00 ,  9_00 ,  10_00 ,  11_30 ,  12_30 ,  2_00 ,  3_00 ,  4_00 ,section) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(day,eight,nine,ten,eleven,twelve,two,three,four,section))
+        time.sleep(1)
 finally:
     print("closing it")
     mydb.close()
