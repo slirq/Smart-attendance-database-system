@@ -41,7 +41,7 @@ export default function StaffDashBoard() {
                 firstTime:true }})
         return result.data 
         }
-    console.log(state)
+    // console.log(state)
     useEffect(() => {
     (
         async()=>{
@@ -75,8 +75,7 @@ export default function StaffDashBoard() {
         }} >
         <Card sx={{ position:"relative",   width:"90%", height:"wrap-content", background:"rgba(131,22,219,0.8)",
                         boxShadow:'0 0 2em rgba(0, 0, 0, .7)',  borderRadius:"2em", display:"top",
-                        marginY:'2vh'
-                }}>
+                        marginY:'2vh'}}>
                 <Name name ={state.responseFromServer[0][0]}/>
                 <ClassesUpdate/>
                 <FullTimetable tt={state.responseFromServer[2]} />

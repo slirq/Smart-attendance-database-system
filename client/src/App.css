@@ -2,3 +2,9 @@ body{
   font-family: Sansita Swashed;
   color: black;
 }
+.calendar{
+  display: none;
+}
+.show{
+  display: block;
+}
