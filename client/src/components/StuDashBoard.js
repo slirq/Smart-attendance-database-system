@@ -4,6 +4,7 @@ import {MyContext }from '../context/context'
 import Table from './smallComponents/Table'
 import axios from 'axios'
 import PieChartTable from './smallComponents/PieCharts'
+import FullTimetable from './smallComponents/FullTimetable'
 
 const initialState={
     loading:true,
@@ -28,6 +29,7 @@ const reducer =(state,action)=>{
         default:return state
     }
 }
+
 export default function StuDashBoard() {    
     const {uniqueID} = useContext(MyContext)
     const [state,dispatch]=useReducer(reducer,initialState)
@@ -57,7 +59,8 @@ export default function StuDashBoard() {
             justifyContent:"center",
             alignItems:"center",
         } }>
-                <Card
+                
+            <Card
 
                     sx={{
                         position:"relative",
@@ -105,19 +108,9 @@ export default function StuDashBoard() {
                             color={"White"}>
                                     Time Table
                         </Text>
-                        <Text 
-                            paddingBottom='2vh'
-                            htmlFor='name' 
-                            display='flex'
-                            flex-wrap= 'wrap'
-                            fontSize={[ 3, 4, 5 ]}
-                            fontWeight={"bold"}
-                            marginRight={".2em"}
-                            color={"White"}>
-                                            {state.responseFromServer[4]}
-                        </Text>
-                        <Table   columns={8}
+                        <Table   columns={9}
                                  data={[
+                                        "DAY",
                                         "8",
                                         "9",
                                         "10",
@@ -127,9 +120,7 @@ export default function StuDashBoard() {
                                         "15:00",
                                         "16:00"
                                     ]}/>
-                        <Table
-                            columns={8}
-                            data={state.responseFromServer[3]}/>
+                        <FullTimetable tt={state.responseFromServer[3]}/>
                     </Heading>
                     </Box>
                     <Box sx={{ display: 'flex',}}>
@@ -167,8 +158,11 @@ export default function StuDashBoard() {
                             color={"White"}> {`${state.responseFromServer[1][0]}`}   
                             </Text>
                             <Table  columns={7}  data={subjects}/>
-                            <Table columns={7}  data={state.responseFromServer[0]} />
-                            <Table columns={7}  data={state.responseFromServer[2]} />
+                            <Table columns={7}  
+                                data={state.responseFromServer[0]} 
+                                totalAttendance = {state.responseFromServer[2]}
+                                moreData={true}
+                                />
                     </Heading>
                     </Box>
                 </Card>

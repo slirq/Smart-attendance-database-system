@@ -1,26 +1,20 @@
 import React from 'react'
-import {Table} from './Table' 
-import { Text,Box,Card,Button,Heading} from 'rebass'
-export default function FullTimetable() {
-    const DAYS = ["MONDAY"]
+import Table from './Table' 
+import { Text,Box,Heading} from 'rebass'
+  
+export default function FullTimetable({tt}) {
     return (
-        <div>
-            <Table
-                                    
-                                    columns={9}
-                                    data={[
-                                      "Day",
-                                        "8AM",
-                                        "9AM",
-                                        "10AM",
-                                        "11:30AM",
-                                        "12:30PM",
-                                        "2PM",
-                                        "3PM",
-                                        "4PM"
-                                    ]}
-                                    />
-                                
-        </div>
+        <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',borderRadius:"2em",
+        margin:'2vh',marginY:'0.2vh'}}>
+              <Heading p={3} bg='muted'>
+                <Text paddingBottom='2vh' htmlFor='name'  fontSize={[ 3, 4, 6 ]} fontWeight={"bold"}
+                  marginRight={".2em"}  color={"White"}>
+                          Time Table
+                </Text>                         
+                <Table   columns={9}  data={["Day","8:00","9:00","10:00","11:30","12:30","14:00",
+                                                "15:00","16:00"]}/>
+                {tt.map((day)=>{return(<Table columns={9} data={day} />)})}     
+            </Heading>
+        </Box>
     )
 }
