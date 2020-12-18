@@ -4,7 +4,28 @@ body{
 }
 .calendar{
   display: none;
+  justify-content: center;
+  align-items: center;
 }
 .show{
   display: block;
+}
+.hidden{
+  display: none;
+}
+/* .react-calendar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+.dropdownButton{
+  height: 6vh;
+  width: 6vh;
+position: relative;
+left: 80vw;
+}
+form select ,div.react-calendar,submit.submit,button{
+  margin: .9em;
+  display: flex;
+  flex-direction: column;
 }

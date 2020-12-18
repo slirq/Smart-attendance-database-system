@@ -77,7 +77,7 @@ export default function StaffDashBoard() {
                         boxShadow:'0 0 2em rgba(0, 0, 0, .7)',  borderRadius:"2em", display:"top",
                         marginY:'2vh'}}>
                 <Name name ={state.responseFromServer[0][0]}/>
-                <ClassesUpdate/>
+                <ClassesUpdate subjects={state.responseFromServer[3]}/>
                 <FullTimetable tt={state.responseFromServer[2]} />
                                       
                 <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',borderRadius:"2em",
