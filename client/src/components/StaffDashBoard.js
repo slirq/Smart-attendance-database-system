@@ -2,12 +2,13 @@ import React,{useEffect,useReducer,useContext} from 'react'
 import axios from 'axios'
 import {MyContext }from '../context/context'
 // import {Input} from '@rebass/forms'
-import Table from './smallComponents/Table'
-import { Text,Box,Card,Heading} from 'rebass'
+// import Table from './smallComponents/Table'
+import { Text,Box,Card} from 'rebass'
 import FullTimetable from './smallComponents/FullTimetable'
 import ClassesUpdate from './smallComponents/ClassesUpdate'
 import Name from './smallComponents/Name'
 import AttendanceView from './smallComponents/AttendanceView'
+import LogView from './smallComponents/LogView'
 const initialState={
     loading:true,
     error:'',
@@ -81,25 +82,7 @@ export default function StaffDashBoard() {
                 <ClassesUpdate subjects={state.responseFromServer[3]} uniqueID={uniqueID}/>
                 <FullTimetable tt={state.responseFromServer[2]} />
                 <AttendanceView />
-                <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',borderRadius:"2em",margin:'2vh',
-                                marginTop:'0.1vh' }}>
-                    <Heading p={3} bg='muted'>
-                        <Text paddingBottom='2vh' htmlFor='name' fontSize={[ 3, 4, 6 ]} fontWeight={"bold"}
-                              marginRight={".2em"} color={"White"}>
-                            Student log/Class Log
-                        </Text>
-                        <Text paddingBottom='2vh' htmlFor='name'  display='flex' flex-wrap= 'wrap'
-                              fontSize={[ 3, 4, 5 ]} fontWeight={"bold"}  marginRight={".2em"} color={"White"}>
-                            select student placeholder
-                        </Text>
-                        <Text paddingBottom='2vh' htmlFor='name' display='flex' flex-wrap= 'wrap'  fontSize={[ 3, 4, 5 ]}
-                              fontWeight={"bold"} marginRight={".2em"} color={"White"}>
-                            select timeframe placeholder {/*default should be all students*/}
-                        </Text>
-                        <Table  columns={3} data={["USN","Subject","Timestamp"]}/>
-                        <Table columns={3}  data={[ "1BI18Cxxx","UNIX","00:00:00 16/4/2020",]}/>
-                    </Heading>
-                </Box>
+                <LogView subjects={state.responseFromServer[3]} />
             </Card>
         </Box>
     )

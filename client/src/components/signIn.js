@@ -83,7 +83,7 @@ export default function SignIn() {
                                         justifyContent:"center",
                                         alignItems:"unset",}}>
                         <Label width={"15vw"} color={"black"}>
-                            Staff? <Radio value="red" onClick={e=>setStaff(!isStaff)} /> 
+                            Staff? <Radio value="red" defaultChecked="true" onClick={e=>setStaff(!isStaff)} /> 
                         </Label>
                         <Label htmlFor='name' color={"black"} paddingBottom={".4em"}>{isStaff?"Staff ID":"USN"}</Label>
                         <Input  id='usn'    name='usn'   color={"black"} paddingBottom={".6em"}  type="text"     defaultValue=''/>

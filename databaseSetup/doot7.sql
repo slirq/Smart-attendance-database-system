@@ -49,19 +49,19 @@ DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `summarise` AFTER INSERT ON `attendancelog` FOR EACH ROW begin 
 set @subjectTest = new.subject;
 IF (@subjectTest='ATCI') THEN
-    UPDATE  totalattendance set totalattendance.ATCI=totalattendance.ATCI+1 where totalattendance.usn= new.usn;
+    UPDATE  totalstudentattendance set totalstudentattendance.ATCI=totalstudentattendance.ATCI+1 where totalstudentattendance.usn= new.usn;
  ELSEIF (@subjectTest='ME') THEN
-    UPDATE  totalattendance set totalattendance.ME=totalattendance.ME+1 where totalattendance.usn= new.usn;
+    UPDATE  totalstudentattendance set totalstudentattendance.ME=totalstudentattendance.ME+1 where totalstudentattendance.usn= new.usn;
  ELSEIF (@subjectTest='CNS') THEN
-     UPDATE  totalattendance set totalattendance.CNS=totalattendance.CNS+1 where totalattendance.usn= new.usn;
+     UPDATE  totalstudentattendance set totalstudentattendance.CNS=totalstudentattendance.CNS+1 where totalstudentattendance.usn= new.usn;
 ELSEIF (@subjectTest='ADP') THEN
-    UPDATE  totalattendance set totalattendance.ADP=totalattendance.ADP+1 where totalattendance.usn= new.usn;
+    UPDATE  totalstudentattendance set totalstudentattendance.ADP=totalstudentattendance.ADP+1 where totalstudentattendance.usn= new.usn;
 ELSEIF (@subjectTest='UNIX') THEN
-    UPDATE  totalattendance set totalattendance.UNIX=totalattendance.UNIX+1 where totalattendance.usn= new.usn;
+    UPDATE  totalstudentattendance set totalstudentattendance.UNIX=totalstudentattendance.UNIX+1 where totalstudentattendance.usn= new.usn;
 ELSEIF (@subjectTest='DBMS') THEN
-    UPDATE  totalattendance set totalattendance.DBMS=totalattendance.DBMS+1 where totalattendance.usn= new.usn;
+    UPDATE  totalstudentattendance set totalstudentattendance.DBMS=totalstudentattendance.DBMS+1 where totalstudentattendance.usn= new.usn;
 ELSEIF (@subjectTest='EVS') THEN
-    UPDATE  totalattendance set totalattendance.EVS=totalattendance.EVS+1 where totalattendance.usn= new.usn;
+    UPDATE  totalstudentattendance set totalstudentattendance.EVS=totalstudentattendance.EVS+1 where totalstudentattendance.usn= new.usn;
 end IF; 
 end */;;
 DELIMITER ;

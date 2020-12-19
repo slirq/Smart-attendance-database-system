@@ -5,6 +5,8 @@ const cam = require('./controllers/cam');
 const stuDashBoard = require('./controllers/stuDashBoard')
 const staffDashBoard = require('./controllers/staffDashBoard')
 const cl = require('./controllers/classLog')
+const al = require('./controllers/attendanceView')
+const vl = require('./controllers/logView')
 const cors = require('cors');
 const port = 5000;
 const app = express();
@@ -16,7 +18,8 @@ app.post('/signUp',signUp.signUp)
 app.post('/getAttendance',stuDashBoard.stuDashBoard)
 app.post('/getStaffInfo',staffDashBoard.staffDashBoard)
 app.post('/classLog',cl.classLog)
-app.post('/attendanceView')
+app.post('/attendanceView',al.attendanceView)
+app.post('/logView',vl.logView)
 app.post('/cam',cam.cam)
 app.get('/',(req,res)=>{res.redirect('/signIn')})
 

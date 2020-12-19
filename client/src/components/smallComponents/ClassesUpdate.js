@@ -17,23 +17,22 @@ export default function ClassesUpdate({subjects,uniqueID}) {
         msg.textContent = payload
         
     }
-    const validate=values=>{
-        const errors={}
-        // console.log(values)
-        if(!values.date.length){errors.date = "choose a date sweety"}
-        if(!values.month.length){errors.month = "choose a month sweety"}
-        return errors
-    }
+    // const validate=values=>{
+    //     const errors={}
+    //     // console.log(values)
+    //     if(!values.date.length){errors.date = "choose a date sweety"}
+    //     if(!values.month.length){errors.month = "choose a month sweety"}
+    //     return errors
+    // }
     const formik = useFormik({
         initialValues:{
             section:"A",
             numberOfClasses:"1",
             subject:`${subjects[0]}`,
-            date:"",
-            month:"",
+            date:"10",
+            month:"12",
             year:"2020"
         },
-        validate,
         onSubmit:async val=>{
             let {section,date,month,year,numberOfClasses,subject} = val
             payload = `${numberOfClasses} class(es) of ${subject} were conducted on ${date}-${month}-${year} for section ${section}`
@@ -60,7 +59,7 @@ export default function ClassesUpdate({subjects,uniqueID}) {
                 flexDirection:"row",
                 fontFamily:"Sansita Swashed",
                 fontSize:"1.5em"}}>
-            <div style={{color:"blue",width:"100vw",height:toggle?"120vh":"10vh"}}>
+            <div style={{color:"blue",width:"100vw",height:toggle?"95vh":"10vh"}}>
                 <span className = {toggle?"show":"hidden"} style={{width:"100vw",display:"flex",justifyContent:"center"}}>
                     Update Classes
                 </span> 
@@ -76,36 +75,38 @@ export default function ClassesUpdate({subjects,uniqueID}) {
                         <option value="B">B</option>
                         <option value="C">C</option>
                     </select>
-                    <label htmlFor="dateTaken">when was the class taken?</label>
+                    <div style={{display:"flex",flexDirection:"row"}}>
+                    <label htmlFor="date">when was the class taken?</label>
                     <select id="date" 
                             name="date" 
                             onChange={formik.handleChange}
                             onClick={showStatement}
                             value={formik.values.date}>
-                            {dates.map(date=><option id="date" name="date" value={date}>{date}</option>)}
+                            {dates.map(date=><option id="date" name="date" key={date}>{date}</option>)}
                     </select>
                     { formik.errors.date?
                             <Text sx={{fontSize:"1.6em",color:"red"}}>
                                 {formik.errors.date}
-                            </Text>:null}
+                            </Text>:<Text></Text>}
                     <select id="month" name="month" 
                             onChange={formik.handleChange}
                             onClick={showStatement}
                             value={formik.values.month}>
-                            {months.map(month=><option id="month" name="month" value={month}>{month}</option>)}
+                            {months.map(month=><option id="month" name="month" key={month}>{month}</option>)}
                     </select>
                     { formik.errors.month?
                             <Text sx={{fontSize:"1.6em",color:"red"}}>
                                 {formik.errors.month}
-                            </Text>:null}
+                            </Text>:<Text></Text>}
                     <select id="year" 
                             name="year" 
                             onChange={formik.handleChange}
                             onClick={showStatement}
                             value={formik.values.year}>
-                            {years.map(year=><option id="year" name="year" value={year}>{year}</option>)}
+                            {years.map(year=><option id="year" name="year" key={year}>{year}</option>)}
                     </select>
-                    <label htmlFor="numberOfClasses">number of classes that happened that day?</label>
+                    </div>
+                    <label htmlFor="numberOfClasses">number of classes that happend that day?</label>
                     <select id="numberOfClasses" 
                             onChange={formik.handleChange} 
                             name="numberOfClasses"
@@ -119,9 +120,11 @@ export default function ClassesUpdate({subjects,uniqueID}) {
                     <select id="subject" name="subject" 
                         value={formik.values.subject} onClick={showStatement}
                         onChange={formik.handleChange}>
-                        {subjects.map(sub=><option value={`${sub}`}>{`${sub}`}</option>)}
+                        {subjects.map(sub=><option value={`${sub}LogView`}>{`${sub}`}</option>)}
                     </select>
-                    <Text ref={el=>msg=el} sx={{fontSize:"1.6em",color:"red"}} ></Text>
+                    <Text ref={el=>msg=el} sx={{fontSize:"1.6em",color:"red"}} >
+                        {`${formik.values.numberOfClasses} class(es) of ${formik.values.subject} were conducted on ${formik.values.date}-${formik.values.month}-${formik.values.year} for section ${formik.values.section}`}
+                    </Text>
                     <button type="submit">Submit?</button>
                     {serverReply?<Text >Database successfully updated</Text>:<Text></Text>}
                     </form>

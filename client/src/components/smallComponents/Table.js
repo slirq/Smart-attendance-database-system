@@ -11,6 +11,7 @@ export default function Table({ columns, data,moreData,totalAttendance }) {
                   return (
                     <Box px={2} width={1 / columns} >
                       <Text 
+                        key={`${data}+${index}`}
                         p={"2"}
                         justifyContent="center"
                         alignItems="center"
