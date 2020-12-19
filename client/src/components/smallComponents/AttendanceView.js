@@ -8,8 +8,8 @@ export default function Views() {
             section:"A"
         },
         onSubmit:async val=>{
-            let {section} = value
-            
+            let {section} = val
+
         }
     })
     return (
@@ -20,10 +20,6 @@ export default function Views() {
                 <Text paddingBottom='2vh' htmlFor='name' fontSize={[ 3, 4, 6 ]}
                     fontWeight={"bold"} marginRight={".2em"}color={"White"}>
                     ATTENDANCE
-                </Text>
-                <Text paddingBottom='2vh' htmlFor='name' display='flex'  flex-wrap= 'wrap'
-                    fontSize={[ 3, 4, 5 ]} fontWeight={"bold"} marginRight={".2em"} color={"White"}>
-                    Section Placeholder
                 </Text>
                 <Table  columns={2} data={["USN","Subject"]}/>
                 <Table  columns={2} data={["1Bi18cs003","26/30"]}/>

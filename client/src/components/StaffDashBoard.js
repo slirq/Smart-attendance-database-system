@@ -39,7 +39,7 @@ export default function StaffDashBoard() {
     const fetchData = async ()=>{
         const result= await axios({"method":"post","url":"http://localhost:5000/getStaffInfo",
         "data":{uniqueID:uniqueID,
-                firstTime:true }})
+        }})
         return result.data 
         }
     // console.log(state)
