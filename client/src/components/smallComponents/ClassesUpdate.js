@@ -67,7 +67,7 @@ export default function ClassesUpdate({subjects,uniqueID}) {
                 <img alt="dropdown" className="dropdownButton" src="https://img.icons8.com/nolan/64/drag-list-down.png" onClick={makeVisible}/>
                 <Box className = {toggle?"show":"calendar"} sx={{width:"50vw",position:'relative',left:"10vh"}}>
                     <form onSubmit={formik.handleSubmit}>
-                    <label htmlFor="section">Which setion was it?</label>
+                    <label htmlFor="section">Which section was it?</label>
                     <select id="setion" name="section" 
                         value={formik.values.section}
                         onChange={formik.handleChange}
@@ -105,7 +105,7 @@ export default function ClassesUpdate({subjects,uniqueID}) {
                             value={formik.values.year}>
                             {years.map(year=><option id="year" name="year" value={year}>{year}</option>)}
                     </select>
-                    <label htmlFor="numberOfClasses">number of classes that happend that day?</label>
+                    <label htmlFor="numberOfClasses">number of classes that happened that day?</label>
                     <select id="numberOfClasses" 
                             onChange={formik.handleChange} 
                             name="numberOfClasses"
