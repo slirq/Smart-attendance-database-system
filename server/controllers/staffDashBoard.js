@@ -1,6 +1,7 @@
 const db = require("../connection")
+const {extractValue,extractValueArray} = require("./helper")
 exports.staffDashBoard=async (req,res)=>{
-   if(req.body.firstTime){ let uniqueID = req.body.uniqueID
+    let uniqueID = req.body.uniqueID
     let sqlForteacherName = `select NAME from staff where ID='${uniqueID}';`
     let sqlForTC = `select * from totalclasses;`
     let sqlForFullTT = `select DAY,8_00,9_00,10_00,11_30,12_30,2_00,3_00,4_00 from timetable ORDER BY FIELD(DAY, 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY');`
@@ -28,18 +29,4 @@ exports.staffDashBoard=async (req,res)=>{
         console.log("error yahan h\n",error)
     }
     res.status(200).json(reply)
-    }
-    else{
-        
-    }
-}
-const extractValue=(result)=>{
-    let final
-    result.map((obj)=>final = Object.values(obj))
-    return final;
-}
-const extractValueArray=(result)=>{
-    let final =[]
-    result.map((obj)=>final.push(Object.values(obj)))
-    return final;
     }

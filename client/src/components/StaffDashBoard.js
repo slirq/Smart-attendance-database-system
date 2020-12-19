@@ -7,6 +7,7 @@ import { Text,Box,Card,Heading} from 'rebass'
 import FullTimetable from './smallComponents/FullTimetable'
 import ClassesUpdate from './smallComponents/ClassesUpdate'
 import Name from './smallComponents/Name'
+import AttendanceView from './smallComponents/AttendanceView'
 const initialState={
     loading:true,
     error:'',
@@ -77,24 +78,9 @@ export default function StaffDashBoard() {
                         boxShadow:'0 0 2em rgba(0, 0, 0, .7)',  borderRadius:"2em", display:"top",
                         marginY:'2vh'}}>
                 <Name name ={state.responseFromServer[0][0]}/>
-                <ClassesUpdate subjects={state.responseFromServer[3]}/>
+                <ClassesUpdate subjects={state.responseFromServer[3]} uniqueID={uniqueID}/>
                 <FullTimetable tt={state.responseFromServer[2]} />
-                                      
-                <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',borderRadius:"2em",
-                                margin:'2vh',marginY:'0.2vh' }}>
-                    <Heading p={3} bg='muted'>
-                        <Text paddingBottom='2vh' htmlFor='name' fontSize={[ 3, 4, 6 ]}
-                            fontWeight={"bold"} marginRight={".2em"}color={"White"}>
-                            ATTENDANCE
-                        </Text>
-                        <Text paddingBottom='2vh' htmlFor='name' display='flex'  flex-wrap= 'wrap'
-                            fontSize={[ 3, 4, 5 ]} fontWeight={"bold"} marginRight={".2em"} color={"White"}>
-                            Section Placeholder
-                        </Text>
-                        <Table  columns={2} data={["USN","Subject"]}/>
-                        <Table  columns={2} data={["1Bi18cs003","26/30"]}/>
-                    </Heading>
-                </Box>
+                <AttendanceView />
                 <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',borderRadius:"2em",margin:'2vh',
                                 marginTop:'0.1vh' }}>
                     <Heading p={3} bg='muted'>
