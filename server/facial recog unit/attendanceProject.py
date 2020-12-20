@@ -23,7 +23,7 @@ path = 'ImagesAttendance'
 images = []
 classNames = []
 myList = os.listdir(path)
-SECTION="A"
+SECTION="A"  #to be changed by the technition
 curSubject=""
 #print(myList)
 for cl in myList:
@@ -37,7 +37,7 @@ with open ('encodings', 'rb') as fp:
 
 def markAttendance(name,subject):
     try:
-        cur.execute('insert into attendancelog values ("'+name+'",current_timestamp(),"'+subject+'");')
+        cur.execute('insert into attendancelog values ("'+name+'",current_timestamp(),"'+SECTION+'","'+subject+'");')
         print('inserted successfully')
        
     except Exception as e:
@@ -71,7 +71,7 @@ def getSubject():
     #print(timeStr)
     if((HOURint != 11 and HOURint !=12 and MINUTEint == 00) or (HOURint ==11 and HOURint ==12 and MINUTEint ==30) and SECOND == 00):
         print("inserted successfully")
-        cur.execute('select '+timeStr+' from timetable where timetable.day="'+DAY+'" and section ="'+SECTION+'";')
+        cur.execute('select '+timeStr+' from schedule where schedule.day="'+DAY+'" and section ="'+SECTION+'";')
         curSubject=str(cur.fetchone())
         #----------------------IMPORTANT------------------------------------------------#
         #cur.execute("truncate table dupcheck;")
