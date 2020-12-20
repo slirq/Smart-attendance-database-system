@@ -119,7 +119,9 @@ export default function StuDashBoard() {
                                         "14:00",
                                         "15:00",
                                         "16:00"
-                                    ]}/>
+                                    ]}
+                                    uniStr="staDaB-1-"
+                                    />
                         <FullTimetable tt={state.responseFromServer[3]}/>
                     </Heading>
                     </Box>
@@ -157,8 +159,10 @@ export default function StuDashBoard() {
                             marginRight={".2em"}
                             color={"White"}> {`${state.responseFromServer[1][0]}`}   
                             </Text>
-                            <Table  columns={7}  data={subjects}/>
-                            <Table columns={7}  
+
+                                    
+                            <Table uniStr="staDaB-2-" columns={7}  data={subjects}  />
+                            <Table columns={7}  uniStr="staDaB-3-"
                                 data={state.responseFromServer[0]} 
                                 totalAttendance = {state.responseFromServer[2]}
                                 moreData={true}

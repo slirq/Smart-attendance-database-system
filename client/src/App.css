@@ -35,3 +35,8 @@ form select ,div.react-calendar,submit.submit,button{
 #lv{
   margin-left: 1.5em;
 }
+.subject-av{
+  margin:0;
+  margin-left: .6em;
+  margin-right: .6em;
+}

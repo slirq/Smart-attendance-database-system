@@ -82,7 +82,7 @@ export default function ClassesUpdate({subjects,uniqueID}) {
                             onChange={formik.handleChange}
                             onClick={showStatement}
                             value={formik.values.date}>
-                            {dates.map(date=><option id="date" name="date" key={date}>{date}</option>)}
+                            {dates.map((date,index)=><option id="date" name="date" key={date}>{date}</option>)}
                     </select>
                     { formik.errors.date?
                             <Text sx={{fontSize:"1.6em",color:"red"}}>
@@ -118,9 +118,10 @@ export default function ClassesUpdate({subjects,uniqueID}) {
 
                     <label htmlFor="subject">what was the subject?</label>
                     <select id="subject" name="subject" 
-                        value={formik.values.subject} onClick={showStatement}
+                        value={formik.values.subject} 
+                        onClick={showStatement}
                         onChange={formik.handleChange}>
-                        {subjects.map(sub=><option value={`${sub}LogView`}>{`${sub}`}</option>)}
+                        {subjects.map((sub,index)=><option key={`cu-1-${index}`} value={`${sub}LogView`}>{`${sub}`}</option>)}
                     </select>
                     <Text ref={el=>msg=el} sx={{fontSize:"1.6em",color:"red"}} >
                         {`${formik.values.numberOfClasses} class(es) of ${formik.values.subject} were conducted on ${formik.values.date}-${formik.values.month}-${formik.values.year} for section ${formik.values.section}`}

@@ -1,14 +1,25 @@
-import React from 'react'
-import {Heading,Text,Box} from 'rebass'
+import React,{useState} from 'react'
+import {Heading,Text,Box,Flex} from 'rebass'
 import Table from './Table'
+import axios from 'axios'
 import {useFormik} from 'formik'
-export default function Views() {
+export default function AttendanceView({subjects,section}) {
+    const [serverReply, setserverReply] = useState([])
+
     const formik = useFormik({
         initialValues:{
-            section:"A"
+            subjectAV:`${subjects[0]}`
         },
         onSubmit:async val=>{
-            let {section} = val
+            let {subjectAV} = val
+            let reply = await axios({
+                "method":"post",
+                "url":"http://localhost:5000/attendanceView",
+                "data":{
+                    "subject":subjectAV,
+                "section":section}})
+            // console.log("reply from av",reply) 
+            setserverReply(reply.data)
 
         }
     })
@@ -21,8 +32,22 @@ export default function Views() {
                     fontWeight={"bold"} marginRight={".2em"}color={"White"}>
                     ATTENDANCE
                 </Text>
-                <Table  columns={2} data={["USN","Subject"]}/>
-                <Table  columns={2} data={["1Bi18cs003","26/30"]}/>
+                <form onSubmit={formik.handleSubmit}>
+                <Flex>
+                <label htmlFor="subject">{`Showing attendance of students for subject   `}</label>
+                    <select className="subject-av" id="subject" name="subject" onChange={formik.handleChange}  >
+                        {subjects.map((sub,index)=>{return(<option 
+                                                            key={`${sub}+${index}`} 
+                                                            value={`${sub}`}
+                                                            >{`${sub}`}</option>)})}
+                    </select>
+                <label htmlFor="section">{` and section ${section}`}</label>
+
+                    </Flex>
+                    <button type="submit">Get that summary</button>
+                <Table  columns={2} data={["USN","Attendance"]} uniStr="av-1-"/>
+                {serverReply.map((item,index)=><Table columns={2} key={`av-3-${index}`} data={[ item.USN,item.ATT]} uniStr="av-2-"/>)}
+                </form>
             </Heading>
         </Box>
     )

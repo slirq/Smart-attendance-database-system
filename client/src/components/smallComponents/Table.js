@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text,Box, Flex} from 'rebass'
-export default function Table({ columns, data,moreData,totalAttendance }) {
+export default function Table({ columns, data,moreData,totalAttendance,uniStr }) {
   // console.log(data) 
 
     return (
@@ -9,9 +9,9 @@ export default function Table({ columns, data,moreData,totalAttendance }) {
               <Flex flexWrap="wrap">
                 {data.map((item, index) => {
                   return (
-                    <Box px={2} width={1 / columns} >
+                    <Box key={`${uniStr}-${index}`} px={2} width={1 / columns} >
                       <Text 
-                        key={`${data}+${index}`}
+                        key={`${uniStr}-${index+1000}`}
                         p={"2"}
                         justifyContent="center"
                         alignItems="center"

@@ -3,10 +3,12 @@ import pymysql as sql
 import json
 import os
 import time 
-# import random
+import random
 mydb = sql.Connect(host="localhost",user="test",password="481526",db="attendance", autocommit=True)
 cur = mydb.cursor()
 subjects = ["ATCI","ADP","CNS","DBMS","ME","UNIX"]
+sections = ["A","B","C"]
+names = ["doot","bruv","konichiwa","feltu","subaru","emilia","beatrice","bojack","nguyen","oji-chan"]
 # dirname = os.path.dirname(__file__)
 # path=os.path.join(dirname,'data.json')
 # jsonData = open(path).read()
@@ -41,11 +43,16 @@ try:
     for i in range(1,100):
         number+=1
         for j in range(0,len(subjects)-1):
+            index = random.randint(0,len(sections)-1)
             finalUsn = baseUsn+str(number)
+            section = sections[index]
+            name = names[index] 
+            password = "hallo"
             statement= 'insert into attendancelog values ("{0}",(select current_timestamp()),"{1}");'.format(finalUsn,subjects[j])
+            # statement='insert into student values ("{0}","{1}","{2}",(select sha2("{3}",256)))'.format(finalUsn,section,name,password)
             print(statement)
             cur.execute(statement)
-        
+    
 except Exception as err:
     print("\n\n\n error is here \n\n\n"+str(err))
 finally:

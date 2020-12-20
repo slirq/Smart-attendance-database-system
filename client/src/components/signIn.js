@@ -2,14 +2,14 @@ import React from 'react'
 import axios from 'axios'
 import { useContext,useState,useRef } from "react";
 import {MyContext} from "../context/context"
-import {Label,Input,Radio} from '@rebass/forms'
+import {Label,Input,Checkbox} from '@rebass/forms'
 import { Text,Box,Card,Button, Flex,Link} from 'rebass'
 import { useHistory } from 'react-router-dom';
 
 export default function SignIn() {
     let history = useHistory()
     const {isVerified ,setVerified,uniqueID,setUniqueID} = useContext(MyContext)
-    const [isStaff, setStaff] = useState(false)
+    const [isStaff, setStaff] = useState(true)
     let  msg = useRef(null)
     const enter=(e)=>{if(e.which===13)SignInVerify();}
     const SignInVerify = async (e)=>{
@@ -83,7 +83,7 @@ export default function SignIn() {
                                         justifyContent:"center",
                                         alignItems:"unset",}}>
                         <Label width={"15vw"} color={"black"}>
-                            Staff? <Radio value="red" defaultChecked="true" onClick={e=>setStaff(!isStaff)} /> 
+                            Staff? <Checkbox value="red" defaultChecked="true" onClick={e=>setStaff(!isStaff)} /> 
                         </Label>
                         <Label htmlFor='name' color={"black"} paddingBottom={".4em"}>{isStaff?"Staff ID":"USN"}</Label>
                         <Input  id='usn'    name='usn'   color={"black"} paddingBottom={".6em"}  type="text"     defaultValue=''/>

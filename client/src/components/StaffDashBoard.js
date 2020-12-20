@@ -49,6 +49,8 @@ export default function StaffDashBoard() {
         async()=>{
             let reply = await fetchData()
             dispatch({type:"fetched",payload:reply})
+        // console.log(state.responseFromServer)
+
 
     })();
     // eslint-disable-next-line
@@ -81,8 +83,8 @@ export default function StaffDashBoard() {
                 <Name name ={state.responseFromServer[0][0]}/>
                 <ClassesUpdate subjects={state.responseFromServer[3]} uniqueID={uniqueID}/>
                 <FullTimetable tt={state.responseFromServer[2]} />
-                <AttendanceView />
-                <LogView subjects={state.responseFromServer[3]} />
+                <AttendanceView subjects={state.responseFromServer[3]} section={state.responseFromServer[1][0]} />                
+                <LogView subjects={state.responseFromServer[3]}  />
             </Card>
         </Box>
     )
