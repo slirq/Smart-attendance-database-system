@@ -48,7 +48,7 @@ export default function LogView({subjects}) {
                 </form>
             
             <Table  columns={2} data={["USN","Timestamp"]} uniStr="lv-1-"/>
-            {serverReply.map((item,index)=><Table columns={2} key={`lv-2-${index}`} data={[ item.USN,item.TS.replace("T1","\t|\t").replace(".000Z","")]} uniStr="lv-2-"/>)}
+            {serverReply.map((item,index)=><Table columns={2} key={`lv-2-${index}`} data={[ item.USN,item.TS.replace("T","\t|\t").replace(".000Z","")]} uniStr="lv-2-"/>)}
             </Heading>
     </Box>
     )

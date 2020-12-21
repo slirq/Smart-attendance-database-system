@@ -34,8 +34,8 @@ export default function AttendanceView({subjects,section}) {
                 </Text>
                 <form onSubmit={formik.handleSubmit}>
                 <Flex>
-                <label htmlFor="subject">{`Showing attendance of students for subject   `}</label>
-                    <select className="subject-av" id="subject" name="subject" onChange={formik.handleChange}  >
+                <label htmlFor="subjectAV">{`Showing attendance of students for subject   `}</label>
+                    <select className="subjectAV" id="subjectAV" name="subjectAV" onChange={formik.handleChange}  >
                         {subjects.map((sub,index)=>{return(<option 
                                                             key={`${sub}+${index}`} 
                                                             value={`${sub}`}

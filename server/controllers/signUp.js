@@ -16,6 +16,7 @@ exports.signUp = async (req,res)=>{
             let sqlForStaff = 'insert into staff values(?,?,(select SHA2(?,256)),?);'
             let valuesForStaff = [`${newID}`,`${name}`,`${password}`,`${subject}`]
             const [result,fields] = await db.execute(sqlForStaff,valuesForStaff)
+            console.log(valuesForStaff)
             console.log(newID,"from main")
             res.status(200).json(resForID)
         }

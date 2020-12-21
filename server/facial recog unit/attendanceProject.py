@@ -13,9 +13,9 @@ import pymysql as sql
 import pickle
 import os
 myDB= sql.connect(host ="localhost",
-                  user="test",
-                  password = "481526",
-                  db = "attendance",
+                  user="root",
+                  password = "1223",
+                  db = "sa",
                   autocommit =True)
 cur = myDB.cursor()
 
@@ -60,18 +60,18 @@ def checkDuplicate(name):
 def getSubject():
     global BRANCH,SECTION,curSubject
     now =datetime.now()
-    HOURint=8#int(now.strftime('%I'))
+    HOURint=9#int(now.strftime('%I'))
     HOUR =str(HOURint)
-    MINUTEint=0#(now.strftime('%M'))
+    MINUTEint="00"#(now.strftime('%M'))
     MINUTE =str(MINUTEint)
-    DAY="monday"#str(now.strftime("%A"))
+    DAY="wednesday"#str(now.strftime("%A"))
     #added seconds parameter to remove the 1 minute window of constant table truncation
     SECOND =00#str(now.strftime("%S"))    
     timeStr=str(HOUR + "_" + MINUTE)
-    #print(timeStr)
-    if((HOURint != 11 and HOURint !=12 and MINUTEint == 00) or (HOURint ==11 and HOURint ==12 and MINUTEint ==30) and SECOND == 00):
+    print(timeStr)
+    if(((HOUR != "11" or HOUR !="12") and MINUTEint == "00") or ((HOUR =="11" or HOUR =="12") and MINUTE =="30") and SECOND == "00"):
         print("inserted successfully")
-        cur.execute('select '+timeStr+' from schedule where schedule.day="'+DAY+'" and section ="'+SECTION+'";')
+        cur.execute('select '+timeStr+' from schedule where day="'+DAY+'" and section ="'+SECTION+'";')
         curSubject=str(cur.fetchone())
         #----------------------IMPORTANT------------------------------------------------#
         #cur.execute("truncate table dupcheck;")
@@ -81,7 +81,7 @@ def getSubject():
         #-------------------------------------------------------------------------------#
         print(curSubject)
         return curSubject.split("'")[1]
-    if((HOURint == 11 and MINUTEint==range(1,29)) or (HOURint ==1 and MINUTEint == range(31,59))):
+    if((HOUR == "11" and MINUTEint==range(1,29)) or (HOUR =="1" and MINUTEint == range(31,59))):
         return None # break time
     else:
         return None
@@ -112,7 +112,7 @@ while True:
             cv2.rectangle(img,(x1,y2-35),(x2,y2),(0,255,0),cv2.FILLED)
             cv2.putText(img,name,(x1+6,y2-6),cv2.FONT_HERSHEY_COMPLEX,1,(255,255,255),2)
             
-            if(checkDuplicate(name)):
+            if(checkDuplicate(name) and Subject!=None):
                 markAttendance(name,Subject)
             else:
                 continue

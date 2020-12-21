@@ -2,6 +2,7 @@ const db = require('../connection');
 exports.attendanceView=async (req,res)=>{
     let {subject,section } =req.body
     let reply = []
+    console.log(subject)
     try {
         let sql = `select usn,${subject} from attendance_summary where section="${section}";`
         const [result,f] = await db.execute(sql)
