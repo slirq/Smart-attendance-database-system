@@ -4,8 +4,8 @@ exports.staffDashBoard=async (req,res)=>{
     let uniqueID = req.body.uniqueID
     let sqlForteacherName = `select NAME from staff where ID='${uniqueID}';`
     let sqlForTC = `select * from totalclasses;`
-    let sqlForFullTT = `select DAY,8_00,9_00,10_00,11_30,12_30,2_00,3_00,4_00 from timetable ORDER BY FIELD(DAY, 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY');`
-    let sqlForSubjects = `select subject from subjects where ID='${uniqueID}';`
+    let sqlForFullTT = `select DAY,8_00,9_00,10_00,11_30,12_30,2_00,3_00,4_00 from schedule ORDER BY FIELD(DAY, 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY');`
+    let sqlForSubjects = `select subject_name from subject where ID='${uniqueID}';`
     let reply=[]
     try {
         const [resultForTeacherInfo    ,fTSA] = await  db.execute(sqlForteacherName)

@@ -4,7 +4,7 @@ exports.logView=async (req,res)=>{
     let subject = req.body.subject
     let reply =[]
     try{    
-            let sql = `select * from attendancelog where subject="${subject}"`
+            let sql = `select * from attendancelog where subject_name="${subject}"`
             const [result,f] = await db.execute(sql)
             result.map(item=>reply.push({"USN":item.USN,"TS":item.TIMESTAMP}))
             console.log(result)}

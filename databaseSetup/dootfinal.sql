@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
 --
--- Host: localhost    Database: SA
+-- Host: localhost    Database: sa
 -- ------------------------------------------------------
 -- Server version	8.0.21
 
@@ -334,16 +334,16 @@ CREATE TABLE `totalclasses` (
 
 LOCK TABLES `totalclasses` WRITE;
 /*!40000 ALTER TABLE `totalclasses` DISABLE KEYS */;
-INSERT INTO `totalclasses` VALUES ('A',45,45,43,42,41,44,43),('B',44,46,45,43,42,41,43),('B',41,45,46,44,43,42,43);
+INSERT INTO `totalclasses` VALUES ('A',45,45,43,42,41,44,43),('B',44,46,45,43,42,41,43),('C',41,45,46,44,43,42,43);
 /*!40000 ALTER TABLE `totalclasses` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'SA'
+-- Dumping events for database 'sa'
 --
 
 --
--- Dumping routines for database 'SA'
+-- Dumping routines for database 'sa'
 --
 
 --
@@ -359,7 +359,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `attendance_summary` AS select `t`.`USN` AS `USN`,`t`.`SECTION` AS `SECTION`,concat(`t`.`ATCI`,'/',`c`.`ATCI`) AS `ATCI`,concat(`t`.`ME`,'/',`c`.`ME`) AS `ME`,concat(`t`.`CNS`,'/',`c`.`CNS`) AS `CNS`,concat(`t`.`ADP`,'/',`c`.`ADP`) AS `ADP`,concat(`t`.`UNIX`,'/',`c`.`UNIX`) AS `UNIX`,concat(`t`.`EVS`,'/',`c`.`EVS`) AS `EVS`,concat(`t`.`DBMS`,'/',`c`.`DBMS`) AS `DBMS` from (`studentattendance` `t` join `totalclasses` `c`) */;
+/*!50001 VIEW `attendance_summary` AS select distinct `t`.`USN` AS `USN`,`t`.`SECTION` AS `SECTION`,concat(`t`.`ATCI`,'/',`c`.`ATCI`) AS `ATCI`,concat(`t`.`ME`,'/',`c`.`ME`) AS `ME`,concat(`t`.`CNS`,'/',`c`.`CNS`) AS `CNS`,concat(`t`.`ADP`,'/',`c`.`ADP`) AS `ADP`,concat(`t`.`UNIX`,'/',`c`.`UNIX`) AS `UNIX`,concat(`t`.`EVS`,'/',`c`.`EVS`) AS `EVS`,concat(`t`.`DBMS`,'/',`c`.`DBMS`) AS `DBMS` from (`studentattendance` `t` join `totalclasses` `c`) where (`t`.`SECTION` = `c`.`SECTION`) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -373,4 +373,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-20 18:55:03
+-- Dump completed on 2020-12-21  8:26:48

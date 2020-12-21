@@ -3,8 +3,8 @@ exports.signIn = async (req,res)=>{
     let password = req.body.password;
     let usn = req.body.uniqueID;
     let staff = req.body.staff
-    let sqlForStudents = ` (select SHA2('${password}',256) like (select passwordhash from student where usn='${usn}'));`
-    let sqlForStaff = ` (select SHA2('${password}',256) like (select PASSWORDHASH from staff where ID='${usn}'));`
+    let sqlForStudents = ` (select SHA2('${password}',256) like (select password from student where usn='${usn}'));`
+    let sqlForStaff = ` (select SHA2('${password}',256) like (select PASSWORD from staff where ID='${usn}'));`
     // console.log(password);
     if(staff){
     const [resultForStaff,fields] = await db.execute(sqlForStaff)

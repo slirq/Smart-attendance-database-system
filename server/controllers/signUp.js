@@ -20,8 +20,8 @@ exports.signUp = async (req,res)=>{
             res.status(200).json(resForID)
         }
         else {
-            let sqlForStudent = `insert into student values(?,?,(select SHA2(?,256),?));`
-            let valuesForStudent = [`${usn}`,`${name}`,`${password}`,`${sec}`]
+            let sqlForStudent = `insert into student values(?,?,?,(select SHA2(?,256)));`
+            let valuesForStudent = [`${usn}`,`${name}`,`${sec}`,`${password}`]
             const [result,fields] = await db.execute(sqlForStudent,valuesForStudent)
             console.log(result.affectedRows)
             res.status(200).json({reply:result.affectedRows})

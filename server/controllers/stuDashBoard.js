@@ -5,7 +5,7 @@ exports.stuDashBoard = async (req,res)=>{
     // let day = date.toLocaleString('en-US',{weekday:'long'}).toLocaleUpperCase()
     let day = "MONDAY"
     let section 
-    let sqlForTSA = `select ATCI,ME,CNS,ADP,UNIX,EVS,DBMS from totalstudentattendance where USN="${usn}" `
+    let sqlForTSA = `select ATCI,ME,CNS,ADP,UNIX,EVS,DBMS from studentattendance where USN="${usn}" `
     let sqlForStu = `select USN,NAME,SECTION from student where USN = "${usn}"`
     let sqlForTC = `select ATCI,ME,CNS,ADP,UNIX,EVS,DBMS from totalclasses`
     
@@ -28,7 +28,7 @@ exports.stuDashBoard = async (req,res)=>{
         reply.push(FinalResultForTC)
 
         section = reply[1][2]
-        let sqlForTT = `select DAY,8_00,9_00,10_00,11_30,12_30,2_00,3_00,4_00 from timetable ORDER BY FIELD(DAY, 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY');`
+        let sqlForTT = `select DAY,8_00,9_00,10_00,11_30,12_30,2_00,3_00,4_00 from schedule ORDER BY FIELD(DAY, 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY');`
         // console.log(sqlForTT)
         const [resultForTT,fTT] = await  db.execute(sqlForTT)
         resultForTT.map(obj=>FinalResultForTT.push(Object.values(obj)))
