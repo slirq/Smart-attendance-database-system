@@ -99,7 +99,7 @@ export default function StuDashBoard() {
                                 }}>
 
                     <Heading p={3} bg='muted'>
-                        <Text 
+                        {/* <Text 
                             paddingBottom='2vh'
                             htmlFor='name' 
                             fontSize={[ 3, 4, 6 ]}
@@ -121,7 +121,7 @@ export default function StuDashBoard() {
                                         "16:00"
                                     ]}
                                     uniStr="staDaB-1-"
-                                    />
+                                    /> */}
                         <FullTimetable tt={state.responseFromServer[3]}/>
                     </Heading>
                     </Box>

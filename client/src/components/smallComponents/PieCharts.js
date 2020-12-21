@@ -17,8 +17,9 @@ export default function PieCharts({subjects,studentAttendance,totalAttendance}) 
                                     alignItems:"center",
                                     borderRadius:"2em",
                                     marginY:'2vh',
-                                    marginRight:'.5vh',
-                                    marginLeft:'2vh',
+                                    // marginRight:'1vh',
+                                    // marginLeft:'1vh',
+                                    marginX:'1vh',
                                     width:'17%',
                                     height:'25%',
                                     padding:'2vh'
@@ -37,7 +38,7 @@ export default function PieCharts({subjects,studentAttendance,totalAttendance}) 
                             fontSize={[ 1, 3, 5 ]}
                             fontWeight={"bold"}
                             paddingTop="0.5em"
-                            paddingX="3.9vw"
+                            paddingX="2.5vw"
                             color={"Black"}
                             > {subject}
 

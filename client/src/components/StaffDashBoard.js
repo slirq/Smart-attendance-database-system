@@ -49,7 +49,7 @@ export default function StaffDashBoard() {
         async()=>{
             let reply = await fetchData()
             dispatch({type:"fetched",payload:reply})
-        // console.log(state.responseFromServer)
+         //console.log(state.responseFromServer[1][0])
 
 
     })();

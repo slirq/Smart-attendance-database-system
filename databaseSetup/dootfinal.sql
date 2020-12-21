@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
 --
--- Host: localhost    Database: sa
+-- Host: localhost    Database: SA
 -- ------------------------------------------------------
 -- Server version	8.0.21
 
@@ -171,7 +171,7 @@ CREATE TABLE `schedule` (
 
 LOCK TABLES `schedule` WRITE;
 /*!40000 ALTER TABLE `schedule` DISABLE KEYS */;
-INSERT INTO `schedule` VALUES ('FRIDAY','A','ATCI','DBMS','ME','_','_','_','_','_'),('MONDAY','A','_','_','_','ADP','CNS','ME','ATCI','UNIX'),('SATURDAY','A','UNIX','ME','DBMS','ADP','_','_','_','_'),('THURSDAY','A','_','_','_','CNS','ME','CNS','DBMS',''),('TUESDAY','A','CNS','CNS','DBMS','_','_','_','_','_'),('WEDNESDAY','A','ADP','UNIX','ATCI','CNS','DBMS','_','_','EVS'),('MONDAY','B','ADP','UNIX','ATCI','CNS','ME','_','_','_'),('TUESDAY','C','UNIX','UNIX','ATCI','ADP','ADP','_','_','_');
+INSERT INTO `schedule` VALUES ('FRIDAY','A','ATCI','DBMS','ME','_','_','_','_','_'),('MONDAY','A','_','_','_','ADP','CNS','ME','ATCI','UNIX'),('SATURDAY','A','UNIX','ME','DBMS','ADP','_','_','_','_'),('THURSDAY','A','_','_','_','CNS','ME','CNS','DBMS',''),('TUESDAY','A','CNS','CNS','DBMS','_','_','_','_','_'),('WEDNESDAY','A','ADP','UNIX','ATCI','CNS','DBMS','_','_','EVS'),('FRIDAY','B','ATCI','DBMS','DBMS','ME','UNIX','_','_','_'),('MONDAY','B','ADP','UNIX','ATCI','CNS','ME','_','_','_'),('SATURDAY','B','ME','DBMS','ADP','_','_','_','_','_'),('THURSDAY','B','ME','ATCI','UNIX','ADP','ADP','_','_','_'),('TUESDAY','B','_','_','_','ADP','UNIX','DBMS','ATCI','EVS'),('WEDNESDAY','B','UNIX','UNIX','ME','ADP','ATCI','_','_','_'),('FRIDAY','C','_','_','_','_','_','UNIX','UNIX','ATCI'),('MONDAY','C','ADP','ADP','UNIX','ME','EVS','_','_','_'),('SATURDAY','C','_','_','_','_','_','_','_','_'),('THURSDAY','C','DBMS','ME','CNS','_','_','_','_','_'),('TUESDAY','C','UNIX','UNIX','ATCI','ADP','ADP','_','_','_'),('WEDNESDAY','C','_','_','_','ADP','DBMS','CNS','CNS','ME');
 /*!40000 ALTER TABLE `schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -339,11 +339,11 @@ INSERT INTO `totalclasses` VALUES ('A',45,45,43,42,41,44,43),('B',44,46,45,43,42
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'sa'
+-- Dumping events for database 'SA'
 --
 
 --
--- Dumping routines for database 'sa'
+-- Dumping routines for database 'SA'
 --
 
 --
@@ -373,4 +373,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-21  8:26:48
+-- Dump completed on 2020-12-21 14:03:11
