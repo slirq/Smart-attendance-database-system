@@ -33,12 +33,11 @@ export default function SignUp() {
                                                     }  
                                             }    
                                         )
+                    
                 setCreated(confirmation.data.reply);
+                console.log(isCreated)
                 }
-          catch(error){
-                console.log(confirmation)
-                console.log("error is",error)
-            }
+          catch(error){ console.log(confirmation);console.log("error is",error)   }
             e.preventDefault()
         }
     const handlePhoto=(e)=>{
@@ -154,14 +153,13 @@ export default function SignUp() {
                         <Label width={"15vw"} m={".3em"}>Staff? <Checkbox value="red" onClick={e=>setStaff(!isStaff)} /> </Label>
                         {isStaff?staff():student()}
 
-                        <Text
-                            sx={{
+                        <Text   sx={{
                                 display:"flex",
                                 justifyContent:"center",
-                                alignItems:"center",
-                                // my:".2em"
+                                alignItems:"center"
                                 }}  
-                            color={isCreated?"green":"orange"}>
+                                color={isCreated?"green":"red"}>
+                                
                                 {isCreated?"Yay you've registered,Now sign in":" "}
                         </Text>
                         <Box 

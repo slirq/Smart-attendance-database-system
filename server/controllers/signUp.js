@@ -25,12 +25,11 @@ exports.signUp = async (req,res)=>{
             let valuesForStudent = [`${usn}`,`${name}`,`${sec}`,`${password}`]
             const [result,fields] = await db.execute(sqlForStudent,valuesForStudent)
             console.log(result.affectedRows)
-            res.status(200).json({reply:result.affectedRows})
+            res.status(200).json({reply:result.affectedRows?true:false})
             }
-
         }
     
-    catch(e){ console.log("t'was an error\n\n",e.sqlMessage,"\n\n",e);res.json({"error":e.errno})}
+    catch(e){ console.log("t'was an error\n\n",e.sqlMessage,"\n\n",e);res.json({"reply":false})}
     
 }
 
