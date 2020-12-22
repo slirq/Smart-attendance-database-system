@@ -8,4 +8,6 @@ export default function ProtectedRoute({component:Component,...rest}) {
     return (
         <Route {...rest} render={(props)=> isVerified?<Component {...props}/>:<Redirect to='/signIn' />}/>
     )
+
+    
 }

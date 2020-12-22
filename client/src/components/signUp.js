@@ -8,20 +8,22 @@ export default function SignUp() {
     let confirmation=0;
     const {isCreated ,setCreated} = useContext(MyContext)
     const [isStaff,setStaff] = useState(false)
+    let id = useRef(null)
     let usn=useRef(null)
     let password=useRef(null)
     let name=useRef(null)
     let sec=useRef(null)
     const handleSubmit = async (e)=>{
-        let usnValue=0,passwordValue,nameValue,secValue,subjectValue=0
+        let usnValue=0,passwordValue,nameValue,secValue,subjectValue=0,idValue
         if(!isStaff){
         [usnValue]= [usn.value.toUpperCase()]
         }
-        [passwordValue,nameValue,secValue] =[password.value,name.value,sec.value]
+        [passwordValue,nameValue,secValue,idValue] =[password.value,name.value,sec.value,id.value]
         try{
             confirmation = await axios( { method:'post',
                                                 url:'http://localhost:5000/signUp',
                                                 data:{
+                                                    id:idValue,
                                                     usn: usnValue,
                                                     password: passwordValue,
                                                     name:nameValue,
@@ -72,8 +74,12 @@ export default function SignUp() {
         return (
             <>
                 <Box width={"15vw"}  >
+                    <Label >STAFF ID</Label>
+                    <Input  ref={el=>id=el}  type="text"  defaultValue='' />
+                </Box>
+                <Box width={"15vw"}  >
                     <Label >Full Name</Label>
-                    <Input  ref={el=>name=el}  type="text"   />
+                    <Input  ref={el=>name=el}  type="text"  defaultValue='abc1' />
                 </Box>
                 <Box width={"15vw"}  >
                     <Label >Password</Label>
@@ -117,7 +123,7 @@ export default function SignUp() {
                 <Card
                     as='form'
                     sx={{
-                        height:"50vh",
+                        height:"60vh",
                         width:"35vw",
                         background:"rgba(131,22,219,0.8)",
                         boxShadow:'0 0 16px rgba(0, 0, 0, .55)',

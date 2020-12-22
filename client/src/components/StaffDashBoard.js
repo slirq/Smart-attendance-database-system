@@ -8,7 +8,7 @@ import FullTimetable from './smallComponents/FullTimetable'
 import ClassesUpdate from './smallComponents/ClassesUpdate'
 import Name from './smallComponents/Name'
 import AttendanceView from './smallComponents/AttendanceView'
-import LogView from './smallComponents/LogView'
+import StudentLogView from './smallComponents/StudentLogView'
 const initialState={
     loading:true,
     error:'',
@@ -32,15 +32,12 @@ const reducer =(state,action)=>{
         default:return state
     }
 }
-
-
 export default function StaffDashBoard() {
     const {uniqueID} = useContext(MyContext)
     const [state,dispatch]=useReducer(reducer,initialState)
     const fetchData = async ()=>{
         const result= await axios({"method":"post","url":"http://localhost:5000/getStaffInfo",
-        "data":{uniqueID:uniqueID,
-        }})
+        "data":{uniqueID:uniqueID,section:"A" }})
         return result.data 
         }
     // console.log(state)
@@ -83,8 +80,8 @@ export default function StaffDashBoard() {
                 <Name name ={state.responseFromServer[0][0]}/>
                 <ClassesUpdate subjects={state.responseFromServer[3]} uniqueID={uniqueID}/>
                 <FullTimetable tt={state.responseFromServer[2]} />
-                <AttendanceView subjects={state.responseFromServer[3]} section={state.responseFromServer[1][0]} />                
-                <LogView subjects={state.responseFromServer[3]}  />
+                <AttendanceView subjects={state.responseFromServer[3]} sections={state.responseFromServer[4]} />                
+                <StudentLogView subjects={state.responseFromServer[3]} sections={state.responseFromServer[4]}  />
             </Card>
         </Box>
     )

@@ -1,0 +1,11 @@
+{
+  "name": "dmp",
+  "version": "1.0.0",
+  "description": "smart attendance system",
+  "main": "none",
+  "scripts": {
+    "fullApp": "cd server && npm run fullApp"
+  },
+  "author": "slirq and toothsy",
+  "license": "ISC"
+}

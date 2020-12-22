@@ -1,10 +1,13 @@
 const db = require('../connection');
 
-exports.logView=async (req,res)=>{
-    let subject = req.body.subject
-    let reply =[]
+exports.studentLogView=async (req,res)=>{
+    let {subject,section} = req.body
+    
+    let reply = []
     try{    
-            let sql = `select * from attendancelog where subject_name="${subject}"`
+
+            let sql = `select * from attendancelog where subject_name="${subject}" and SECTION="${section}";`
+            console.log(req.body)
             const [result,f] = await db.execute(sql)
             
             result.map(item=>reply.push({"USN":item.USN,"TS":item.TIMESTAMP}))

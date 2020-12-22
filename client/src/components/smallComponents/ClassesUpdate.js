@@ -59,8 +59,8 @@ export default function ClassesUpdate({subjects,uniqueID}) {
                 flexDirection:"row",
                 fontFamily:"Sansita Swashed",
                 fontSize:"1.5em"}}>
-            <div style={{color:"blue",width:"100vw",height:toggle?"95vh":"10vh"}}>
-                <span className = {toggle?"show":"hidden"} style={{width:"100vw",display:"flex",justifyContent:"center"}}>
+            <div style={{color:"blue",width:"100vw",height:toggle?"75vh":"10vh"}}>
+                <span  style={{width:"100vw",display:"flex",justifyContent:"center"}}>
                     Update Classes
                 </span> 
                 <img alt="dropdown" className="dropdownButton" src="https://img.icons8.com/nolan/64/drag-list-down.png" onClick={makeVisible}/>

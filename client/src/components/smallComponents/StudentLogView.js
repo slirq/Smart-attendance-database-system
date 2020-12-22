@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Text,Box,Heading, Flex} from 'rebass'
 import {useFormik } from 'formik'
 import Table from './Table'
-export default function LogView({subjects}) {
+export default function LogView({subjects,sections}) {
     const [serverReply, setserverReply] = useState([])
     const validate = ()=>{
     let errors={}
@@ -11,16 +11,19 @@ export default function LogView({subjects}) {
      return errors}
     const formik = useFormik({
         initialValues:{
-            subjectLV:`${subjects[0]}`
+            subjectLV:`${subjects[0]}`,
+            sectionLV:`${sections[0]}`
+
+
         },validate,
         onSubmit: async val=>{
             // console.log(val)
-            let {subjectLV }= val
+            let {subjectLV,sectionLV }= val
+            // console.log(sectionLV)
             let reply = await axios({
                 "method":"post",
-                "url":"http://localhost:5000/logView",
-                "data":{
-                    "subject":subjectLV}})
+                "url":"http://localhost:5000/studentLogView",
+                "data":{"subject":subjectLV,"section":sectionLV,}})
             // console.log(subject) 
             setserverReply(reply.data)
             // console.log(serverReply)
@@ -43,7 +46,15 @@ export default function LogView({subjects}) {
                                                             value={`${sub}`}
                                                             >{`${sub}`}</option>)})}
                     </select>
+                    <label htmlFor="sectionLV">and section </label>
+                    <select id="sectionLV" name="sectionLV" onChange={formik.handleChange}  >
+                        {sections.map((sec,index)=>{return(<option 
+                                                            key={`${sec}+${index}`} 
+                                                            value={`${sec}`}
+                                                            >{`${sec}`}</option>)})}
+                    </select>
                     </Flex>
+                    
                     <button type="submit">Get that log</button>
                 </form>
             
