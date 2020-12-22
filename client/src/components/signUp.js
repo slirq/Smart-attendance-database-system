@@ -15,11 +15,11 @@ export default function SignUp() {
     let sec=useRef(null)
     let subject=useRef(null)
     const handleSubmit = async (e)=>{
-        let usnValue=0,passwordValue,nameValue,secValue,idValue,subjectValue
+        let usnValue=0,passwordValue,nameValue,secValue,idValue,subjectValue=""
         if(!isStaff){
-        [usnValue]= [usn.value.toUpperCase()]
+        [usnValue,subjectValue]= [usn.value.toUpperCase(),subject.value]
         }
-        [passwordValue,nameValue,secValue,idValue,subjectValue] =[password.value,name.value,sec.value,id.value,subject.value]
+        [passwordValue,nameValue,secValue,idValue] =[password.value,name.value,sec.value,id.value]
         try{
             confirmation = await axios( { method:'post',
                                                 url:'http://localhost:5000/signUp',

@@ -4,9 +4,9 @@ exports.signUp = async (req,res)=>{
     let usn = req.body.usn;
     let name = req.body.name.toUpperCase();
     let sec = req.body.sec.toUpperCase();
-    let subject = req.body.subject.toUpperCase()
+    let subject = req.body.subject
     let ID= req.body.id
-    
+
     try{
         
         if(usn===0) {
