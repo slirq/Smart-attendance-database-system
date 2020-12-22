@@ -48,7 +48,7 @@ const createNewId=(resForID)=>{
                 digits+=resForID[lastEntry].ID[index]
                 index++;
         }
-        newID = "BITstaff"+(Number(digits)+1)                
+        newID = "abc"+(Number(digits)+1)                
     }
     return newID;
 }
