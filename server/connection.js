@@ -5,7 +5,8 @@ const connection = mysql.createPool({
     password: "1223",
     database: "sa",
     port:"3306",
-    connectTimeout:"15000" 
+    connectTimeout:"15000",
+    timezone:'system'
     
 });
 module.exports=connection.promise();

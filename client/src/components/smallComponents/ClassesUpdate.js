@@ -121,7 +121,7 @@ export default function ClassesUpdate({subjects,uniqueID}) {
                         value={formik.values.subject} 
                         onClick={showStatement}
                         onChange={formik.handleChange}>
-                        {subjects.map((sub,index)=><option key={`cu-1-${index}`} value={`${sub}LogView`}>{`${sub}`}</option>)}
+                        {subjects.map((sub,index)=><option key={`cu-1-${index}`} value={`${sub}`}>{`${sub}`}</option>)}
                     </select>
                     <Text ref={el=>msg=el} sx={{fontSize:"1.6em",color:"red"}} >
                         {`${formik.values.numberOfClasses} class(es) of ${formik.values.subject} were conducted on ${formik.values.date}-${formik.values.month}-${formik.values.year} for section ${formik.values.section}`}
