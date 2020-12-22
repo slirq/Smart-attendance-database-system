@@ -5,7 +5,7 @@ import {Input,Label,Checkbox,Select} from '@rebass/forms'
 import { Box,Card, Flex,Button,Text,Link } from 'rebass'
 
 export default function SignUp() {
-    let confirmation=0;
+    let confirmation=0
     const {isCreated ,setCreated} = useContext(MyContext)
     const [isStaff,setStaff] = useState(false)
     let id = useRef(null)
@@ -13,12 +13,13 @@ export default function SignUp() {
     let password=useRef(null)
     let name=useRef(null)
     let sec=useRef(null)
+    let subject=useRef(null)
     const handleSubmit = async (e)=>{
-        let usnValue=0,passwordValue,nameValue,secValue,subjectValue=0,idValue
+        let usnValue=0,passwordValue,nameValue,secValue,idValue,subjectValue
         if(!isStaff){
         [usnValue]= [usn.value.toUpperCase()]
         }
-        [passwordValue,nameValue,secValue,idValue] =[password.value,name.value,sec.value,id.value]
+        [passwordValue,nameValue,secValue,idValue,subjectValue] =[password.value,name.value,sec.value,id.value,subject.value]
         try{
             confirmation = await axios( { method:'post',
                                                 url:'http://localhost:5000/signUp',
@@ -35,6 +36,7 @@ export default function SignUp() {
                 setCreated(confirmation.data.reply);
                 }
           catch(error){
+                console.log(confirmation)
                 console.log("error is",error)
             }
             e.preventDefault()
@@ -91,17 +93,17 @@ export default function SignUp() {
                 </Box>
                 <Box width={"15vw"}  >
                     <Label >Your Subject?</Label>
-                    <Select
+                    <Select ref={el =>subject=el}
                         fontFamily={"Sansita Swashed"}
                         id='location'
                         name='location'
                         defaultValue='NYC'>
-                        <option>ME</option>
-                        <option>CNS</option>
-                        <option>DBMS</option>
-                        <option>ATC</option>
-                        <option>ADP</option>
-                        <option>UNIX</option>
+                        <option value="ME">ME</option>
+                        <option value="CNS">CNS</option>
+                        <option value="DBMS">DBMS</option>
+                        <option value="ATC">ATC</option>
+                        <option value="ADP">ADP</option>
+                        <option value="UNIX">UNIX</option>
                     </Select>
                 </Box>
             </>

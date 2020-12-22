@@ -2,23 +2,23 @@ const db = require('../connection');
 exports.signUp = async (req,res)=>{
     let password = req.body.password;
     let usn = req.body.usn;
-    let name = req.body.name;
-    let sec = req.body.sec;
-    let subject = req.body.subject
+    let name = req.body.name.toUpperCase();
+    let sec = req.body.sec.toUpperCase();
+    let subject = req.body.subject.toUpperCase()
     let ID= req.body.id
-    
     
     try{
         
         if(usn===0) {
-
-            let sqlForStaff = 'insert into staff values(?,?,(select SHA2(?,256)),?);'
-            let valuesForStaff = [`${ID}`,`${name}`,`${password}`,`${sec}`]
-            const [result,fields] = await db.execute(sqlForStaff,valuesForStaff)
-
-            console.log(result.affectedRows)
-            console.log(newID,"from main")
-            res.status(200).json(resForID)
+            let reply = []
+            let sqlForStaff = 'insert into staff values(?,?,(select SHA2(?,256)));'
+            let sqlForSub = 'insert into subject values(?,?,?);'
+            let valuesForSub = [`${ID}`,`${subject}`,`${sec}`]
+            let valuesForStaff = [`${ID}`,`${name}`,`${password}`]
+            const [resultSta,fieldst] = await db.execute(sqlForStaff,valuesForStaff)
+            const [resultSub,fieldsu] = await db.execute(sqlForSub,valuesForSub)
+            console.log(resultSub)
+            res.status(200).json(resultSta.affectedRows)
         }
         else {
             let sqlForStudent = `insert into student values(?,?,?,(select SHA2(?,256)));`
@@ -30,7 +30,7 @@ exports.signUp = async (req,res)=>{
 
         }
     
-    catch(e){ console.log("t'was an error\n\n",e.sqlMessage,"\n\n",e)}
+    catch(e){ console.log("t'was an error\n\n",e.sqlMessage,"\n\n",e);res.json({"error":e.errno})}
     
 }
 
