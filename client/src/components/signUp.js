@@ -1,7 +1,7 @@
 import React ,{useContext, useState,useRef}from 'react'
 import {MyContext} from "../context/context"
 import axios from 'axios'
-import {Input,Label,Radio,Select} from '@rebass/forms'
+import {Input,Label,Checkbox,Select} from '@rebass/forms'
 import { Box,Card, Flex,Button,Text,Link } from 'rebass'
 
 export default function SignUp() {
@@ -123,7 +123,7 @@ export default function SignUp() {
                 <Card
                     as='form'
                     sx={{
-                        height:"60vh",
+                        height:"70vh",
                         width:"35vw",
                         background:"rgba(131,22,219,0.8)",
                         boxShadow:'0 0 16px rgba(0, 0, 0, .55)',
@@ -149,7 +149,7 @@ export default function SignUp() {
                                         justifyContent:"center",
                                         alignItems:"center"
                                         }}>
-                        <Label width={"15vw"} m={".3em"}>Staff? <Radio value="red" onClick={e=>setStaff(!isStaff)} /> </Label>
+                        <Label width={"15vw"} m={".3em"}>Staff? <Checkbox value="red" onClick={e=>setStaff(!isStaff)} /> </Label>
                         {isStaff?staff():student()}
 
                         <Text
@@ -160,7 +160,7 @@ export default function SignUp() {
                                 // my:".2em"
                                 }}  
                             color={isCreated?"green":"orange"}>
-                                {isCreated?"Yay you've registered":"waiting for ye to submit ...."}
+                                {isCreated?"Yay you've registered,Now sign in":" "}
                         </Text>
                         <Box 
                             p={"unset"}
