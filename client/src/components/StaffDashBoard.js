@@ -56,7 +56,7 @@ export default function StaffDashBoard() {
     return(state.loading?<Text sx={{
         height:"100%",
         width:"100%",
-        background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 6%)",
+        background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
         color: 'white',
         bg: 'gray',
         display:"flex",
@@ -67,14 +67,15 @@ export default function StaffDashBoard() {
         <Box sx={{
             height:"100%",
             width:"100%",
-            background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 6%)",
+            background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
+
             color: 'white',
             bg: 'gray',
             display:"flex",
             justifyContent:"center",
             alignItems:"center",
         }} >
-        <Card sx={{ position:"relative",   width:"90%", height:"wrap-content", background:"rgba(131,22,219,0.8)",
+        <Card sx={{ position:"relative",   width:"90%", height:"wrap-content", background:"white",
                         boxShadow:'0 0 2em rgba(0, 0, 0, .7)',  borderRadius:"2em", display:"top",
                         marginY:'2vh'}}>
                 <Name name ={state.responseFromServer[0][0]}/>

@@ -59,10 +59,10 @@ export default function ClassesUpdate({subjects,uniqueID}) {
                 flexDirection:"row",
                 fontFamily:"Sansita Swashed",
                 fontSize:"1.5em"}}>
-            <div style={{color:"blue",width:"100vw",height:toggle?"75vh":"10vh"}}>
-                <span  style={{width:"100vw",display:"flex",justifyContent:"center"}}>
+            <div style={{color:"white",width:"100vw",height:toggle?"75vh":"15vh"}}>
+                <Text fontSize={[ 3, 4, 6 ]}  style={{width:"100vw",display:"flex",justifyContent:"center"}}>
                     Update Classes
-                </span> 
+                </Text> 
                 <img alt="dropdown" className="dropdownButton" src="https://img.icons8.com/nolan/64/drag-list-down.png" onClick={makeVisible}/>
                 <Box className = {toggle?"show":"calendar"} sx={{width:"50vw",position:'relative',left:"10vh"}}>
                     <form onSubmit={formik.handleSubmit}>
@@ -95,7 +95,7 @@ export default function ClassesUpdate({subjects,uniqueID}) {
                             {months.map(month=><option id="month" name="month" key={month}>{month}</option>)}
                     </select>
                     { formik.errors.month?
-                            <Text sx={{fontSize:"1.6em",color:"red"}}>
+                            <Text sx={{fontSize:"1.5em",color:"red"}}>
                                 {formik.errors.month}
                             </Text>:<Text></Text>}
                     <select id="year" 
@@ -123,11 +123,11 @@ export default function ClassesUpdate({subjects,uniqueID}) {
                         onChange={formik.handleChange}>
                         {subjects.map((sub,index)=><option key={`cu-1-${index}`} value={`${sub}`}>{`${sub}`}</option>)}
                     </select>
-                    <Text ref={el=>msg=el} sx={{fontSize:"1.6em",color:"red"}} >
+                    <Text ref={el=>msg=el} sx={{fontSize:"1.2em",color:"white",width:"100vw"}} >
                         {`${formik.values.numberOfClasses} class(es) of ${formik.values.subject} were conducted on ${formik.values.date}-${formik.values.month}-${formik.values.year} for section ${formik.values.section}`}
                     </Text>
-                    <button type="submit">Submit?</button>
-                    {serverReply?<Text >Database successfully updated</Text>:<Text></Text>}
+                    <button className="cu-but" type="submit">Submit?</button>
+                    {serverReply?<Text sx={{color:"rgb(240, 178, 33)"}} >Database successfully updated</Text>:<Text></Text>}
                     </form>
                 </Box> 
             </div>

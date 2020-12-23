@@ -15,12 +15,14 @@ exports.signUp = async (req,res)=>{
             let sqlForSub = 'insert into subject values(?,?,?);'
             let valuesForSub = [`${ID}`,`${subject}`,`${sec}`]
             let valuesForStaff = [`${ID}`,`${name}`,`${password}`]
+            console.log(valuesForSub)
             const [resultSta,fieldst] = await db.execute(sqlForStaff,valuesForStaff)
             const [resultSub,fieldsu] = await db.execute(sqlForSub,valuesForSub)
             console.log(resultSub)
             res.status(200).json(resultSta.affectedRows)
         }
         else {
+
             let sqlForStudent = `insert into student values(?,?,?,(select SHA2(?,256)));`
             let valuesForStudent = [`${usn}`,`${name}`,`${sec}`,`${password}`]
             const [result,fields] = await db.execute(sqlForStudent,valuesForStudent)

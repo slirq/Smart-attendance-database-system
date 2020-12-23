@@ -7,7 +7,7 @@ import { Box,Card, Flex,Button,Text,Link } from 'rebass'
 export default function SignUp() {
     let confirmation=0
     const {isCreated ,setCreated} = useContext(MyContext)
-    const [isStaff,setStaff] = useState(false)
+    const [isStaff,setStaff] = useState(true)
     let id = useRef(null)
     let usn=useRef(null)
     let password=useRef(null)
@@ -17,9 +17,9 @@ export default function SignUp() {
     const handleSubmit = async (e)=>{
         let usnValue=0,passwordValue,nameValue,secValue,idValue,subjectValue=""
         if(!isStaff){
-        [usnValue,subjectValue]= [usn.value.toUpperCase(),subject.value]
+        [usnValue]= [usn.value.toUpperCase()]
         }
-        [passwordValue,nameValue,secValue,idValue] =[password.value,name.value,sec.value,id.value]
+        [passwordValue,nameValue,secValue,idValue,subjectValue] =[password.value,name.value,sec.value,id.value,subject.value]
         try{
             confirmation = await axios( { method:'post',
                                                 url:'http://localhost:5000/signUp',
@@ -95,8 +95,7 @@ export default function SignUp() {
                     <Select ref={el =>subject=el}
                         fontFamily={"Sansita Swashed"}
                         id='location'
-                        name='location'
-                        defaultValue='NYC'>
+                        name='location'>
                         <option value="ME">ME</option>
                         <option value="CNS">CNS</option>
                         <option value="DBMS">DBMS</option>
@@ -113,7 +112,7 @@ export default function SignUp() {
             <Box sx={{
                     height:"100vh",
                     width:"100vw",
-                    background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 6%)",   
+                    background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
                     bg: 'gray',
                     overflow:'hidden',
                     display:"flex",
@@ -126,7 +125,7 @@ export default function SignUp() {
                     sx={{
                         height:"70vh",
                         width:"35vw",
-                        background:"rgba(131,22,219,0.8)",
+                        background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
                         boxShadow:'0 0 16px rgba(0, 0, 0, .55)',
                         borderRadius:"2em",
                         display:"flex",
@@ -150,7 +149,7 @@ export default function SignUp() {
                                         justifyContent:"center",
                                         alignItems:"center"
                                         }}>
-                        <Label width={"15vw"} m={".3em"}>Staff? <Checkbox value="red" onClick={e=>setStaff(!isStaff)} /> </Label>
+                        <Label width={"15vw"} m={".3em"}>Staff? <Checkbox value="red" defaultChecked onClick={e=>setStaff(!isStaff)} /> </Label>
                         {isStaff?staff():student()}
 
                         <Text   sx={{
@@ -177,7 +176,8 @@ export default function SignUp() {
                                         height:"3em",
                                         width:"7em",
                                         p:"unset",
-                                        background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%) ",
+                                        background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
+
                                         border:"2px solid black",
                                         borderRadius:".7em",
                                         color:"black",
@@ -192,7 +192,7 @@ export default function SignUp() {
                                         width:"6.5em",
                                         p:"unset",
                                         color:"black",
-                                        background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%)" ,
+                                        background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
                                         border:"2px solid black",
                                         borderRadius:".7em",
                                         fontFamily:"Sansita Swashed"
@@ -210,7 +210,7 @@ export default function SignUp() {
                                     sx={{
                                         height:"2em",
                                         width:"8em",
-                                        background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%)" ,
+                                        background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
                                         border:"2px solid black",
                                         textDecoration:"none",
                                         color:"black",

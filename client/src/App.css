@@ -40,3 +40,24 @@ form select ,div.react-calendar,submit.submit,button{
   margin-left: .6em;
   margin-right: .6em;
 }
+form div select option{
+  border-radius: 1.6em;
+  font-family: Sansita Swashed;
+  background-color: rgb(240, 178, 33);
+}
+div button {
+  border: none;
+  border-radius: .2em;
+  background-color: rgb(240, 178, 33);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.25s;
+}
+div button:active {
+  background-color: rgb(148, 105, 4);
+}
+div button:hover {
+  background-color: rgb(148, 105, 4);
+}

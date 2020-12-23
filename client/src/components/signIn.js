@@ -41,7 +41,7 @@ export default function SignIn() {
             <Box sx={{
                     height:"100vh",
                     width:"100vw",
-                    background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 6%)",
+                    background:" linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
                     color: 'white',
                     bg: 'gray',
                     overflow:'hidden',
@@ -57,7 +57,7 @@ export default function SignIn() {
                     sx={{
                         width:"25vw",
                         height:"40vh",
-                        background:"rgba(131,22,219,0.3)",
+                        background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
                         boxShadow:'0 0 2em rgba(0, 0, 0, .8)',
                         borderRadius:"2em",
                         display:"flex",
@@ -106,7 +106,7 @@ export default function SignIn() {
                                     fontFamily:"Sansita Swashed",
                                     flexDirection:"rows",
                                     textAlign:"center",
-                                    background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%)" ,
+                                    background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
                                     border:"2px solid black",
                                     borderRadius:".7em" }}
                                     mr={".9em"} >
@@ -118,7 +118,7 @@ export default function SignIn() {
                                         sx={{
                                             height:"3em",
                                             width:"6em",
-                                            background:" linear-gradient(215deg, rgba(41,21,227,1) 27%, rgba(131,22,219,0.9612045501794468) 76%)" ,
+                                            background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
                                             border:"2px solid black",
                                             textDecoration:"none",
                                             color:"white",
@@ -135,3 +135,5 @@ export default function SignIn() {
             </Box>
     )
 }
+//background-color: #f7b42c;
+// background-image: linear-gradient(315deg, #f7b42c 0%, #fc575e 74%);
