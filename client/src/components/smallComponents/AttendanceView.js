@@ -23,6 +23,10 @@ export default function AttendanceView({subjects,sections}) {
 
         }
     })
+
+
+    const makePercentage=(item)=>item.ATT.substr(0,item.ATT.indexOf('/'))==='0'?'0%':((Number(item.ATT.substr(0,item.ATT.indexOf('/')))/Number(item.ATT.substr(item.ATT.indexOf('/')+1)))*100).toFixed(2).concat('%')
+
     return (
                                       
         <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',borderRadius:"2em",
@@ -50,10 +54,12 @@ export default function AttendanceView({subjects,sections}) {
                     </select>
                     </Flex>
                     <button type="submit">Get that summary</button>
-                <Table  columns={2} data={["USN","Attendance"]} uniStr="av-1-"/>
-                {serverReply.map((item,index)=><Table columns={2} key={`av-3-${index}`} data={[ item.USN,item.ATT]} uniStr="av-2-"/>)}
+                <Table  columns={3} data={["USN","Attendance",'percentage']} uniStr="av-1-"/>
+                {serverReply.map((item,index)=><Table columns={3} key={`av-3-${index}`} data={[ item.USN,item.ATT, makePercentage(item)
+                ]} 
+                    uniStr="av-2-"/>)}
                 </form>
             </Heading>
-        </Box>
+        </Box> 
     )
 }

@@ -37,7 +37,7 @@ export default function StaffDashBoard() {
     const [state,dispatch]=useReducer(reducer,initialState)
     const fetchData = async ()=>{
         const result= await axios({"method":"post","url":"http://localhost:5000/getStaffInfo",
-        "data":{uniqueID:uniqueID,section:"A" }})
+        "data":{uniqueID:uniqueID}})
         return result.data 
         }
     // console.log(state)

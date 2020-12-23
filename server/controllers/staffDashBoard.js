@@ -6,9 +6,14 @@ exports.staffDashBoard=async (req,res)=>{
     let sqlForteacherName = `select NAME from staff where ID='${uniqueID}';`
     let sqlForteacherSection = `select section from subject where ID='${uniqueID}';`
     let sqlForTC = `select * from totalclasses;`
+
+
+
     let sectionobj =[]
     const [resultForTeacherSection  ,fTSA] = await  db.execute(sqlForteacherSection)
     resultForTeacherSection.forEach(item=>sectionobj.push(item.section))
+
+    
     let sqlForFullTT = `select DAY,8_00,9_00,10_00,11_30,12_30,2_00,3_00,4_00 from schedule where SECTION="${sectionobj[0]}" ORDER BY FIELD(DAY, 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY');` 
     console.log("section is ",sectionobj)
     let sqlForSubjects = `select subject_name from subject where ID='${uniqueID}';`

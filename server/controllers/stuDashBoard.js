@@ -34,6 +34,7 @@ exports.stuDashBoard = async (req,res)=>{
         //console.log(sqlForTT)
         const [resultForTT,fTT] = await  db.execute(sqlForTT)
         resultForTT.map(obj=>FinalResultForTT.push(Object.values(obj)))
+        
         for(let index=0;index < FinalResultForTT.length;index++){
             FinalResultForTT[index][0] = FinalResultForTT[index][0].substr(0,3)
         }

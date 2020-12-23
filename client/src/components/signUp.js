@@ -1,6 +1,7 @@
 import React ,{useContext, useState,useRef}from 'react'
 import {MyContext} from "../context/context"
 import axios from 'axios'
+import { useHistory } from 'react-router-dom';
 import {Input,Label,Checkbox,Select} from '@rebass/forms'
 import { Box,Card, Flex,Button,Text,Link } from 'rebass'
 
@@ -8,6 +9,7 @@ export default function SignUp() {
     let confirmation=0
     const {isCreated ,setCreated} = useContext(MyContext)
     const [isStaff,setStaff] = useState(true)
+    let history=useHistory()
     let id = useRef(null)
     let usn=useRef(null)
     let password=useRef(null)
@@ -35,7 +37,12 @@ export default function SignUp() {
                                         )
                     
                 setCreated(confirmation.data.reply);
+                console.log(isStaff)
+                
+                history.push("/signIn");
+                
                 console.log(isCreated)
+
                 }
           catch(error){ console.log(confirmation);console.log("error is",error)   }
             e.preventDefault()
@@ -76,11 +83,11 @@ export default function SignUp() {
             <>
                 <Box width={"15vw"}  >
                     <Label >STAFF ID</Label>
-                    <Input  ref={el=>id=el}  type="text"  defaultValue='' />
+                    <Input  ref={el=>id=el}  type="text"  defaultValue='abc' />
                 </Box>
                 <Box width={"15vw"}  >
                     <Label >Full Name</Label>
-                    <Input  ref={el=>name=el}  type="text"  defaultValue='abc1' />
+                    <Input  ref={el=>name=el}  type="text"  defaultValue='' />
                 </Box>
                 <Box width={"15vw"}  >
                     <Label >Password</Label>
