@@ -4,8 +4,8 @@ import {Text,Card} from 'rebass'
 
 export default function PieCharts({subjects,studentAttendance,totalAttendance}) {
     return (   subjects.map( (subject,index)=>{ 
-        let percentageFillForStudents =  studentAttendance[index] /(studentAttendance[index]+ totalAttendance[index])*100
-        let percentageFillForTC =  (totalAttendance[index]-studentAttendance[index])/(studentAttendance[index]+ totalAttendance[index])*100
+        let percentageFillForPresent =  (studentAttendance[index] /(totalAttendance[index]))*100
+        let percentageFillForAbsent =  100-percentageFillForPresent
          return(
             
                     <Card
@@ -24,14 +24,15 @@ export default function PieCharts({subjects,studentAttendance,totalAttendance}) 
                                     height:'25%',
                                     padding:'2vh'
                                  }} > 
-                             <PieChart radius='50' key={index}
+                             <PieChart radius='50' key={index} startAngle={270}
                                 data={[
-                                { title: `present with ${studentAttendance[index]} classes`,
-                                value: percentageFillForStudents ,
-                                color:  'rgba(20,255,20,0.9)' },
+                                { title: `present with ${(percentageFillForPresent).toFixed(2).concat('%')} classes`,
+                                value: percentageFillForPresent ,
+                                color:  'rgba(20,255,20,0.9)',
+                                 },
                         
-                                { title: `absent with ${totalAttendance[index]-studentAttendance[index]} classes`,
-                                 value:percentageFillForTC, color: 'rgba(255,20,20,0.9)' }, ]}
+                                { title: `absent with ${(percentageFillForAbsent).toFixed(2).concat('%')} classes`,
+                                 value:percentageFillForAbsent, color: 'rgba(255,20,20,0.9)' }, ]}
                             />  
                            <Text 
                             position='absolute'
