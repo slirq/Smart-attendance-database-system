@@ -53,14 +53,14 @@ export default function ClassesUpdate({subjects,uniqueID}) {
        <Box sx={{display:"flex",
                 width:"auto",
                 background: 'rgba(0, 0, 0, 0.8 )',
-                borderRadius:"2em",
-                margin:'2vh',
+                borderRadius:"1.2em",
+                margin:'1vh',
                 marginY:'0.2vh',
                 flexDirection:"row",
                 fontFamily:"Sansita Swashed",
                 fontSize:"1.5em"}}>
             <div style={{color:"white",width:"100vw",height:toggle?"75vh":"15vh"}}>
-                <Text fontSize={[ 3, 4, 6 ]}  style={{width:"100vw",display:"flex",justifyContent:"center"}}>
+                <Text fontSize={[ 3, 4, 6 ]}  style={{width:"100vw"}}>
                     Update Classes
                 </Text> 
                 <img alt="dropdown" className="dropdownButton" src="https://img.icons8.com/nolan/64/drag-list-down.png" onClick={makeVisible}/>
@@ -130,6 +130,7 @@ export default function ClassesUpdate({subjects,uniqueID}) {
                     {serverReply?<Text sx={{color:"rgb(240, 178, 33)"}} >Database successfully updated</Text>:<Text></Text>}
                     </form>
                 </Box> 
+
             </div>
        </Box>
     )

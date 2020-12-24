@@ -122,7 +122,13 @@ export default function StuDashBoard() {
                                     ]}
                                     uniStr="staDaB-1-"
                                     /> */}
-                        <FullTimetable tt={state.responseFromServer[3]}/>
+                                    <Box>
+                        <Text paddingBottom='2vh' htmlFor='name'  fontSize={[ 3, 4, 6 ]} fontWeight={"bold"} 
+                            fontFamily={"Sansita Swashed"} marginRight={".2em"}  color={"White"} sx={{width:"100vw"}}>
+                                Time Table
+                        </Text>
+                            <FullTimetable tt={state.responseFromServer[3]} student={true} />
+                        </Box>
                     </Heading>
                     </Box>
                     <Box sx={{ display: 'flex',}}>

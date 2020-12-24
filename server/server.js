@@ -7,6 +7,7 @@ const staffDashBoard = require('./controllers/staffDashBoard')
 const cl = require('./controllers/classLog')
 const al = require('./controllers/attendanceView')
 const svl = require('./controllers/studentLogView')
+const tt = require('./controllers/getTT')
 const cors = require('cors');
 const port = 5000;
 const app = express();
@@ -20,6 +21,7 @@ app.post('/getStaffInfo',staffDashBoard.staffDashBoard)
 app.post('/classLog',cl.classLog)
 app.post('/attendanceView',al.attendanceView)
 app.post('/studentLogView',svl.studentLogView)
+app.post('/getTT',tt.getTT)
 app.post('/cam',cam.cam)
 app.get('/',(req,res)=>{res.redirect('/signIn')})
 app.listen(port,()=>{console.log(`server is running on ${port}`)})  

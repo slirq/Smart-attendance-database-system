@@ -29,11 +29,10 @@ export default function AttendanceView({subjects,sections}) {
 
     return (
                                       
-        <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',borderRadius:"2em",
-                margin:'2vh',marginY:'0.2vh' }}>
+        <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',borderRadius:"1.2em",margin:'1vh',marginY:'0.2vh' }}>
             <Heading p={3} bg='muted'>
                 <Text paddingBottom='2vh' htmlFor='name' fontSize={[ 3, 4, 6 ]}
-                  fontFamily={"Sansita Swashed"} sx={{width:"100vw",display:"flex",justifyContent:"center"}} fontWeight={"bold"} marginRight={".2em"}color={"White"}>
+                  fontFamily={"Sansita Swashed"} sx={{width:"100vw"}} fontWeight={"bold"} color={"White"}>
                     ATTENDANCE
                 </Text>
                 <form onSubmit={formik.handleSubmit}>

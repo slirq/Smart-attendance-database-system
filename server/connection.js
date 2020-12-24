@@ -6,7 +6,7 @@ const connection = mysql.createPool({
     database: "sa",
     port:"3306",
     connectTimeout:"15000",
-    timezone:'system'
+    timezone:'Z'
     
 });
 

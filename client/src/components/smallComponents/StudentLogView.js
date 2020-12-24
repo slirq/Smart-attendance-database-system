@@ -30,11 +30,11 @@ export default function LogView({subjects,sections}) {
         }
     })
     return (
-        <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',borderRadius:"2em",margin:'1vh',
-        marginTop:'0.1vh' }}>
+        <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',borderRadius:"1.2em",margin:'1vh',
+        marginTop:'0.2vh' }}>
             <Heading p={3} bg='muted'>
             <Text paddingBottom='2vh' htmlFor='name' fontSize={[ 3, 4, 6 ]} fontWeight={"bold"} fontFamily={"Sansita Swashed"}
-             sx={{width:"100vw",display:"flex",justifyContent:"center"}}   marginRight={".2em"} color={"White"}>
+             sx={{width:"100vw"}}   marginRight={".2em"} color={"White"}>
                 Student log
             </Text>                
                 <form onSubmit={formik.handleSubmit}>
