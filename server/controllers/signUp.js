@@ -18,8 +18,8 @@ exports.signUp = async (req,res)=>{
             console.log(valuesForSub)
             const [resultSta,fieldst] = await db.execute(sqlForStaff,valuesForStaff)
             const [resultSub,fieldsu] = await db.execute(sqlForSub,valuesForSub)
-            console.log(resultSta)
-            res.status(200).json(resultSta.affectedRows)
+            console.log(resultSub)
+            res.status(200).json(resultSub.affectedRows)
         }
         else {
 
