@@ -41,7 +41,11 @@ export default function ClassesUpdate({subjects,uniqueID}) {
             try {
                 reply = await axios({method:'post',url:'http://localhost:5000/classLog', data:{
                     uniqueID: `${uniqueID}`,
-                    log:payload } })
+                    log:payload,
+                    days:numberOfClasses,
+                    subject:subject,
+                    section:section
+                } })
                 setReply(reply.data.result)
             } catch (error) {
                 console.log(error)
