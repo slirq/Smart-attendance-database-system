@@ -9,13 +9,16 @@ import ClassesUpdate from './smallComponents/ClassesUpdate'
 import Name from './smallComponents/Name'
 import AttendanceView from './smallComponents/AttendanceView'
 import StudentLogView from './smallComponents/StudentLogView'
+import ClassLogView from './smallComponents/ClassLogView'
 const initialState={
     loading:true,
     error:'',
     tt:[],
     subjects:[],
     name:""
+    
 }
+
 const reducer =(state,action)=>{
     console.log("action type is ",action.payload,"\n and state is ",state)
     switch(action.type){
@@ -37,12 +40,14 @@ export default function StaffDashBoard() {
     const {uniqueID} = useContext(MyContext)
     const [state,dispatch]=useReducer(reducer,initialState)
     const sections =["A","B","C"]
+    
     const fetchData = async ()=>{
         const result= await axios({"method":"post","url":"http://localhost:5000/getStaffInfo",
         "data":{uniqueID:uniqueID}})
+        
         return result.data 
         }
-    // console.log(state)
+        
     useEffect(() => {
     (
         async()=>{
@@ -109,6 +114,7 @@ export default function StaffDashBoard() {
                 </Box>
                 <AttendanceView subjects={state.subjects} sections={sections} />                
                 <StudentLogView subjects={state.subjects} sections={sections}  />
+                <ClassLogView Tid={uniqueID}/> 
             </Card>
         </Box>
     )

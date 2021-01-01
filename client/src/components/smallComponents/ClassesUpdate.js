@@ -2,6 +2,7 @@ import React,{useState,useRef} from 'react'
 import {Box,Text} from 'rebass'
 import {useFormik} from 'formik'
 import axios from 'axios'
+
 export default function ClassesUpdate({subjects,uniqueID}) {
     let dates = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
     let months = [1,2,3,4,5,6,7,8,9,10,11,12]
@@ -133,6 +134,7 @@ export default function ClassesUpdate({subjects,uniqueID}) {
                     <button className="cu-but" type="submit">Submit?</button>
                     {serverReply?<Text sx={{color:"rgb(240, 178, 33)"}} >Database successfully updated</Text>:<Text></Text>}
                     </form>
+                    
                 </Box> 
 
             </div>
