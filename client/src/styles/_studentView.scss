@@ -1,0 +1,18 @@
+.pieBackGround{
+    margin-top:auto;
+    background: white;
+    @include centerShit();
+    border-radius:2em;
+    margin:2vh 1vh;
+    width:17%;
+    height:25%;
+    padding:2vh;
+    box-sizing: border-box;
+    min-width: 0;
+    margin-top: 2vh;
+    border-radius: 2em;
+    margin-bottom: 2vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    flex-direction: column;
+}
