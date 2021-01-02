@@ -14,8 +14,8 @@ export default function ClassLogView({Tid}) {
         }
     return (
         <div className='Card'>
-            <h2 style={{fontSize:'6vh'}} >Class log</h2>
-            <button type="submit" style={{width:"auto",height:'auto'}}  onClick={GetInfo}  >Get that log</button>       
+            <h2 >Class log</h2>
+            <button type="submit"  onClick={GetInfo}  >Get that log</button>       
             <div className="rowElement">Log</div>
             {serverReply.map((item,index)=><div className="rowElement">{item.log}</div>)}
     </div>

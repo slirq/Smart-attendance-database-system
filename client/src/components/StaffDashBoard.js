@@ -84,9 +84,9 @@ export default function StaffDashBoard() {
                 <ClassesUpdate subjects={state.subjects} uniqueID={uniqueID}/>
                 <div className="Card">  
                     <h2>Time Table</h2>
-                    <div style={{display:"flex",justifyContent:'center',marginBottom:'1vh'}}>
-                        <label style={{paddingRight:".7em"}}>SECTION</label>
-                        <select style={{}} onChange={handleSectionChange} defaultValue={state.sec} >
+                    <div style={{display:"flex",justifyContent:'center'}}>
+                        <label style={{padding:".7em"}}>SECTION</label>
+                        <select style={{height:"2.5em"}} onChange={handleSectionChange} defaultValue={state.sec}>
                             {sections.map((item,index)=><option key={`sta-DaBo-0-${index}`} value={`${item}`}>{item}</option>)}
                         </select>
                     </div>
