@@ -13,8 +13,8 @@ import pymysql as sql
 import pickle
 import os
 myDB= sql.connect(host ="localhost",
-                  user="root",
-                  password = "1223",
+                  user="test",
+                  password = "481526",
                   db = "sa",
                   autocommit =True)
 cur = myDB.cursor()

@@ -3,7 +3,6 @@ import axios from 'axios'
 import {MyContext }from '../context/context'
 // import {Input} from '@rebass/forms'
 // import Table from './smallComponents/Table'
-import { Text,Box,Card,Heading,Flex} from 'rebass'
 import FullTimetable from './smallComponents/FullTimetable'
 import ClassesUpdate from './smallComponents/ClassesUpdate'
 import Name from './smallComponents/Name'
@@ -16,9 +15,7 @@ const initialState={
     tt:[],
     subjects:[],
     name:""
-    
 }
-
 const reducer =(state,action)=>{
     console.log("action type is ",action.payload,"\n and state is ",state)
     switch(action.type){
@@ -28,6 +25,7 @@ const reducer =(state,action)=>{
                 tt:action.payload.tt,
                 subjects:action.payload.subjects,
                 name:action.payload.name,
+                section:action.payload.sec,
                 error:""}
                 case "ttChange":return{...state, tt:action.payload}
                 case "notFetched":return {...state,error:"something went wrong"}
@@ -37,7 +35,8 @@ const reducer =(state,action)=>{
             }
         }
 export default function StaffDashBoard() {
-    const {uniqueID} = useContext(MyContext)
+    // const {uniqueID} = useContext(MyContext)
+    let uniqueID = 'abc1'
     const [state,dispatch]=useReducer(reducer,initialState)
     const sections =["A","B","C"]
     
@@ -52,7 +51,7 @@ export default function StaffDashBoard() {
     (
         async()=>{
             let reply = await fetchData()
-            dispatch({type:"initialFetch",payload:{tt:reply[2],subjects:reply[3],name:reply[0][0]}})
+            dispatch({type:"initialFetch",payload:{tt:reply[2],subjects:reply[3],sec:reply[1][0],name:reply[0][0]}})
 
     })();
     // eslint-disable-next-line
@@ -68,7 +67,7 @@ export default function StaffDashBoard() {
             dispatch({type:"ttChange",payload:newTT.data})
             
     }
-    return(state.loading?<Text sx={{
+    return(state.loading?<h2 style={{
         height:"100%",
         width:"100%",
         background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
@@ -77,45 +76,26 @@ export default function StaffDashBoard() {
         display:"flex",
         justifyContent:"center",
         alignItems:"center",
-    }}>"LOADING"</Text>
+    }}>"LOADING"</h2>
     :
-        <Box sx={{
-            height:"100%",
-            width:"100%",
-            background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
-
-            color: 'white',
-            bg: 'gray',
-            display:"flex",
-            justifyContent:"center",
-            alignItems:"center",
-        }} >
-        <Card sx={{ position:"relative",   width:"90%", height:"wrap-content", background:"white",
-                        boxShadow:'0 0 2em rgba(0, 0, 0, .7)',  borderRadius:"2em", display:"top",
-                        marginY:'2vh'}}>
+        <div className="backGround">
+        <div className="tab">
                 <Name name ={state.name}/>
                 <ClassesUpdate subjects={state.subjects} uniqueID={uniqueID}/>
-                <Box sx={{background: 'rgba(0, 0, 0, 0.8 )',borderRadius:"1.2em",margin:'1vh',marginY:'0.2vh'}}>
-                        
-                <Heading p={3} bg='muted'>
-                    <Box>
-                        <Text paddingBottom='2vh' htmlFor='name'  fontSize={[ 3, 4, 6 ]} fontWeight={"bold"} 
-                            fontFamily={"Sansita Swashed"} marginRight={".2em"}  color={"White"} sx={{width:"100vw"}}>
-                                Time Table
-                        </Text>
-                        <Flex sx={{justifyContent:'center'}}>SECTION
-                        <select onChange={handleSectionChange}>
+                <div className="Card">  
+                    <h2>Time Table</h2>
+                    <div style={{display:"flex",justifyContent:'center'}}>
+                        <label style={{padding:".7em"}}>SECTION</label>
+                        <select style={{height:"2.5em"}} onChange={handleSectionChange} defaultValue={state.sec}>
                             {sections.map((item,index)=><option key={`sta-DaBo-0-${index}`} value={`${item}`}>{item}</option>)}
                         </select>
-                        </Flex>  
-                    </Box>
-                    <FullTimetable tt={state.tt} newTT={false} />
-                </Heading> 
-                </Box>
+                    </div>
+                    <FullTimetable tt={state.tt}  />
+                </div>
                 <AttendanceView subjects={state.subjects} sections={sections} />                
                 <StudentLogView subjects={state.subjects} sections={sections}  />
                 <ClassLogView Tid={uniqueID}/> 
-            </Card>
-        </Box>
+            </div>
+        </div>
     )
 }

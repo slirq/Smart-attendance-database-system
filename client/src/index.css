@@ -1,13 +1,174 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: Sansita Swashed;
+  color: black;
+  overflow-x: hidden;
+}
+
+.calendar {
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+/* .react-calendar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
+.dropdownButton {
+  height: 6vh;
+  width: 6vh;
+  position: relative;
+  left: 80vw;
+}
+
+form select, div.react-calendar, submit.submit, button {
+  margin: .9em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#lv {
+  margin-left: 1.5em;
+}
+
+.subject-av {
+  margin: 0;
+  margin-left: .6em;
+  margin-right: .6em;
+}
+
+form div select option {
+  border-radius: 1.6em;
+  font-family: Sansita Swashed;
+  background-color: #f0b221;
+}
+
+div button {
+  height: 5vh;
+  width: 10vw;
+  border: none;
+  border-radius: .2em;
+  padding-top: .3em;
+  background-color: #f0b221;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  position: relative;
+  -webkit-transition: background 0.25s;
+  transition: background 0.25s;
+}
+
+div button:active {
+  background-color: #946904;
+}
+
+div button:hover {
+  background-color: #946904;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h2 {
+  padding: .2em;
+  font-size: x-large;
+  padding-bottom: 2vh;
+  font-weight: bold;
+  font-family: Sansita Swashed;
+  width: 100vw;
+  margin-right: .2em;
+  color: aqua;
+  font-size: "3,4,6";
 }
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.Table {
+  border: 2px solid;
+}
+
+.Table .kaBaccha {
+  padding: 0.4em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 6vh;
+}
+
+.Card {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 1.2em;
+  margin: 0.2em;
+  margin-top: 0.1vh;
+  padding: 2em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: larger;
+}
+
+.rowElement {
+  border: 2px solid;
+  padding: 0.4em;
+}
+
+.backGround {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(315deg, #f7b42c 0%, #fc575e 74%);
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.tab {
+  position: "relative";
+  width: 90%;
+  height: wrap-content;
+  background: #f7b42c;
+  -webkit-box-shadow: 0 0 2em rgba(0, 0, 0, 0.7);
+          box-shadow: 0 0 2em rgba(0, 0, 0, 0.7);
+  border-radius: 2em;
+  display: "top";
+  margin: 2vh;
+  padding: 1.3em;
+}
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,15 @@
+@import './variables';
+@mixin centerShit() {
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    margin-left:6vh;
+}
+
+@mixin cardComponent() {
+    background: $backgroundColor;
+    border-radius: $cardBorderValue;
+    margin: $m;
+    margin-top: $mt;
+    padding: 2em;
+}

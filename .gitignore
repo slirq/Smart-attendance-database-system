@@ -1,2 +1,4 @@
 .vscode
 node_modules
+server/facial recog unit/attendanceProject.py
+server/connection.js

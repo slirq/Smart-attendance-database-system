@@ -55,89 +55,79 @@ export default function ClassesUpdate({subjects,uniqueID}) {
     })
     const makeVisible=(e)=>{setToggle(!toggle)}
     return (
-       <Box sx={{display:"flex",
-                width:"auto",
-                background: 'rgba(0, 0, 0, 0.8 )',
-                borderRadius:"1.2em",
-                margin:'1vh',
-                marginY:'0.2vh',
-                flexDirection:"row",
-                fontFamily:"Sansita Swashed",
-                fontSize:"1.5em"}}>
-            <div style={{color:"white",width:"100vw",height:toggle?"75vh":"15vh"}}>
-                <Text fontSize={[ 3, 4, 6 ]}  style={{width:"100vw"}}>
-                    Update Classes
-                </Text> 
+       <div className="Card" >
+            <div style={{color:"white",width:"100vw",height:toggle?"90vh":"15vh"}}>
+                <h2 style={{fontSize:"2em"}}>Update Classes</h2> 
                 <img alt="dropdown" className="dropdownButton" src="https://img.icons8.com/nolan/64/drag-list-down.png" onClick={makeVisible}/>
-                <Box className = {toggle?"show":"calendar"} sx={{width:"50vw",position:'relative',left:"10vh"}}>
+                <div className = {toggle?"show":"calendar"} style={{width:"50vw",position:'relative',left:"10vh"}}>
                     <form onSubmit={formik.handleSubmit}>
-                    <label htmlFor="section">Which section was it?</label>
-                    <select id="setion" name="section" 
-                        value={formik.values.section}
-                        onChange={formik.handleChange}
-                        onClick={showStatement} >
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                    </select>
-                    <div style={{display:"flex",flexDirection:"row"}}>
-                    <label htmlFor="date">when was the class taken?</label>
-                    <select id="date" 
-                            name="date" 
+                        <label htmlFor="section">Which section was it?</label>
+                        <select id="setion" name="section" 
+                            value={formik.values.section}
                             onChange={formik.handleChange}
-                            onClick={showStatement}
-                            value={formik.values.date}>
-                            {dates.map((date,index)=><option id="date" name="date" key={date}>{date}</option>)}
-                    </select>
-                    { formik.errors.date?
-                            <Text sx={{fontSize:"1.6em",color:"red"}}>
-                                {formik.errors.date}
-                            </Text>:<Text></Text>}
-                    <select id="month" name="month" 
-                            onChange={formik.handleChange}
-                            onClick={showStatement}
-                            value={formik.values.month}>
-                            {months.map(month=><option id="month" name="month" key={month}>{month}</option>)}
-                    </select>
-                    { formik.errors.month?
-                            <Text sx={{fontSize:"1.5em",color:"red"}}>
-                                {formik.errors.month}
-                            </Text>:<Text></Text>}
-                    <select id="year" 
-                            name="year" 
-                            onChange={formik.handleChange}
-                            onClick={showStatement}
-                            value={formik.values.year}>
-                            {years.map(year=><option id="year" name="year" key={year}>{year}</option>)}
-                    </select>
-                    </div>
-                    <label htmlFor="numberOfClasses">number of classes that happend that day?</label>
-                    <select id="numberOfClasses" 
-                            onChange={formik.handleChange} 
-                            name="numberOfClasses"
                             onClick={showStatement} >
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                        </select>
+                        <div style={{display:"flex",flexDirection:"row"}}>
+                        <label htmlFor="date">when was the class taken?</label>
+                        <select id="date" 
+                                name="date" 
+                                onChange={formik.handleChange}
+                                onClick={showStatement}
+                                value={formik.values.date}>
+                                {dates.map((date,index)=><option id="date" name="date" key={date}>{date}</option>)}
+                        </select>
+                        { formik.errors.date?
+                                <Text sx={{fontSize:"1.6em",color:"red"}}>
+                                    {formik.errors.date}
+                                </Text>:<Text></Text>}
+                        <select id="month" name="month" 
+                                onChange={formik.handleChange}
+                                onClick={showStatement}
+                                value={formik.values.month}>
+                                {months.map(month=><option id="month" name="month" key={month}>{month}</option>)}
+                        </select>
+                        { formik.errors.month?
+                                <Text sx={{fontSize:"1.5em",color:"red"}}>
+                                    {formik.errors.month}
+                                </Text>:<Text></Text>}
+                        <select id="year" 
+                                name="year" 
+                                onChange={formik.handleChange}
+                                onClick={showStatement}
+                                value={formik.values.year}>
+                                {years.map(year=><option id="year" name="year" key={year}>{year}</option>)}
+                        </select>
+                        </div>
+                        <label htmlFor="numberOfClasses">number of classes that happend that day?</label>
+                        <select id="numberOfClasses" 
+                                onChange={formik.handleChange} 
+                                name="numberOfClasses"
+                                onClick={showStatement} >
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
 
-                    <label htmlFor="subject">what was the subject?</label>
-                    <select id="subject" name="subject" 
-                        value={formik.values.subject} 
-                        onClick={showStatement}
-                        onChange={formik.handleChange}>
-                        {subjects.map((sub,index)=><option key={`cu-1-${index}`} value={`${sub}`}>{`${sub}`}</option>)}
-                    </select>
-                    <Text ref={el=>msg=el} sx={{fontSize:"1.2em",color:"white",width:"100vw"}} >
-                        {`${formik.values.numberOfClasses} class(es) of ${formik.values.subject} were conducted on ${formik.values.date}-${formik.values.month}-${formik.values.year} for section ${formik.values.section}`}
-                    </Text>
-                    <button className="cu-but" type="submit">Submit?</button>
-                    {serverReply?<Text sx={{color:"rgb(240, 178, 33)"}} >Database successfully updated</Text>:<Text></Text>}
+                        <label htmlFor="subject">what was the subject?</label>
+                        <select id="subject" name="subject" 
+                            value={formik.values.subject} 
+                            onClick={showStatement}
+                            onChange={formik.handleChange}>
+                            {subjects.map((sub,index)=><option key={`cu-1-${index}`} value={`${sub}`}>{`${sub}`}</option>)}
+                        </select>
+                        <h2 ref={el=>msg=el} style={{fontSize:"1.5em",color:"yellow"}} >
+                            {`${formik.values.numberOfClasses} class(es) of ${formik.values.subject} were conducted on ${formik.values.date}-${formik.values.month}-${formik.values.year} for section ${formik.values.section}`}
+                        </h2>
+                        <button className="cu-but" type="submit">Submit?</button>
+                        {serverReply?<Text sx={{color:"rgb(240, 178, 33)"}} >Database successfully updated</Text>:<Text></Text>}
                     </form>
                     
-                </Box> 
+                </div> 
 
             </div>
-       </Box>
+       </div>
     )
 }

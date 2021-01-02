@@ -1,0 +1,30 @@
+@import './function';
+.Card{
+    @include cardComponent();
+    box-sizing: border-box;
+    font-size: larger;   
+}
+.rowElement{
+    border: $borderValue;
+    padding: $paddingValue;
+}
+.backGround{
+    height:100%;
+    width:100%;
+    background:linear-gradient(315deg, #f7b42c 0%, #fc575e 74%);
+    color: white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.tab{
+    position:"relative";
+    width:90%; 
+    height:wrap-content;
+    background:#f7b42c ;
+    box-shadow:0 0 2em rgba(0, 0, 0, .7);
+    border-radius:2em;
+    display:"top";
+    margin:2vh;
+    padding: 1.3em;
+}

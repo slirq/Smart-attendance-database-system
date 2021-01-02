@@ -12,7 +12,7 @@ exports.classLogView=async (req,res)=>{
             
             result.map(item=>reply.push({"id":item.id,"log":item.LOG}))
             
-           // console.log(result)
+           console.log(reply)
         }
     catch(err){
         console.log("\n\n\nerror was this\n\n\n",err)
