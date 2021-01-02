@@ -1,5 +1,5 @@
-@import './styles/variables.scss';
-@import './styles/function.scss';
+@import './styles/_variables.scss';
+@import './styles/_function.scss';
 html,body{
     width: 100%;
     height: 100%;
@@ -18,11 +18,7 @@ html,body{
   .hidden{
     display: none;
   }
-  /* .react-calendar{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  } */
+
   .dropdownButton{
     height: 6vh;
     width: 6vh;
@@ -96,4 +92,6 @@ code {
         @include centerShit();
     }
 }
-@import './styles/staffView'
+
+@import './styles/staffView';
+@import './styles/studentView';
