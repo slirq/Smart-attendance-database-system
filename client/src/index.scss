@@ -45,7 +45,7 @@ html,body{
   form div select option{
     border-radius: 1.6em;
     font-family: Sansita Swashed;
-    background-color: rgb(240, 178, 33);
+    background-color:  #0093E9;
   }
   div button {
     height: 5vh;
@@ -53,7 +53,7 @@ html,body{
     border: none;
     border-radius: .2em;
     padding-top: .3em;
-    background-color: rgb(240, 178, 33);
+    background-color:  #0093E9;
     text-transform: uppercase;
     letter-spacing: 0.02em;
     cursor: pointer;
@@ -61,10 +61,10 @@ html,body{
     transition: background 0.25s;
   }
   div button:active {
-    background-color: rgb(148, 105, 4);
+    background-color:  #0093E9;
   }
   div button:hover {
-    background-color: rgb(148, 105, 4);
+    background-color:white;
   } 
 body {
     margin: 0;

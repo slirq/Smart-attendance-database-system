@@ -56,11 +56,14 @@ export default function ClassesUpdate({subjects,uniqueID}) {
     const makeVisible=(e)=>{setToggle(!toggle)}
     return (
        <div className="Card" >
-            <div style={{color:"white",width:"100vw",height:toggle?"90vh":"15vh"}}>
-                <h2 style={{fontSize:"2em"}}>Update Classes</h2> 
-                <img alt="dropdown" className="dropdownButton" src="https://img.icons8.com/nolan/64/drag-list-down.png" onClick={makeVisible}/>
-                <div className = {toggle?"show":"calendar"} style={{width:"50vw",position:'relative',left:"10vh"}}>
-                    <form onSubmit={formik.handleSubmit}>
+            <div display='flex'  style={{color:"white",height:toggle?"60vh":"10vh"}}>
+           
+            <img alt="dropdown"  className="dropdownButton" src="https://img.icons8.com/nolan/64/drag-list-down.png" onClick={makeVisible}/>
+            <label  style={{fontSize:"6vh",color:'aqua'  }}>Update Classes</label>
+            
+
+                <div className = {toggle?"show":"calendar"} style={{width:"50vw",position:'relative',left:"10vh",top:'5vh'}}>
+                    <form  onSubmit={formik.handleSubmit} >
                         <label htmlFor="section">Which section was it?</label>
                         <select id="setion" name="section" 
                             value={formik.values.section}
@@ -72,13 +75,16 @@ export default function ClassesUpdate({subjects,uniqueID}) {
                         </select>
                         <div style={{display:"flex",flexDirection:"row"}}>
                         <label htmlFor="date">when was the class taken?</label>
+                        
                         <select id="date" 
+                                margin='0'
                                 name="date" 
                                 onChange={formik.handleChange}
                                 onClick={showStatement}
                                 value={formik.values.date}>
                                 {dates.map((date,index)=><option id="date" name="date" key={date}>{date}</option>)}
                         </select>
+                        
                         { formik.errors.date?
                                 <Text sx={{fontSize:"1.6em",color:"red"}}>
                                     {formik.errors.date}
@@ -126,8 +132,8 @@ export default function ClassesUpdate({subjects,uniqueID}) {
                     </form>
                     
                 </div> 
-
-            </div>
+                </div>
+            
        </div>
     )
 }

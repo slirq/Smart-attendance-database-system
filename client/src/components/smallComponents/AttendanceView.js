@@ -29,27 +29,27 @@ export default function AttendanceView({subjects,sections}) {
     return (
                                       
         <div className="Card">
-                <h2 >
+                <h2 style={{fontSize:'6vh'}}>
                     ATTENDANCE
                 </h2>
                 <form onSubmit={formik.handleSubmit}>
                 <div style={{display:"flex"}}>
-                <label htmlFor="subjectAV">{`Showing attendance of students for subject   `}</label>
-                <select className="subjectAV" id="subjectAV" name="subjectAV" onChange={formik.handleChange}  >
+                <label htmlFor="subjectAV">{`Showing attendance of students for subject`}</label>
+                <select className="subjectAV" id="subjectAV" name="subjectAV" onChange={formik.handleChange} style={{marginTop:".4em"}}> >
                     {subjects.map((sub,index)=>{return(<option 
                                                         key={`${sub}+${index}`} 
                                                         value={`${sub}`}
                                                         >{`${sub}`}</option>)})}
                 </select>
                 <label htmlFor="section">and section </label>
-                <select className="sectionAV" id="sectionAV" name="sectionAV" onChange={formik.handleChange} >
+                <select className="sectionAV" id="sectionAV" name="sectionAV" onChange={formik.handleChange} style={{marginTop:".4em"}}> >
                     {sections.map((sec,index)=>{return(<option 
                                                         key={`${sec}+${index}`} 
                                                         value={`${sec}`}
                                                         >{`${sec}`}</option>)})}
                 </select>
                 </div>
-                    <button style={{width:"15vw"}} type="submit">Get that summary</button>
+                    <button style={{width:"auto",height:'auto'}} type="submit">Get that summary</button>
                 <Table  columns={3} data={["USN","Attendance",'percentage']} uniStr="av-1-"/>
                 {serverReply.map((item,index)=><Table columns={3} key={`av-3-${index}`} data={[ item.USN,item.ATT, makePercentage(item)
                 ]} 
