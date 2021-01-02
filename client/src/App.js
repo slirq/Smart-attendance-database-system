@@ -1,3 +1,4 @@
+import './App.css';
 import React from 'react'
 import SignIn from './components/signIn'
 import {UserContext} from './context/context'
@@ -16,8 +17,8 @@ function App() {
           </Route>
           <Route exact path='/signIn' component={SignIn} />
           <Route exact path='/signUp' component={SignUp} />
-          <Route exact path='/staffDashBoard' component={StaffDashBoard} />
-          <Route exact path='/stuDashBoard' component={StuDashBoard} />
+          <ProtectedRoute exact path='/staffDashBoard' component={StaffDashBoard} />
+          <ProtectedRoute exact path='/stuDashBoard' component={StuDashBoard} />
         </Switch>
       </UserContext>
     </Router>

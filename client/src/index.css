@@ -24,6 +24,11 @@ html, body {
   display: none;
 }
 
+/* .react-calendar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
 .dropdownButton {
   height: 6vh;
   width: 6vh;
@@ -140,7 +145,7 @@ code {
 
 .backGround {
   height: 100%;
-  width: 100vw;
+  width: 100%;
   background: linear-gradient(315deg, #f7b42c 0%, #fc575e 74%);
   color: white;
   display: -webkit-box;
@@ -165,37 +170,5 @@ code {
   display: "top";
   margin: 2vh;
   padding: 1.3em;
-}
-
-.pieBackGround {
-  margin-top: auto;
-  background: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-left: 6vh;
-  border-radius: 2em;
-  margin: 2vh 1vh;
-  width: 17%;
-  height: 25%;
-  padding: 2vh;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  min-width: 0;
-  margin-top: 2vh;
-  border-radius: 2em;
-  margin-bottom: 2vh;
-  margin-left: 1vh;
-  margin-right: 1vh;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
 }
 /*# sourceMappingURL=index.css.map */
