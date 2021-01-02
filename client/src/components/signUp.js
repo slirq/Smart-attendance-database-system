@@ -10,18 +10,14 @@ export default function SignUp() {
     const {isCreated ,setCreated} = useContext(MyContext)
     const [isStaff,setStaff] = useState(true)
     let history=useHistory()
-    let id = useRef(null)
     let usn=useRef(null)
     let password=useRef(null)
     let name=useRef(null)
     let sec=useRef(null)
     let subject=useRef(null)
     const handleSubmit = async (e)=>{
-        let usnValue=0,passwordValue,nameValue,secValue,idValue,subjectValue=""
-        if(!isStaff){
-        [usnValue]= [usn.value.toUpperCase()]
-        }
-        [passwordValue,nameValue,secValue,idValue,subjectValue] =[password.value,name.value,sec.value,id.value,subject.value]
+        let usnValue,passwordValue,nameValue,secValue,idValue,subjectValue="";
+        [passwordValue,nameValue,secValue,usnValue,subjectValue] =[password.value,name.value,sec.value,usn.value,subject.value]
         try{
             confirmation = await axios( { method:'post',
                                                 url:'http://localhost:5000/signUp',
@@ -31,7 +27,8 @@ export default function SignUp() {
                                                     password: passwordValue,
                                                     name:nameValue,
                                                     sec:secValue,
-                                                    subject:subjectValue
+                                                    subject:subjectValue,
+                                                    staff:{isStaff}
                                                     }  
                                             }    
                                         )
@@ -83,7 +80,7 @@ export default function SignUp() {
             <>
                 <Box width={"15vw"}  >
                     <Label >STAFF ID</Label>
-                    <Input  ref={el=>id=el}  type="text"  defaultValue='abc' />
+                    <Input  ref={el=>usn=el}  type="text"  defaultValue='abc' />
                 </Box>
                 <Box width={"15vw"}  >
                     <Label >Full Name</Label>

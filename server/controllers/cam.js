@@ -1,18 +1,27 @@
 const v =  require('python-shell').PythonShell;
 exports.cam=(req,res)=>{
-let options = {
+let optionsW = {
     mode: 'text',
     pythonPath: 'C:/ProgramData/Anaconda3/python.exe',
     pythonOptions: ['-u'], // get print results in real-time
     scriptPath: 'D:/project/Smart attendance system/Smart-attendance-database-system/server/controllers/',
     args: [req.body.usn]
   };
-  v.run('cam.py', options, function (err, results) {
+  console.log("came in server")
+let optionsL={
+  mode: 'text',
+  args: [req.body.usn],
+  pythonPath:"/home/atharva/miniconda3/bin/python3",
+  scriptPath:"/home/atharva/Documents/dmp/server/controllers/"
+}
+  try{v.run('cam.py', optionsL, function (err, results) {
     if (err) throw err;
     // results is an array consisting of messages collected during execution
     console.log('results: %j', results);
-  });
+  });}
+  catch(e){
+    console.log("\n\n\n error is here \n\n\n\n",e)
+  }
+  res.status(500)
 }
-// py.send('usn comes here');
-// py.on('message',(msg)=>{console.log(msg)});
-// py.end((er,code,signal)=>{if(er)throw er;console.log("exit code was ",code);console.log("the signal was ",signal)});}
+// py.send  
