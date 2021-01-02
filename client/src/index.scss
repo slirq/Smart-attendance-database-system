@@ -87,11 +87,12 @@ code {
   }
 .Table{
     border:$borderValue;
-    .kaBaccha{
-        padding: 0.4em;
-        @include centerShit();
-    }
+    
+}
+.kaBaccha{
+  padding: 0.4em;
+  @include centerShit();
 }
 
-@import './styles/staffView';
-@import './styles/studentView';
+@import './styles/_staffView';
+@import './styles/_studentView';

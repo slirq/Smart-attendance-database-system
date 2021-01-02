@@ -2,6 +2,7 @@ import React from 'react'
 import { PieChart } from 'react-minimal-pie-chart'
 
 export default function PieCharts({subjects,studentAttendance,totalAttendance}) {
+    // console.log(studentAttendance,totalAttendance)       
     return (   subjects.map( (subject,index)=>{ 
         let percentageFillForPresent =  (studentAttendance[index] /(totalAttendance[index]))*100
         let percentageFillForAbsent =  100-percentageFillForPresent
@@ -17,8 +18,7 @@ export default function PieCharts({subjects,studentAttendance,totalAttendance}) 
                                 { title: `absent with ${(percentageFillForAbsent).toFixed(2).concat('%')} classes`,
                                  value:percentageFillForAbsent, color: 'rgba(255,20,20,0.9)' }, ]}
                             />  
-                           <h3  style={{ fontSize:[ 1, 3, 5 ],fontWeight:"bold",
-                            paddingTop:"0.5em",paddingX:"2.5vw",color:"Black"}}> 
+                           <h3  style={{ fontSize:[ 1, 3, 5 ],fontWeight:"bold",paddingTop:"0.5em",paddingX:"2.5vw",color:"Black"}}> 
                                 {subject}
                             </h3>
                     </div>)

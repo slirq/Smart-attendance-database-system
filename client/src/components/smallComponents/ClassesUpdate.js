@@ -1,5 +1,4 @@
 import React,{useState,useRef} from 'react'
-import {Box,Text} from 'rebass'
 import {useFormik} from 'formik'
 import axios from 'axios'
 
@@ -11,20 +10,12 @@ export default function ClassesUpdate({subjects,uniqueID}) {
     const [serverReply,setReply] = useState(false)
     let payload,reply
     let msg = useRef(null)
-    // let dbInform = useRef(null)
     const showStatement=()=>{
         let {section,date,month,year,numberOfClasses,subject} = formik.values
         payload = `${numberOfClasses} class(es) of ${subject} were conducted on ${date}-${month}-${year} for section ${section}`
         msg.textContent = payload
         
     }
-    // const validate=values=>{
-    //     const errors={}
-    //     // console.log(values)
-    //     if(!values.date.length){errors.date = "choose a date sweety"}
-    //     if(!values.month.length){errors.month = "choose a month sweety"}
-    //     return errors
-    // }
     const formik = useFormik({
         initialValues:{
             section:"A",
@@ -37,8 +28,6 @@ export default function ClassesUpdate({subjects,uniqueID}) {
         onSubmit:async val=>{
             let {section,date,month,year,numberOfClasses,subject} = val
             payload = `${numberOfClasses} class(es) of ${subject} were conducted on ${date}-${month}-${year} for section ${section}`
-            // console.log(JSON.stringify(payload))
-            // console.log(formik.errors)
             try {
                 reply = await axios({method:'post',url:'http://localhost:5000/classLog', data:{
                     uniqueID: `${uniqueID}`,
@@ -56,7 +45,7 @@ export default function ClassesUpdate({subjects,uniqueID}) {
     const makeVisible=(e)=>{setToggle(!toggle)}
     return (
        <div className="Card" >
-            <div display='flex'  style={{color:"white",height:toggle?"60vh":"10vh"}}>
+            <div display='flex'  style={{color:"white",height:toggle?"75vh":"10vh"}}>
             <img alt="dropdown"  className="dropdownButton" src="https://img.icons8.com/nolan/64/drag-list-down.png" onClick={makeVisible}/>
             <label  style={{fontSize:"6vh",color:'aqua' , fontFamily:'Sansita Swashed',right:'2vh' }}>Update Classes</label>
                 <div className = {toggle?"show":"calendar"} style={{width:"50vw",position:'relative',left:"10vh"}}>
@@ -80,9 +69,9 @@ export default function ClassesUpdate({subjects,uniqueID}) {
                                 {dates.map((date,index)=><option id="date" name="date" key={date}>{date}</option>)}
                         </select>
                         { formik.errors.date?
-                                <Text sx={{fontSize:"1.6em",color:"red"}}>
+                                <div style={{fontSize:"1.6em",color:"red"}}>
                                     {formik.errors.date}
-                                </Text>:<Text></Text>}
+                                </div>:<div></div>}
                         <select id="month" name="month" 
                                 onChange={formik.handleChange}
                                 onClick={showStatement}
@@ -90,9 +79,9 @@ export default function ClassesUpdate({subjects,uniqueID}) {
                                 {months.map(month=><option id="month" name="month" key={month}>{month}</option>)}
                         </select>
                         { formik.errors.month?
-                                <Text sx={{fontSize:"1.5em",color:"red"}}>
+                            <div style={{fontSize:"1.6em",color:"red"}}>
                                     {formik.errors.month}
-                                </Text>:<Text></Text>}
+                                </div>:<div></div>}
                         <select id="year" 
                                 name="year" 
                                 onChange={formik.handleChange}
@@ -122,7 +111,7 @@ export default function ClassesUpdate({subjects,uniqueID}) {
                             {`${formik.values.numberOfClasses} class(es) of ${formik.values.subject} were conducted on ${formik.values.date}-${formik.values.month}-${formik.values.year} for section ${formik.values.section}`}
                         </h2>
                         <button className="cu-but" type="submit">Submit?</button>
-                        {serverReply?<Text sx={{color:"rgb(240, 178, 33)"}} >Database successfully updated</Text>:<Text></Text>}
+                        {serverReply?<div style={{color:"rgb(240, 178, 33)"}} >Database successfully updated</div>:<div></div>}
                     </form>
                     
                 </div> 
