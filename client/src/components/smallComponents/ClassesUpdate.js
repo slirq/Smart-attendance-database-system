@@ -56,9 +56,9 @@ export default function ClassesUpdate({subjects,uniqueID}) {
     const makeVisible=(e)=>{setToggle(!toggle)}
     return (
        <div className="Card" >
-            <div style={{color:"white",width:"100vw",height:toggle?"90vh":"15vh"}}>
-                <h2 style={{fontSize:"2em"}}>Update Classes</h2> 
-                <img alt="dropdown" className="dropdownButton" src="https://img.icons8.com/nolan/64/drag-list-down.png" onClick={makeVisible}/>
+            <div display='flex'  style={{color:"white",height:toggle?"60vh":"10vh"}}>
+            <img alt="dropdown"  className="dropdownButton" src="https://img.icons8.com/nolan/64/drag-list-down.png" onClick={makeVisible}/>
+            <label  style={{fontSize:"6vh",color:'aqua' , fontFamily:'Sansita Swashed',right:'2vh' }}>Update Classes</label>
                 <div className = {toggle?"show":"calendar"} style={{width:"50vw",position:'relative',left:"10vh"}}>
                     <form onSubmit={formik.handleSubmit}>
                         <label htmlFor="section">Which section was it?</label>

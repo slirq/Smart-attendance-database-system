@@ -55,7 +55,7 @@ form select, div.react-calendar, submit.submit, button {
 form div select option {
   border-radius: 1.6em;
   font-family: Sansita Swashed;
-  background-color: #f0b221;
+  background-color: #0093E9;
 }
 
 div button {
@@ -64,7 +64,7 @@ div button {
   border: none;
   border-radius: .2em;
   padding-top: .3em;
-  background-color: #f0b221;
+  background-color: #0093E9;
   text-transform: uppercase;
   letter-spacing: 0.02em;
   cursor: pointer;
@@ -74,16 +74,18 @@ div button {
 }
 
 div button:active {
-  background-color: #946904;
+  background-color: #0093E9;
 }
 
 div button:hover {
-  background-color: #946904;
+  background-color: white;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+ 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+ sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -101,7 +103,8 @@ h2 {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+ monospace;
 }
 
 .Table {
@@ -141,7 +144,7 @@ code {
 .backGround {
   height: 100%;
   width: 100vw;
-  background: linear-gradient(315deg, #f7b42c 0%, #fc575e 74%);
+  background: linear-gradient(120deg, #0093E9 0%, #80D0C7 80%);
   color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -158,7 +161,7 @@ code {
   position: "relative";
   width: 90%;
   height: wrap-content;
-  background: #f7b42c;
+  background: white;
   -webkit-box-shadow: 0 0 2em rgba(0, 0, 0, 0.7);
           box-shadow: 0 0 2em rgba(0, 0, 0, 0.7);
   border-radius: 2em;
@@ -169,7 +172,7 @@ code {
 
 .pieBackGround {
   margin-top: auto;
-  background: white;
+  background:white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -197,5 +200,7 @@ code {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+          -webkit-box-shadow:0 0 2em #0093E9;
+          box-shadow: 0 0 2em #0093E9;
 }
 /*# sourceMappingURL=index.css.map */

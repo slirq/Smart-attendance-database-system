@@ -70,7 +70,7 @@ export default function StaffDashBoard() {
     return(state.loading?<h2 style={{
         height:"100%",
         width:"100%",
-        background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
+        background:"linear-gradient(300deg, #0093E9 0%, #80D0C7 80%)",
         color: 'white',
         bg: 'gray',
         display:"flex",
@@ -83,10 +83,10 @@ export default function StaffDashBoard() {
                 <Name name ={state.name}/>
                 <ClassesUpdate subjects={state.subjects} uniqueID={uniqueID}/>
                 <div className="Card">  
-                    <h2>Time Table</h2>
-                    <div style={{display:"flex",justifyContent:'center'}}>
-                        <label style={{padding:".7em"}}>SECTION</label>
-                        <select style={{height:"2.5em"}} onChange={handleSectionChange} defaultValue={state.sec}>
+                    <h2 style={{fontSize:'6vh'}}>Time Table</h2>
+                    <div style={{display:"flex",justifyContent:'center',marginBottom:'1vh'}}>
+                        <label style={{paddingRight:".7em"}}>SECTION</label>
+                        <select style={{}} onChange={handleSectionChange} defaultValue={state.sec} >
                             {sections.map((item,index)=><option key={`sta-DaBo-0-${index}`} value={`${item}`}>{item}</option>)}
                         </select>
                     </div>

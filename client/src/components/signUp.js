@@ -119,7 +119,7 @@ export default function SignUp() {
             <Box sx={{
                     height:"100vh",
                     width:"100vw",
-                    background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
+                    background:"linear-gradient(120deg, #0093E9 0%, #80D0C7 80%)",
                     bg: 'gray',
                     overflow:'hidden',
                     display:"flex",
@@ -132,7 +132,7 @@ export default function SignUp() {
                     sx={{
                         height:"70vh",
                         width:"35vw",
-                        background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
+                        background:"linear-gradient(300deg, #0093E9 0%, #80D0C7 80%)",
                         boxShadow:'0 0 16px rgba(0, 0, 0, .55)',
                         borderRadius:"2em",
                         display:"flex",
@@ -183,7 +183,7 @@ export default function SignUp() {
                                         height:"3em",
                                         width:"7em",
                                         p:"unset",
-                                        background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
+                                        background:"linear-gradient(300deg, #0093E9 0%, #80D0C7 80%)",
 
                                         border:"2px solid black",
                                         borderRadius:".7em",
@@ -193,13 +193,16 @@ export default function SignUp() {
                                         UPLOAD PHOTO
                             </Button>
                             <Button onClick={handleSubmit} 
+                                    marginLeft='1vh'
+                                    paddingLeft='2.2vh'
+                                    paddingTop='1.4vh'
                                     type={"button"}
                                     sx={{
                                         height:"3em",
-                                        width:"6.5em",
+                                        width:"7em",
                                         p:"unset",
                                         color:"black",
-                                        background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
+                                        background:"linear-gradient(300deg, #0093E9 0%, #80D0C7 80%)",
                                         border:"2px solid black",
                                         borderRadius:".7em",
                                         fontFamily:"Sansita Swashed"
@@ -217,7 +220,7 @@ export default function SignUp() {
                                     sx={{
                                         height:"2em",
                                         width:"8em",
-                                        background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
+                                        background:"linear-gradient(300deg, #0093E9 0%, #80D0C7 80%)",
                                         border:"2px solid black",
                                         textDecoration:"none",
                                         color:"black",

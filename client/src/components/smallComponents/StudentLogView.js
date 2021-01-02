@@ -24,28 +24,28 @@ export default function LogView({subjects,sections}) {
     })
     return (
         <div className="Card" >
-            <h2 className="hd">
+             <h2 style={{fontSize:'6vh'}} className="hd">
             Student Log
             </h2>          
                 <form onSubmit={formik.handleSubmit}>
                 <Flex>
-                <label htmlFor="subjectLV">{`Showing attendance log for subject   `}</label>
-                    <select id="subjectLV" name="subjectLV" onChange={formik.handleChange}  >
+                <label style={{paddingRight:".2em"}} htmlFor="subjectLV">{`Showing attendance log for subject`}</label>
+                    <select id="subjectLV" name="subjectLV" onChange={formik.handleChange} style={{marginTop:".4em"}} >
                         {subjects.map((sub,index)=>{return(<option 
                                                             key={`${sub}+${index}`} 
                                                             value={`${sub}`}
                                                             >{`${sub}`}</option>)})}
                     </select>
                     
-                    <label htmlFor="sectionLV">and section </label>
-                    <select id="sectionLV" name="sectionLV" onChange={formik.handleChange}  >
+                    <label style={{paddingRight:".2em"}} htmlFor="sectionLV">and section </label>
+                    <select id="sectionLV" name="sectionLV" onChange={formik.handleChange}  style={{marginTop:".4em"}}>
                         {sections.map((sec,index)=>{return(<option 
                                                             key={`${sec}+${index}`} 
                                                             value={`${sec}`}
                                                             >{`${sec}`}</option>)})}
                     </select>
                     </Flex>                  
-                    <button type="submit">Get that log</button>
+                    <button style={{width:"auto",height:'auto'}} type="submit">Get that log</button>
                 </form>
             
             <Table  columns={2} data={["USN","Timestamp"]} uniStr="lv-1-"/>

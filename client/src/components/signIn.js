@@ -41,7 +41,7 @@ export default function SignIn() {
             <Box sx={{
                     height:"100vh",
                     width:"100vw",
-                    background:" linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
+                    background:" linear-gradient(120deg, #0093E9 0%, #80D0C7 80%)",
                     color: 'white',
                     bg: 'gray',
                     overflow:'hidden',
@@ -57,7 +57,7 @@ export default function SignIn() {
                     sx={{
                         width:"25vw",
                         height:"40vh",
-                        background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
+                        background:"linear-gradient(300deg, #0093E9 0%, #80D0C7 80%)",
                         boxShadow:'0 0 2em rgba(0, 0, 0, .8)',
                         borderRadius:"2em",
                         display:"flex",
@@ -69,7 +69,7 @@ export default function SignIn() {
                 
                     <Text 
                             htmlFor='name' 
-                            fontSize={[ 3, 4, 5 ]}
+                            fontSize='4'
                             fontWeight={"bold"}
                             marginRight={".2em"}
                             color={"black"}>
@@ -101,12 +101,14 @@ export default function SignIn() {
                             <Button onClick={SignInVerify} 
                                     type={"button"}
                                     color={"black"}
+                                    paddingLeft='5vh'
+                                    paddingTop='1.4vh'
                                     sx={{
                                     height:"3em",
                                     fontFamily:"Sansita Swashed",
                                     flexDirection:"rows",
                                     textAlign:"center",
-                                    background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
+                                    background:"linear-gradient(120deg, #0093E9 0%, #80D0C7 80%)",
                                     border:"2px solid black",
                                     borderRadius:".7em" }}
                                     mr={".9em"} >
@@ -115,10 +117,12 @@ export default function SignIn() {
                             <Link       href="/signUp"
                                         type={"button"}
                                         color={"black"}
+                                        paddingLeft='1vh'
+                                        paddingBottom='.5vh'
                                         sx={{
                                             height:"3em",
                                             width:"6em",
-                                            background:"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%)",
+                                            background:"linear-gradient(120deg, #0093E9 0%, #80D0C7 80%)",
                                             border:"2px solid black",
                                             textDecoration:"none",
                                             color:"white",
