@@ -9,27 +9,20 @@ exports.signUp = async (req,res)=>{
 
     try{ 
         if(staff) {
-            let reply = []
-            let sqlForStaff = 'insert into staff values(?,?,(select SHA2(?,256)));'
-            let sqlForSub = 'insert into subject values(?,?,?);'
-            let valuesForSub = [`${ID}`,`${subject}`,`${sec}`]
-            let valuesForStaff = [`${ID}`,`${name}`,`${password}`]
-            console.log(valuesForSub)
-            const [resultSta,fieldst] = await db.execute(sqlForStaff,valuesForStaff)
-            const [resultSub,fieldsu] = await db.execute(sqlForSub,valuesForSub)
-            console.log(resultSub)
-            res.status(200).json(resultSub.affectedRows)
+            let sqlForTeachers=`call signUpTeachers('${usn}','${name}','${password}','${sec}','${subject}');`
+            const [resultTeachers,fieldTeac] = await db.execute(sqlForTeachers)
+            console.log(resultTeachers)
+            res.status(200).json({reply:resultTeachers.affectedRows===0})
         }
         else {
-            let sqlForStudent = `insert into student values(?,?,?,(select SHA2(?,256)));`
-            let valuesForStudent = [`${usn}`,`${name}`,`${sec}`,`${password}`]
-            const [result,fields] = await db.execute(sqlForStudent,valuesForStudent)
+            let sqlForStudent = `call signUpStudents('${usn}','${name}','${sec}','${password}')`
+            const [result,fields] = await db.execute(sqlForStudent)
             console.log(result.affectedRows)
-            res.status(200).json({reply:result.affectedRows?true:false})
+            res.status(200).json({reply:result.affectedRows===0})
             }
         }
     
-    catch(e){ console.log("t'was an error\n\n",e.sqlMessage,"\n\n",e);res.json({"reply":false})}
+    catch(e){ console.log("\n\n\nt'was an error\n\n",e.sqlMessage,"\n\n",e);res.status(500).json({"reply":false})}
     
 }
 

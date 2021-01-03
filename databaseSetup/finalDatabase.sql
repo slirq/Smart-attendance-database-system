@@ -1,13 +1,15 @@
--- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `sa` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `sa`;
+-- MySQL dump 10.13  Distrib 8.0.22, for Linux (x86_64)
 --
--- Host: localhost    Database: SA
+-- Host: localhost    Database: sa
 -- ------------------------------------------------------
--- Server version	8.0.21
+-- Server version	8.0.22
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -117,7 +119,7 @@ CREATE TABLE `classes` (
 
 LOCK TABLES `classes` WRITE;
 /*!40000 ALTER TABLE `classes` DISABLE KEYS */;
-INSERT INTO `classes` VALUES ('abc3','1 class(es) of DBMS were conducted on the date 20/4/21  for sec A'),('abc7','2 class(es) of ME were conducted on the date 20/4/21  for sec B'),('abc1','1 class(es) of DBMS were conducted on the date 20/4/21  for sec A'),('abc3','1 class(es) of UNIX were conducted on the date 20/4/21  for sec B'),('abc6','2 class(es) of DBMS were conducted on the date 20/4/21  for sec C'),('abc5','2 class(es) of DBMS were conducted on the date 20/4/21  for sec C'),('abc1','2 class(es) of DBMS were conducted on the date 21/4/21  for sec A'),('abc5','1 class(es) of ATCI were conducted on the date 21/4/21  for sec B'),('abc4','1 class(es) of UNIX were conducted on the date 21/4/21  for sec A'),('abc1','2 class(es) of UNIX were conducted on the date 21/4/21  for sec B'),('abc4','2 class(es) of CNS were conducted on the date 21/4/21  for sec B'),('abc3','1 class(es) of EVS were conducted on the date 21/4/21  for sec A'),('abc6','2 class(es) of UNIX were conducted on the date 21/4/21  for sec A'),('abc2','1 class(es) of CNS were conducted on the date 21/4/21  for sec A'),('abc4','2 class(es) of CNS were conducted on the date 21/4/21  for sec B'),('abc5','1 class(es) of UNIX were conducted on the date 21/4/21  for sec C'),('abc1','1 class(es) of DBMS were conducted on the date 1/5/21  for sec B'),('abc6','1 class(es) of UNIX were conducted on the date 1/5/21  for sec A'),('abc5','1 class(es) of EVS were conducted on the date 1/5/21  for sec A'),('abc5','1 class(es) of ADP were conducted on the date 1/5/21  for sec C'),('abc7','2 class(es) of ATCI were conducted on the date 1/5/21  for sec A'),('abc7','2 class(es) of ADP were conducted on the date 1/5/21  for sec B'),('abc5','3 class(es) of UNIXLogView were conducted on 22-12-2020 for section A'),('abc1','1 class(es) of ME were conducted on 8-12-2020 for section A'),('abc1','1 class(es) of ME were conducted on 8-12-2020 for section A'),('abc5','1 class(es) of CNS were conducted on the date 1/5/21  for sec C'),('abc6','1 class(es) of EVS were conducted on the date 1/5/21  for sec B'),('abc6','2 class(es) of EVS were conducted on the date 1/5/21  for sec B'),('abc4','2 class(es) of ADP were conducted on the date 1/5/21  for sec B'),('abc4','1 class(es) of ADP were conducted on the date 1/5/21  for sec C'),('abc3','1 class(es) of ATCI were conducted on the date 1/5/21  for sec C');
+INSERT INTO `classes` VALUES ('abc3','1 class(es) of DBMS were conducted on the date 20/4/21  for sec A'),('abc7','2 class(es) of ME were conducted on the date 20/4/21  for sec B'),('abc1','1 class(es) of DBMS were conducted on the date 20/4/21  for sec A'),('abc3','1 class(es) of UNIX were conducted on the date 20/4/21  for sec B'),('abc6','2 class(es) of DBMS were conducted on the date 20/4/21  for sec C'),('abc5','2 class(es) of DBMS were conducted on the date 20/4/21  for sec C'),('abc1','2 class(es) of DBMS were conducted on the date 21/4/21  for sec A'),('abc5','1 class(es) of ATCI were conducted on the date 21/4/21  for sec B'),('abc4','1 class(es) of UNIX were conducted on the date 21/4/21  for sec A'),('abc1','2 class(es) of UNIX were conducted on the date 21/4/21  for sec B'),('abc4','2 class(es) of CNS were conducted on the date 21/4/21  for sec B'),('abc3','1 class(es) of EVS were conducted on the date 21/4/21  for sec A'),('abc6','2 class(es) of UNIX were conducted on the date 21/4/21  for sec A'),('abc2','1 class(es) of CNS were conducted on the date 21/4/21  for sec A'),('abc4','2 class(es) of CNS were conducted on the date 21/4/21  for sec B'),('abc5','1 class(es) of UNIX were conducted on the date 21/4/21  for sec C'),('abc1','1 class(es) of DBMS were conducted on the date 1/5/21  for sec B'),('abc6','1 class(es) of UNIX were conducted on the date 1/5/21  for sec A'),('abc5','1 class(es) of EVS were conducted on the date 1/5/21  for sec A'),('abc5','1 class(es) of ADP were conducted on the date 1/5/21  for sec C'),('abc7','2 class(es) of ATCI were conducted on the date 1/5/21  for sec A'),('abc7','2 class(es) of ADP were conducted on the date 1/5/21  for sec B'),('abc5','3 class(es) of UNIXLogView were conducted on 22-12-2020 for section A'),('abc1','1 class(es) of ME were conducted on 8-12-2020 for section A'),('abc1','1 class(es) of ME were conducted on 8-12-2020 for section A'),('abc5','1 class(es) of CNS were conducted on the date 1/5/21  for sec C'),('abc6','1 class(es) of EVS were conducted on the date 1/5/21  for sec B'),('abc6','2 class(es) of EVS were conducted on the date 1/5/21  for sec B'),('abc4','2 class(es) of ADP were conducted on the date 1/5/21  for sec B'),('abc4','1 class(es) of ADP were conducted on the date 1/5/21  for sec C'),('abc3','1 class(es) of ATCI were conducted on the date 1/5/21  for sec C'),('abc1','1 class(es) of ADP were conducted on 10-12-2020 for section A'),('abc1','1 class(es) of ADP were conducted on 4-12-2020 for section B'),('abc1','1 class(es) of ADP were conducted on 10-12-2020 for section A'),('abc1','1 class(es) of ADP were conducted on 10-12-2020 for section A');
 /*!40000 ALTER TABLE `classes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,7 +198,7 @@ CREATE TABLE `staff` (
 
 LOCK TABLES `staff` WRITE;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
-INSERT INTO `staff` VALUES ('abc1','Janet Dubinsky','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abc11','TEST','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abc2','Allie Greenidge','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abc3','Donetta Sievert','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abc4','Oma Fraire','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abc5','Marie smith','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abc6','hector smith','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abc7','harry king','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abc98','TEST2','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abc99','TEST','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9');
+INSERT INTO `staff` VALUES ('abc1','Janet Dubinsky','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abc11','TEST','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abc2','Allie Greenidge','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abc3','Donetta Sievert','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abc4','Oma Fraire','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abc5','Marie smith','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abc6','hector smith','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abc7','harry king','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abc98','TEST2','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abc99','TEST','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abcd','testwa','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abcde','testwa','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('abcdef','testwa','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('asdf','OLLO','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('asdff','OLLO','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('qwe','KONICHIWA','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('qweR','KONICHIWA','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('qwert','KONICHIWA','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('qwert1','KONICHIWA','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('qwerty','KONICHIWA','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('qwerty1','KONICHIWA','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9');
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,7 +226,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES ('1BI18CS003','abdullah shaikh','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs01','doot','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs010','vivek','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs011','Buffy Herdt','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs012','Delpha Lepe','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs013','Antoinette Wolfinger','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs014','Mariella Felten','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs015','Rosalba Lewis','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs016','Deana Water','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs017','Robt Monterrosa','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs018','Allen Matos','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs019','Rutha Steve','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs02','arnav','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs020','Lanora Rossin','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs021','Amelia Ashmore','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs022','Rosalinda Korte','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs023','Tisha Steuck','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs024','Barbar Corral','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs025','Charles Adams','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs026','Melida Pulsifer','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs027','Alvaro Jorgensen','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs028','Vernetta Drucker','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs029','Ria Erne','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs03','rahul','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs030','Cyril Berney','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs031','Raisa Ammon','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs032','Lilian Ronning','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs033','Berneice Brockway','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs034','Lynelle Formby','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs035','Ayesha Tuller','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs036','Mika Tocco','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs037','Reena Tanguay','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs038','Agustin Cochran','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs039','Maren Drolet','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs04','ajay','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs05','devgan','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1BI18CS050','TEST','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs06','emilia','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs07','anna','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs08','upasana','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs09','raj','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9');
+INSERT INTO `student` VALUES ('1BI18CS003','abdullah shaikh','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs01','doot','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs010','vivek','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs011','Buffy Herdt','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs012','Delpha Lepe','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs013','Antoinette Wolfinger','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs014','Mariella Felten','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs015','Rosalba Lewis','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs016','Deana Water','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs017','Robt Monterrosa','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs018','Allen Matos','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs019','Rutha Steve','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs02','arnav','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs020','Lanora Rossin','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs021','Amelia Ashmore','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs022','Rosalinda Korte','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs023','Tisha Steuck','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs024','Barbar Corral','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs025','Charles Adams','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs026','Melida Pulsifer','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs027','Alvaro Jorgensen','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs028','Vernetta Drucker','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs029','Ria Erne','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs03','rahul','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs030','Cyril Berney','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs031','Raisa Ammon','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs032','Lilian Ronning','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs033','Berneice Brockway','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs034','Lynelle Formby','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs035','Ayesha Tuller','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs036','Mika Tocco','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs037','Reena Tanguay','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs038','Agustin Cochran','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs039','Maren Drolet','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs04','ajay','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs05','devgan','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1BI18CS050','TEST','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs06','emilia','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs07','anna','B','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs08','upasana','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi18cs09','raj','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('1bi81','ollo','A','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9'),('asdff','OLLO','C','d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9');
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -275,7 +277,7 @@ CREATE TABLE `studentattendance` (
 
 LOCK TABLES `studentattendance` WRITE;
 /*!40000 ALTER TABLE `studentattendance` DISABLE KEYS */;
-INSERT INTO `studentattendance` VALUES ('1bi18cs01','B',16,5,1,24,17,24,25),('1bi18cs02','C',14,15,39,28,3,41,5),('1bi18cs03','A',0,23,4,3,0,36,15),('1bi18cs04','B',12,28,2,6,6,30,9),('1bi18cs05','C',19,3,28,18,28,9,3),('1bi18cs06','B',34,29,3,3,17,32,10),('1bi18cs07','B',14,0,16,23,29,0,40),('1bi18cs08','C',37,8,12,40,19,16,20),('1bi18cs09','C',2,37,4,19,3,7,27),('1bi18cs010','B',8,14,4,19,21,7,21),('1bi18cs011','A',29,4,7,30,0,4,18),('1bi18cs012','C',1,38,14,20,15,35,14),('1bi18cs013','A',25,11,3,33,31,6,22),('1bi18cs014','C',16,40,1,18,3,24,6),('1bi18cs015','A',33,22,38,3,19,10,40),('1bi18cs016','C',39,21,12,12,16,14,41),('1bi18cs017','C',24,36,6,22,0,28,34),('1bi18cs018','C',9,15,14,27,21,36,36),('1bi18cs019','C',38,29,23,26,3,18,21),('1bi18cs020','B',21,4,9,3,41,27,13),('1bi18cs021','A',14,17,26,15,22,16,14),('1bi18cs022','C',35,3,2,33,28,0,34),('1bi18cs023','B',18,24,12,41,36,31,2),('1bi18cs024','C',31,38,5,3,29,2,41),('1bi18cs025','C',5,4,3,39,40,17,4),('1bi18cs026','B',3,4,20,27,33,30,11),('1bi18cs027','B',35,18,14,2,18,15,25),('1bi18cs028','A',7,33,40,39,29,38,0),('1bi18cs029','A',23,2,38,5,13,39,0),('1bi18cs030','C',2,35,22,13,30,4,13),('1bi18cs031','B',7,34,37,6,8,27,35),('1bi18cs032','C',18,3,6,9,25,20,22),('1bi18cs033','A',35,34,11,15,2,31,34),('1bi18cs034','C',33,20,7,6,14,4,13),('1bi18cs035','C',1,16,12,17,37,19,19),('1bi18cs036','B',23,22,25,11,19,25,37),('1bi18cs037','C',17,8,38,15,2,5,30),('1bi18cs038','B',31,38,25,26,23,9,4),('1bi18cs039','A',1,10,37,1,39,14,23),('1BI18CS003','A',0,0,0,0,0,1,0),('1BI18CS050','B',0,0,0,0,0,0,0);
+INSERT INTO `studentattendance` VALUES ('1bi18cs01','B',16,5,1,24,17,24,25),('1bi18cs02','C',14,15,39,28,3,41,5),('1bi18cs03','A',0,23,4,3,0,36,15),('1bi18cs04','B',12,28,2,6,6,30,9),('1bi18cs05','C',19,3,28,18,28,9,3),('1bi18cs06','B',34,29,3,3,17,32,10),('1bi18cs07','B',14,0,16,23,29,0,40),('1bi18cs08','C',37,8,12,40,19,16,20),('1bi18cs09','C',2,37,4,19,3,7,27),('1bi18cs010','B',8,14,4,19,21,7,21),('1bi18cs011','A',29,4,7,30,0,4,18),('1bi18cs012','C',1,38,14,20,15,35,14),('1bi18cs013','A',25,11,3,33,31,6,22),('1bi18cs014','C',16,40,1,18,3,24,6),('1bi18cs015','A',33,22,38,3,19,10,40),('1bi18cs016','C',39,21,12,12,16,14,41),('1bi18cs017','C',24,36,6,22,0,28,34),('1bi18cs018','C',9,15,14,27,21,36,36),('1bi18cs019','C',38,29,23,26,3,18,21),('1bi18cs020','B',21,4,9,3,41,27,13),('1bi18cs021','A',14,17,26,15,22,16,14),('1bi18cs022','C',35,3,2,33,28,0,34),('1bi18cs023','B',18,24,12,41,36,31,2),('1bi18cs024','C',31,38,5,3,29,2,41),('1bi18cs025','C',5,4,3,39,40,17,4),('1bi18cs026','B',3,4,20,27,33,30,11),('1bi18cs027','B',35,18,14,2,18,15,25),('1bi18cs028','A',7,33,40,39,29,38,0),('1bi18cs029','A',23,2,38,5,13,39,0),('1bi18cs030','C',2,35,22,13,30,4,13),('1bi18cs031','B',7,34,37,6,8,27,35),('1bi18cs032','C',18,3,6,9,25,20,22),('1bi18cs033','A',35,34,11,15,2,31,34),('1bi18cs034','C',33,20,7,6,14,4,13),('1bi18cs035','C',1,16,12,17,37,19,19),('1bi18cs036','B',23,22,25,11,19,25,37),('1bi18cs037','C',17,8,38,15,2,5,30),('1bi18cs038','B',31,38,25,26,23,9,4),('1bi18cs039','A',1,10,37,1,39,14,23),('1BI18CS003','A',0,0,0,0,0,1,0),('1BI18CS050','B',0,0,0,0,0,0,0),('1bi81','A',0,0,0,0,0,0,0),('asdff','C',0,0,0,0,0,0,0);
 /*!40000 ALTER TABLE `studentattendance` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -304,7 +306,7 @@ CREATE TABLE `subject` (
 
 LOCK TABLES `subject` WRITE;
 /*!40000 ALTER TABLE `subject` DISABLE KEYS */;
-INSERT INTO `subject` VALUES ('abc1','CNS','A'),('abc11','','A'),('abc2','ME','A'),('abc3','CNS','A'),('abc4','ME','A'),('abc5','CNS','A'),('abc6','DBMS','A'),('abc7','UNIX','A'),('abc99','CNS','A'),('abc1','ADP','B'),('abc2','ATCI','B'),('abc3','ADP','B'),('abc3','UNIX','B'),('abc4','CNS','B'),('abc5','ADP','B'),('abc6','ATCI','B'),('abc7','DBMS','B'),('abc98','CNS','B'),('abc1','UNIX','C'),('abc2','DBMS','C'),('abc3','ATCI','C'),('abc4','DBMS','C'),('abc5','ME','C'),('abc6','UNIX','C'),('abc7','CNS','C');
+INSERT INTO `subject` VALUES ('abc1','CNS','A'),('abc11','','A'),('abc2','ME','A'),('abc3','CNS','A'),('abc4','ME','A'),('abc5','CNS','A'),('abc6','DBMS','A'),('abc7','UNIX','A'),('abc99','CNS','A'),('abcde','ADP','A'),('abcdef','ADP','A'),('qwe','DBMS','A'),('qweR','DBMS','A'),('qwert','DBMS','A'),('qwert1','DBMS','A'),('qwerty','DBMS','A'),('qwerty1','DBMS','A'),('abc1','ADP','B'),('abc2','ATCI','B'),('abc3','ADP','B'),('abc3','UNIX','B'),('abc4','CNS','B'),('abc5','ADP','B'),('abc6','ATCI','B'),('abc7','DBMS','B'),('abc98','CNS','B'),('abc1','UNIX','C'),('abc2','DBMS','C'),('abc3','ATCI','C'),('abc4','DBMS','C'),('abc5','ME','C'),('abc6','UNIX','C'),('abc7','CNS','C'),('asdf','ADP','C'),('asdff','ADP','C');
 /*!40000 ALTER TABLE `subject` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -335,17 +337,67 @@ CREATE TABLE `totalclasses` (
 
 LOCK TABLES `totalclasses` WRITE;
 /*!40000 ALTER TABLE `totalclasses` DISABLE KEYS */;
-INSERT INTO `totalclasses` VALUES ('A',45,45,43,42,41,44,43),('B',44,46,45,43,42,41,43),('C',41,45,46,44,43,42,43);
+INSERT INTO `totalclasses` VALUES ('A',45,45,43,42,44,44,43),('B',44,46,45,43,43,41,43),('C',41,45,46,44,43,42,43);
 /*!40000 ALTER TABLE `totalclasses` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'SA'
+-- Dumping routines for database 'sa'
 --
-
---
--- Dumping routines for database 'SA'
---
+/*!50003 DROP PROCEDURE IF EXISTS `signUpStudents` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `signUpStudents`(IN USN VARCHAR(10),IN NAME VARCHAR(20),IN SECTION VARCHAR(1),IN PASSWORD VARCHAR(40))
+BEGIN
+SET @USN=USN;
+SET @NAME=NAME;
+SET @SECTION=SECTION;
+SET @PASSWORD=PASSWORD;
+PREPARE stuPreSql FROM 'insert into student values(?,?,?,(select SHA2(?,256)));';
+EXECUTE stuPreSQl USING @USN,@NAME,@SECTION,@PASSWORD;
+deallocate prepare stuPreSql;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `signUpTeachers` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `signUpTeachers`(IN ID VARCHAR(10),IN NAME VARCHAR(20),IN PASSWORD VARCHAR(40),IN SECTION VARCHAR(1),IN SUBJECT VARCHAR(6))
+BEGIN
+SET @ID=ID;
+SET @NAME=NAME;
+SET @PASSWORD=PASSWORD;
+SET @SECTION=SECTION;
+SET @SUBJECT=SUBJECT;
+PREPARE staffPreSql FROM 'insert into staff values(?,?,(select SHA2(?,256)));';
+EXECUTE staffPreSql USING @ID,@NAME,@PASSWORD;
+PREPARE staffSubject FROM 'insert into subject values(?,?,?);';
+EXECUTE staffSubject USING @ID,@SUBJECT,@SECTION;
+        deallocate prepare staffPreSql;
+        deallocate prepare staffSubject;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Final view structure for view `attendance_summary`
@@ -374,4 +426,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-24 15:34:40
+-- Dump completed on 2021-01-03 14:08:34
