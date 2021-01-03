@@ -1,8 +1,6 @@
 import React,{useEffect,useReducer,useContext} from 'react'
 import axios from 'axios'
 import {MyContext }from '../context/context'
-// import {Input} from '@rebass/forms'
-// import Table from './smallComponents/Table'
 import FullTimetable from './smallComponents/FullTimetable'
 import ClassesUpdate from './smallComponents/ClassesUpdate'
 import Name from './smallComponents/Name'
@@ -35,8 +33,8 @@ const reducer =(state,action)=>{
             }
         }
 export default function StaffDashBoard() {
-    // const {uniqueID} = useContext(MyContext)
-    let uniqueID = 'abc1'
+    const {uniqueID} = useContext(MyContext)
+    // let uniqueID = 'abc1'
     const [state,dispatch]=useReducer(reducer,initialState)
     const sections =["A","B","C"]
     

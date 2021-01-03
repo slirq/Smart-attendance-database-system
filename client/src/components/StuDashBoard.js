@@ -40,8 +40,8 @@ const reducer =(state,action)=>{
 }
 
 export default function StuDashBoard() {    
-    // const {uniqueID} = useContext(MyContext)
-    let uniqueID="1bi18cs032"
+    const {uniqueID} = useContext(MyContext)
+    // let uniqueID="1bi18cs032"
     const [state,dispatch]=useReducer(reducer,initialState)
     let subjects = [ "ATCI","ME","CNS","ADP","UNIX","EVS","DBMS"]
     const fetchData = async ()=>{
